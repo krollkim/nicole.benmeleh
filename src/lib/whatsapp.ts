@@ -6,8 +6,9 @@
  * Used by: src/components/WhatsAppFloat.tsx, src/components/WhatsAppLeadButton.tsx
  */
 
-// TODO(client): replace with ניקול's real number, format 972XXXXXXXXX (no leading zero)
-export const WHATSAPP_PHONE = '972500000000'
+// ניקול's number. Local 052-696-0896 → international, no leading zero, no '+',
+// digits only (wa.me requires this exact shape).
+export const WHATSAPP_PHONE = '972526960896'
 
 /**
  * Funnel/source label embedded in the prefilled message so ניקול can tell

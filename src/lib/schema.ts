@@ -32,6 +32,7 @@ import {
   CLINIC_STREET_ADDRESS,
   CLINIC_CITY,
   CLINIC_COUNTRY,
+  CLINIC_PHONE,
   INSTAGRAM_URL,
 } from '@/lib/site'
 
@@ -51,9 +52,11 @@ const WEBSITE_ID = `${SITE_URL}/#website`
 // type for a service business with a physical address (supports
 // `address`/`areaServed`/`sameAs`/`founder` etc.) without importing any
 // regulated-provider semantics, and it's the type the seo-geo-audit skill
-// recommends over plain `Organization` for a clinic/studio/agency. No
-// `telephone` (none provided — see site.ts `CLINIC_PHONE_TODO`), no
-// `openingHoursSpecification` (not provided), no `priceRange`, no `offers`.
+// recommends over plain `Organization` for a clinic/studio/agency.
+// `telephone` is ניקול's number (site.ts `CLINIC_PHONE`) — structured data
+// only; the page itself shows no phone and has no `tel:` link, because the
+// funnel is WhatsApp-first. No `openingHoursSpecification` (not provided),
+// no `priceRange`, no `offers`.
 export const professionalServiceJsonLd = {
   '@type': 'ProfessionalService',
   '@id': CLINIC_ID,
@@ -61,6 +64,7 @@ export const professionalServiceJsonLd = {
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   inLanguage: 'he',
+  telephone: CLINIC_PHONE,
   address: {
     '@type': 'PostalAddress',
     streetAddress: CLINIC_STREET_ADDRESS,

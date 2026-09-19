@@ -34,11 +34,15 @@ export const CLINIC_STREET_ADDRESS = 'אחד העם 89'
 export const CLINIC_CITY = 'תל אביב'
 export const CLINIC_COUNTRY = 'IL'
 
-// TODO(seo): no phone number has been provided for the clinic yet. Do not
-// invent one. Once given, set it here and wire it into
-// professionalServiceJsonLd (`telephone`) in schema.ts — that field is
-// currently omitted rather than guessed.
-export const CLINIC_PHONE_TODO = ''
+// ניקול's number, E.164 for structured data (local 052-696-0896).
+// The same number in wa.me's digits-only shape lives in src/lib/whatsapp.ts
+// as WHATSAPP_PHONE — if one changes, change both.
+//
+// Deliberately NOT rendered as a visible phone number or a `tel:` link
+// anywhere on the page: the whole funnel is "write to me on WhatsApp and we
+// talk first, nothing is booked". This constant exists only for `telephone`
+// in the JSON-LD.
+export const CLINIC_PHONE = '+972526960896'
 
 // No opening hours were supplied in the copy doc — `openingHoursSpecification`
 // is intentionally omitted from schema.ts rather than guessed. Add it there
