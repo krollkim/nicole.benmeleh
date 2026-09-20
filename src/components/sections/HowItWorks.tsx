@@ -36,16 +36,16 @@ export default function HowItWorks() {
       <div className="px-4 py-20 sm:px-6 md:py-36">
         <div className="mx-auto max-w-2xl">
           <ScrollReveal className="flex flex-col items-start gap-6 text-start">
-            <h2 className="font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
+            <h2 className="font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
               אין פה כפתור &quot;קבעי תור&quot;
             </h2>
 
-            <p className="max-w-[46ch] text-base leading-relaxed text-ink">
+            <p className="max-w-[46ch] text-[17px] leading-[1.6] text-ink">
               כשאת כותבת לי בוואטסאפ, אנחנו קודם כל מדברות. את מספרת לי מה קורה, אני שואלת,
               לפעמים אנחנו עוברות לשיחת טלפון.
             </p>
 
-            <p className="max-w-[46ch] text-base leading-relaxed text-ink">
+            <p className="max-w-[46ch] text-[17px] leading-[1.6] text-ink">
               רק אחרי שהבנו אם אני האדם הנכון בשבילך — נקבע מפגש. אם אני חושבת שלא, אני אגיד לך
               את זה.
             </p>

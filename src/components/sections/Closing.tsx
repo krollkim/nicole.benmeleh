@@ -18,8 +18,8 @@ export default function Closing() {
   return (
     <section id="contact" className="bg-surface px-4 py-20 sm:px-6 md:py-36">
       <div className="mx-auto max-w-3xl">
-        <ScrollReveal className="flex flex-col items-center gap-8 text-center">
-          <h2 className="font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        <ScrollReveal className="flex flex-col items-start gap-8 text-start">
+          <h2 className="font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
             אם משהו בגוף שלך מבקש תשומת לב — זה הזמן לדבר עליו
           </h2>
 
@@ -30,7 +30,7 @@ export default function Closing() {
               Remove this block when the real photo arrives. */}
           <div
             role="note"
-            className="flex min-h-[320px] w-full items-center justify-center border-2 border-dashed border-primary-300/70 p-6 text-center"
+            className="flex min-h-[60vh] w-full items-center justify-center border-2 border-dashed border-primary-300/70 p-6 text-center"
           >
             <span className="text-sm text-muted">
               מקום שמור לתמונת החדר הריק
@@ -39,7 +39,7 @@ export default function Closing() {
             </span>
           </div>
 
-          <div className="text-base leading-relaxed text-ink">
+          <div className="text-[17px] leading-[1.6] text-ink">
             <p>קליניקת &quot;בית מרפה&quot;, אחד העם 89, תל אביב</p>
             <p className="mt-1">
               אינסטגרם:{' '}

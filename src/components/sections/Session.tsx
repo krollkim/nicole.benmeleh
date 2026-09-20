@@ -31,7 +31,7 @@ import PinnedSequence, { PinnedSequenceStep } from '@/components/ui/PinnedSequen
  */
 
 const roomMedia = (
-  <div className="relative aspect-square w-full overflow-hidden">
+  <div className="relative h-full min-h-[55vh] w-full overflow-hidden md:min-h-0">
     <Image
       src="/images/I-room-1920.webp"
       alt="חדר הטיפולים בקליניקה ברחוב אחד העם — שרפרף, חלון ופרגוד"
@@ -52,7 +52,7 @@ const roomMedia = (
  * that suits its format.
  */
 const handsMedia = (
-  <div className="relative aspect-square w-full overflow-hidden">
+  <div className="relative h-full min-h-[55vh] w-full overflow-hidden md:min-h-0">
     <Image
       src="/images/D-hands-top-1920.webp"
       alt="קלוז־אפ על ידיים בעבודת שיאצו, מבט מלמעלה"
@@ -116,17 +116,17 @@ export default function Session() {
           {i + 1}
         </span>
 
-        <h3 className="font-display text-xl font-medium text-ink">{step.title}</h3>
-        <p className="mt-2 text-base leading-relaxed text-muted">{step.body}</p>
+        <h3 className="font-display text-2xl font-medium text-ink">{step.title}</h3>
+        <p className="mt-2 text-[17px] leading-[1.6] text-muted">{step.body}</p>
       </div>
     ),
   }))
 
   return (
-    <section id="session" className="bg-surface px-4 py-20 sm:px-6 md:py-36">
-      <div className="mx-auto max-w-5xl">
+    <section id="session" className="overflow-hidden bg-surface py-20 md:py-36">
+      <div>
         <ScrollReveal>
-          <h2 className="text-start font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
+          <h2 className="mx-auto w-full max-w-7xl px-4 text-start font-display text-3xl font-medium leading-[1.12] text-ink sm:px-8 sm:text-5xl lg:text-6xl">
             בלי הפתעות: ככה נראית שעה אצלי
           </h2>
         </ScrollReveal>
@@ -135,13 +135,13 @@ export default function Session() {
             in from that same edge. Section 5 takes the opposite side. */}
         <PinnedSequence
           steps={steps}
-          mediaClassName="aspect-square"
+          mediaClassName="h-full min-h-[78vh]"
           driftSide="start"
           className="mt-12"
         />
 
-        <ScrollReveal className="mt-10 md:mt-16">
-          <p className="max-w-3xl text-base leading-relaxed text-ink">
+        <ScrollReveal className="mx-auto mt-10 w-full max-w-7xl md:mt-16">
+          <p className="max-w-[46ch] px-4 text-[17px] leading-[1.6] text-ink sm:px-8">
             רוב הנשים שמגיעות אליי לא חוששות מהטיפול. הן חוששות ממה שקורה להן בגוף. התפקיד שלי
             הוא קודם כל לייצר מקום בטוח — בלי זה אין טיפול.
           </p>

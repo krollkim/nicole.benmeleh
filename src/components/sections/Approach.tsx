@@ -18,11 +18,11 @@ export default function Approach() {
       <ScrollReveal className="mx-auto max-w-xl">
         {/* Revealed one rendered line at a time. The string is passed verbatim
             and LineReveal only splits it on spaces for measurement. */}
-        <h2 className="text-start font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
+        <h2 className="text-start font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
           <LineReveal text="לא כל אחת מקבלת את אותו טיפול" stagger={0.08} />
         </h2>
 
-        <div className="mt-10 space-y-6 text-lg leading-[1.85] text-ink">
+        <div className="mt-10 space-y-6 text-lg leading-[1.6] text-ink">
           <p>המפגש הראשון הוא לא טיפול. הוא אבחון.</p>
           <p>
             אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור — לא רק את התסמין שהביא
@@ -36,7 +36,7 @@ export default function Approach() {
         </div>
 
         <div className="mt-16 border-t border-primary-300/60 pt-8">
-          <h3 className="font-display text-xl font-semibold text-ink">
+          <h3 className="font-display text-2xl font-medium text-ink">
             למה זו סדרה ולא טיפול בודד
           </h3>
           <p className="mt-3 leading-relaxed text-ink">

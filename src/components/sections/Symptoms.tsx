@@ -126,7 +126,7 @@ export default function Symptoms() {
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           <div className="text-start">
-            <h2 className="font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
+            <h2 className="font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
               מה מביא נשים לקליניקה
             </h2>
           </div>
@@ -150,15 +150,15 @@ export default function Symptoms() {
             >
               <Icon className="h-7 w-7 shrink-0 text-primary" />
               <div>
-                <h3 className="font-display text-lg font-semibold text-ink">{title}</h3>
-                <p className="mt-2 max-w-[46ch] leading-relaxed text-muted">{body}</p>
+                <h3 className="font-display text-2xl font-medium text-ink">{title}</h3>
+                <p className="mt-2 max-w-[46ch] leading-[1.6] text-muted">{body}</p>
               </div>
             </div>
           ))}
         </StaggerReveal>
 
         <ScrollReveal className="mt-10">
-          <p className="max-w-2xl text-start leading-relaxed text-muted">
+          <p className="max-w-2xl text-start leading-[1.6] text-muted">
             לא מצאת את עצמך ברשימה? כתבי לי בכל זאת. חלק גדול מהנשים שמגיעות אליי הגיעו עם משהו שלא ידעו איך לקרוא לו.
           </p>
         </ScrollReveal>

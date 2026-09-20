@@ -61,7 +61,7 @@ export default function Faq() {
     <section id="faq" className="bg-voice px-4 py-20 sm:px-6 md:py-36">
       <div className="mx-auto max-w-3xl">
         <ScrollReveal>
-          <h2 className="text-start font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
+          <h2 className="text-start font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
             שאלות שחוזרות
           </h2>
         </ScrollReveal>
@@ -73,7 +73,7 @@ export default function Faq() {
               <div key={item.q}>
                 <details className="group border-b border-primary-200/60 py-5">
                   <summary
-                    className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-medium text-ink [&::-webkit-details-marker]:hidden [&::marker]:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 rounded-sm"
+                    className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-medium text-ink [&::-webkit-details-marker]:hidden [&::marker]:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 rounded-sm"
                   >
                     <span>{item.q}</span>
                     <svg
@@ -88,7 +88,7 @@ export default function Faq() {
                     </svg>
                   </summary>
 
-                  <p className="mt-3 max-w-[46ch] text-base leading-relaxed text-muted">{item.a}</p>
+                  <p className="mt-3 max-w-[46ch] text-[17px] leading-[1.6] text-muted">{item.a}</p>
 
                   {isPainQuestion && (
                     <>

@@ -7,8 +7,11 @@ import DriftReveal from '@/components/ui/DriftReveal'
 import ClipReveal from '@/components/ui/ClipReveal'
 
 export default function About() {
+  // overflow-hidden: the portrait is full-bleed now and DriftReveal
+  // translates it 32px on entry, which would otherwise widen the page by
+  // exactly that much on mobile. The shift is intentional; the container clips it.
   return (
-    <section id="about" className="bg-surface">
+    <section id="about" className="overflow-hidden bg-surface">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           {/* Side swap with section 4: Session puts its media on the reading-
@@ -34,11 +37,11 @@ export default function About() {
             </DriftReveal>
 
             <div className="flex flex-col justify-center px-4 py-20 sm:px-8 md:py-36">
-              <h2 className="text-start font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
+              <h2 className="text-start font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
                 נעים להכיר, אני ניקול בן מלך
               </h2>
 
-              <div className="mt-6 flex flex-col gap-4 text-base leading-relaxed text-ink max-w-[46ch]">
+              <div className="mt-6 flex flex-col gap-4 text-[17px] leading-[1.6] text-ink max-w-[46ch]">
                 <p>אני מטפלת ברפואה סינית — דיקור, שיאצו, כוסות רוח ופורמולות צמחים.</p>
                 <p>
                   למדתי ארבע שנים במכללת תמורות, התמחיתי בבית החולים בני ציון בחיפה, והיום אני
@@ -66,7 +69,7 @@ export default function About() {
                   <span className="text-sm text-muted">מטופלים</span>
                 </div>
                 <div className="flex items-baseline gap-1">
-                  <span className="font-display text-lg font-medium text-primary">
+                  <span className="font-display text-xl font-medium text-primary">
                     מרצה במכללת תמורות
                   </span>
                 </div>

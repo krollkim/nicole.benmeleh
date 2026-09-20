@@ -38,20 +38,25 @@ export default function Hero() {
         className="object-cover object-center"
       />
 
-      {/* Scrim. Strongest at the reading edge where the text sits, fading out
-          across the frame so the room stays visible. */}
+      {/* Scrim, and it has to change axis with the viewport.
+          On a narrow screen the text spans the full width, so a HORIZONTAL
+          gradient leaves its far edge on the weak end — measured at 360px the
+          h1 came out at 1.65:1 and the subhead at 1.49:1, both failing. Mobile
+          therefore darkens from the BOTTOM, where the text actually sits.
+          From md up the text occupies only the reading edge, so the horizontal
+          gradient returns and keeps the rest of the room visible. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(to_left,rgba(32,27,27,0.88)_0%,rgba(32,27,27,0.76)_52%,rgba(32,27,27,0.30)_74%,rgba(32,27,27,0.10)_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(to_top,rgba(32,27,27,0.92)_0%,rgba(32,27,27,0.82)_46%,rgba(32,27,27,0.40)_72%,rgba(32,27,27,0.18)_100%)] md:bg-[linear-gradient(to_left,rgba(32,27,27,0.88)_0%,rgba(32,27,27,0.76)_52%,rgba(32,27,27,0.30)_74%,rgba(32,27,27,0.10)_100%)]"
       />
 
       <div className="relative flex min-h-[88vh] items-end">
         <div className="mx-auto w-full max-w-7xl px-4 pb-20 pt-40 sm:px-8 md:pb-28">
           <ScrollReveal className="flex max-w-2xl flex-col items-start text-start">
-            <h1 className="text-balance font-display text-3xl font-bold leading-[1.15] text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="text-balance font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl md:text-6xl lg:text-7xl">
               ווסת שמכאיבה. עיכול שלא מסתדר. כאב שחוזר ולא עובר.
             </h1>
-            <p className="mt-6 max-w-[46ch] text-lg leading-relaxed text-white/90 md:text-xl">
+            <p className="mt-6 max-w-[46ch] text-lg leading-[1.6] text-white/90 md:text-xl">
               רפואה סינית לנשים, בקליניקה בתל אביב. מתחילות באבחון, ומשם מטפלות בשורש.
             </p>
             <div className="mt-9">

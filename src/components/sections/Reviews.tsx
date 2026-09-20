@@ -16,7 +16,7 @@ export default function Reviews({ children }: ReviewsProps) {
     <section id="reviews" className="bg-voice px-4 py-20 sm:px-6 md:py-36">
       <div className="mx-auto max-w-3xl">
         <ScrollReveal>
-          <h2 className="text-start font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
+          <h2 className="text-start font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
             מה אומרות נשים שטיפלתי בהן
           </h2>
 
