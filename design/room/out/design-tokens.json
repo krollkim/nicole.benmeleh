@@ -1,0 +1,102 @@
+{
+  "colors": {
+    "bg": "#E2E4E2",
+    "surface": "#CCC9BE",
+    "ink": "#201B1B",
+    "muted": "#6F5E52",
+    "primary": "#6B5B95",
+    "secondary": "#CDB18D",
+    "accent": "#6B5B95",
+    "scales": {
+      "primary": {
+        "50": "#f6f4ff",
+        "100": "#ece7fe",
+        "200": "#dbd3f9",
+        "300": "#c7bbec",
+        "400": "#ad9fd8",
+        "500": "#9282bf",
+        "600": "#7969a4",
+        "700": "#6b5b95",
+        "800": "#4b3e6d",
+        "900": "#3a2f55",
+        "950": "#231b36"
+      },
+      "secondary": {
+        "50": "#fdf4e9",
+        "100": "#f5e9da",
+        "200": "#e7d6c1",
+        "300": "#d5c0a5",
+        "400": "#cdb18d",
+        "500": "#a38966",
+        "600": "#89704d",
+        "700": "#6f5838",
+        "800": "#584428",
+        "900": "#44331d",
+        "950": "#2a1e0e"
+      },
+      "accent": {
+        "50": "#f6f4ff",
+        "100": "#ece7fe",
+        "200": "#dbd3f9",
+        "300": "#c7bbec",
+        "400": "#ad9fd8",
+        "500": "#9282bf",
+        "600": "#7969a4",
+        "700": "#6b5b95",
+        "800": "#4b3e6d",
+        "900": "#3a2f55",
+        "950": "#231b36"
+      }
+    }
+  },
+  "radius": {
+    "pill": "999px",
+    "card": "28px",
+    "sm": "14px",
+    "md": "20px",
+    "lg": "32px"
+  },
+  "spacing": {
+    "unit": "8px",
+    "section": "9rem",
+    "gap": "2.5rem"
+  },
+  "shadow": {
+    "sm": "0 1px 2px #17132214",
+    "md": "0 6px 16px #17132224",
+    "lg": "0 16px 40px #1713222e",
+    "glow": "none"
+  },
+  "fonts": {
+    "display": {
+      "family": "Frank Ruhl Libre",
+      "subsets": [
+        "hebrew",
+        "latin"
+      ],
+      "weights": [
+        "400",
+        "500",
+        "700"
+      ],
+      "hebrew": true,
+      "var": "--font-frank-ruhl-libre"
+    },
+    "body": {
+      "family": "Assistant",
+      "subsets": [
+        "hebrew",
+        "latin"
+      ],
+      "weights": [
+        "300",
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "hebrew": true,
+      "var": "--font-assistant"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+WCAG contrast report (AA = 4.5:1 body text, 3:1 large/UI)
+================================================================
+PASS  ink on bg                       13.31:1  (min 4.5)  #201B1B on #E2E4E2  [critical]
+PASS  ink on surface                  10.26:1  (min 4.5)  #201B1B on #CCC9BE  [critical]
+PASS  muted on bg                      4.83:1  (min 4.5)  #6F5E52 on #E2E4E2
+PASS  white on primary (button)        5.91:1  (min 4.5)  #ffffff on #6B5B95  [critical]
+PASS  best text on accent (white)      5.91:1  (min 4.5)  #ffffff on #6B5B95
+PASS  primary on bg (text/icon)        4.62:1  (min 3)  #6B5B95 on #E2E4E2
