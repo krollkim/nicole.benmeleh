@@ -58,7 +58,7 @@ const faqs: QA[] = [
 
 export default function Faq() {
   return (
-    <section id="faq" className="bg-surface px-4 py-16 sm:px-6 md:py-24">
+    <section id="faq" className="bg-surface px-4 py-20 sm:px-6 md:py-36">
       <div className="mx-auto max-w-3xl">
         <ScrollReveal>
           <h2 className="text-start font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
@@ -88,7 +88,7 @@ export default function Faq() {
                     </svg>
                   </summary>
 
-                  <p className="mt-3 text-base leading-relaxed text-muted">{item.a}</p>
+                  <p className="mt-3 max-w-[46ch] text-base leading-relaxed text-muted">{item.a}</p>
 
                   {isPainQuestion && (
                     <>

@@ -7,8 +7,9 @@ import StaggerReveal from '@/components/ui/StaggerReveal'
 /**
  * סקשן 2 — מגיעות אליי עם.
  *
- * Six cards, verbatim titles + bodies from docs/nicole-page-copy-v11.md.
- * Heading and the card grid are two separate top-level reveals
+ * Six entries, verbatim titles + bodies from docs/nicole-page-copy-v11.md,
+ * laid out as a two-column list separated by hairlines (not as cards).
+ * Heading and the list are two separate top-level reveals
  * (ScrollReveal + StaggerReveal side by side, never nested) per the
  * gsap-scroll-reveal double-opacity rule.
  *
@@ -118,10 +119,10 @@ const cards: SymptomCard[] = [
 
 export default function Symptoms() {
   return (
-    <section id="symptoms" className="bg-surface px-4 py-16 sm:px-8 md:py-24">
+    <section id="symptoms" className="bg-surface px-4 py-20 sm:px-8 md:py-36">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
-          <div className="flex flex-col items-center gap-8 text-center lg:flex-row-reverse lg:items-center lg:text-start">
+          <div className="flex flex-col items-start gap-8 text-start lg:flex-row lg:items-center lg:justify-between">
             <h2 className="font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
               מה מביא נשים לקליניקה
             </h2>
@@ -137,25 +138,33 @@ export default function Symptoms() {
           </div>
         </ScrollReveal>
 
+        {/* A two-column list, not six cards. Cards gave each symptom a box,
+            a shadow and a hover state — six competing objects for something
+            the reader is meant to scan and recognise herself in. A hairline
+            between entries does the grouping without the chrome, and the
+            extra column gap is what makes the airiness readable rather than
+            merely present. `columns={2}` so the stagger resets each row. */}
         <StaggerReveal
-          columns={3}
-          stagger={0.15}
-          className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          columns={2}
+          stagger={0.12}
+          className="mt-14 grid grid-cols-1 gap-x-16 md:grid-cols-2"
         >
           {cards.map(({ title, body, Icon }) => (
             <div
               key={title}
-              className="rounded-card bg-bg p-6 text-start shadow-sm transition-shadow hover:shadow-md"
+              className="flex gap-5 border-t border-primary-200/70 py-8 text-start"
             >
-              <Icon />
-              <h3 className="mt-4 font-display text-lg font-semibold text-ink">{title}</h3>
-              <p className="mt-2 leading-relaxed text-muted">{body}</p>
+              <Icon className="h-7 w-7 shrink-0 text-primary" />
+              <div>
+                <h3 className="font-display text-lg font-semibold text-ink">{title}</h3>
+                <p className="mt-2 max-w-[46ch] leading-relaxed text-muted">{body}</p>
+              </div>
             </div>
           ))}
         </StaggerReveal>
 
         <ScrollReveal className="mt-10">
-          <p className="mx-auto max-w-2xl text-center leading-relaxed text-muted">
+          <p className="max-w-2xl text-start leading-relaxed text-muted">
             לא מצאת את עצמך ברשימה? כתבי לי בכל זאת. חלק גדול מהנשים שמגיעות אליי הגיעו עם משהו שלא ידעו איך לקרוא לו.
           </p>
         </ScrollReveal>

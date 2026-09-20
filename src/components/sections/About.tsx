@@ -8,7 +8,7 @@ import ClipReveal from '@/components/ui/ClipReveal'
 
 export default function About() {
   return (
-    <section id="about" className="bg-surface px-4 py-16 sm:px-6 md:py-24">
+    <section id="about" className="bg-surface px-4 py-20 sm:px-6 md:py-36">
       <div className="mx-auto max-w-4xl">
         <ScrollReveal>
           {/* Side swap with section 4: Session puts its media on the reading-
@@ -38,7 +38,7 @@ export default function About() {
                 נעים להכיר, אני ניקול בן מלך
               </h2>
 
-              <div className="mt-6 flex flex-col gap-4 text-base leading-relaxed text-ink">
+              <div className="mt-6 flex flex-col gap-4 text-base leading-relaxed text-ink max-w-[46ch]">
                 <p>אני מטפלת ברפואה סינית — דיקור, שיאצו, כוסות רוח ופורמולות צמחים.</p>
                 <p>
                   למדתי ארבע שנים במכללת תמורות, התמחיתי בבית החולים בני ציון בחיפה, והיום אני

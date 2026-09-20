@@ -33,19 +33,19 @@ import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 export default function HowItWorks() {
   return (
     <section id="howitworks" className="bg-bg">
-      <div className="px-4 py-16 sm:px-6 md:py-24">
-        <div className="mx-auto max-w-3xl">
+      <div className="px-4 py-20 sm:px-6 md:py-36">
+        <div className="mx-auto max-w-2xl">
           <ScrollReveal className="flex flex-col items-start gap-6 text-start">
             <h2 className="font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
               אין פה כפתור &quot;קבעי תור&quot;
             </h2>
 
-            <p className="text-base leading-relaxed text-ink">
+            <p className="max-w-[46ch] text-base leading-relaxed text-ink">
               כשאת כותבת לי בוואטסאפ, אנחנו קודם כל מדברות. את מספרת לי מה קורה, אני שואלת,
               לפעמים אנחנו עוברות לשיחת טלפון.
             </p>
 
-            <p className="text-base leading-relaxed text-ink">
+            <p className="max-w-[46ch] text-base leading-relaxed text-ink">
               רק אחרי שהבנו אם אני האדם הנכון בשבילך — נקבע מפגש. אם אני חושבת שלא, אני אגיד לך
               את זה.
             </p>

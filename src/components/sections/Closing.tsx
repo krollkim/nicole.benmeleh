@@ -16,9 +16,9 @@ import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
  */
 export default function Closing() {
   return (
-    <section id="contact" className="bg-bg px-4 py-16 sm:px-6 md:py-24">
+    <section id="contact" className="bg-bg px-4 py-20 sm:px-6 md:py-36">
       <div className="mx-auto max-w-3xl">
-        <ScrollReveal className="flex flex-col items-start gap-8 text-start">
+        <ScrollReveal className="flex flex-col items-center gap-8 text-center">
           <h2 className="font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
             אם משהו בגוף שלך מבקש תשומת לב — זה הזמן לדבר עליו
           </h2>

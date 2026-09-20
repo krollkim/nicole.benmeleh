@@ -19,7 +19,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-bg px-4 pt-28 pb-16 sm:px-8 md:pt-36 md:pb-24"
+      className="relative overflow-hidden bg-bg px-4 pt-28 pb-20 sm:px-8 md:pt-40 md:pb-36"
     >
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
         {/* Text column — heading, subhead, CTA. No grid here, so a single
