@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 
@@ -10,31 +9,30 @@ import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
  * No repeating list here (heading + two paragraphs + CTA), so per the
  * scroll-reveal rule this is allowed to sit inside a single ScrollReveal.
  *
- * H-band is described in the assets map as a strong composition that works
- * as a wide band between sections, not as a main/hero-style image — so it
- * is rendered full-bleed and short, ahead of the text content, rather than
- * as a contained "main" photo.
+ * No image. H-band was tried here as a wide transitional band and removed:
+ * its source is 1440×1920 — a portrait photo. Any horizontal band shows
+ * roughly a third of its height, so at 3/1 the window fell out of frame
+ * entirely and at 21/9 with object-top it still read as a close-up of a
+ * shoulder rather than as a space. No aspect ratio or object-position fixes
+ * a portrait forced into a letterbox.
  *
- * THE WORDS "קבעי תור" IN THE <h2> ARE INTENTIONAL — DO NOT "FIX" THEM.
- * The heading is literally אין פה כפתור "קבעי תור", and the section works
- * precisely because it names the thing the page refuses to do. This is the one
- * and only place that phrase may appear. It must NEVER become the label of a
- * button or link anywhere on the site — every CTA is <WhatsAppLeadButton />,
- * whose label is the hardcoded "בואי נדבר בוואטסאפ".
+ * A band that doesn't carry meaning is decoration, and this page doesn't
+ * need decoration. If a genuinely wide frame of the room is shot later, this
+ * is where it goes.
+ *
+ * About "קבעי תור" in the heading: the heading is אין פה כפתור "קבעי תור" —
+ * the phrase in quotes is the thing this section exists to refuse, so naming
+ * it is the point. That makes this the one place on the site where those
+ * words appear on purpose.
+ *
+ * Anywhere else they would mean the opposite. Every CTA is
+ * <WhatsAppLeadButton />, whose label is the hardcoded "בואי נדבר בוואטסאפ",
+ * because the page promises a conversation before anything is booked. A
+ * button labelled "קבעי תור" would contradict the section it sits under.
  */
 export default function HowItWorks() {
   return (
     <section id="howitworks" className="bg-bg">
-      <div className="relative aspect-[16/9] w-full overflow-hidden sm:aspect-[3/1]">
-        <Image
-          src="/images/H-band-1920.webp"
-          alt="קאדר רחב של חדר הטיפולים עם החלון והאור הנכנס פנימה"
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
-
       <div className="px-4 py-16 sm:px-6 md:py-24">
         <div className="mx-auto max-w-3xl">
           <ScrollReveal className="flex flex-col items-start gap-6 text-start">

@@ -1,15 +1,23 @@
 'use client'
 
 import { useState } from 'react'
+import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 
 /**
  * Fixed RTL navbar (landing mode: lives in page.tsx, PIC pattern).
  *
  * The brand name is rendered as a <span>, never an <h1> — the page has
- * exactly one <h1>, in the hero section, which a later wave owns.
+ * exactly one <h1>, in the hero section.
  *
- * The WhatsApp CTA component doesn't exist yet (a later wave owns it), so
- * for now the CTA is a plain anchor to #contact, styled as a button.
+ * The navbar CTA is the real <WhatsAppLeadButton />, not an anchor to
+ * #contact. This page has exactly one conversion, so the CTA in the navbar
+ * has to BE that conversion rather than a shortcut to it: a button reading
+ * "בואי נדבר בוואטסאפ" that merely scrolls somewhere is a broken promise,
+ * and this page's whole thesis is that it doesn't make those.
+ *
+ * It therefore carries the `accent` colour like every other WhatsApp CTA.
+ * That is inside the "accent is reserved for the WhatsApp CTA" rule, not an
+ * exception to it — this IS a WhatsApp CTA.
  */
 export interface NavLink {
   label: string
@@ -19,10 +27,9 @@ export interface NavLink {
 interface NavbarProps {
   brand: string
   links: NavLink[]
-  ctaLabel: string
 }
 
-export default function Navbar({ brand, links, ctaLabel }: NavbarProps) {
+export default function Navbar({ brand, links }: NavbarProps) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -42,13 +49,16 @@ export default function Navbar({ brand, links, ctaLabel }: NavbarProps) {
           ))}
         </nav>
 
-        {/* CTA — placeholder anchor until the WhatsApp component lands */}
-        <a
-          href="#contact"
-          className="hidden md:inline-flex rounded-pill bg-primary px-5 py-2 font-semibold text-white transition-colors hover:bg-primary-700"
-        >
-          {ctaLabel}
-        </a>
+        {/* CTA — the real conversion. Compact: no subtext in the bar.
+            The wrapper does the responsive hiding: WhatsAppLeadButton's own
+            root carries `inline-flex`, which beats a `hidden` passed through
+            className, so hiding has to happen on an element outside it. */}
+        <div className="hidden md:block">
+          <WhatsAppLeadButton
+            showSubtext={false}
+            buttonClassName="px-5 py-2 text-sm shadow-sm"
+          />
+        </div>
 
         {/* Mobile hamburger */}
         <button
@@ -75,13 +85,12 @@ export default function Navbar({ brand, links, ctaLabel }: NavbarProps) {
               {l.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="rounded-pill bg-primary px-5 py-2 text-center font-semibold text-white"
-            onClick={() => setOpen(false)}
-          >
-            {ctaLabel}
-          </a>
+          {/* Same real CTA in the mobile menu. The wrapper closes the menu on
+              tap (the button itself opens WhatsApp in a new tab, so the page
+              stays behind it and shouldn't be left with the menu open). */}
+          <div onClick={() => setOpen(false)}>
+            <WhatsAppLeadButton className="w-full" buttonClassName="w-full justify-center" />
+          </div>
         </nav>
       )}
     </header>

@@ -6,8 +6,21 @@ import { WHATSAPP_PHONE, WHATSAPP_FUNNEL, buildWhatsAppUrl, buildWhatsAppMessage
 /**
  * Always-available floating WhatsApp button, pinned to the bottom
  * (logical inline-end, so it sits correctly in this RTL page without
- * hardcoded left/right). Fades out near the end of the page so it never
- * sits on top of the footer's legal disclaimer on small screens.
+ * hardcoded left/right).
+ *
+ * It hides itself whenever a "keep-out" region is on screen. This is the
+ * CalendarCTA pattern from the lead-capture skill (IntersectionObserver on
+ * the footer), generalised to a list of selectors:
+ *
+ *   footer — so it never covers the legal disclaimer on small screens.
+ *   #faq   — measured overlap at 360px: the 56px circle sat on top of the
+ *            accordion rows (~1095px² over "כמה טיפולים אני צריכה?"), so a
+ *            tap near the end of a question row opened WhatsApp instead of
+ *            the answer. Hiding beats moving the button: it fixes every
+ *            future overlap in these regions too, without touching layout.
+ *
+ * Both regions end in a CTA of their own (the FAQ is followed by the closing
+ * section's button; the footer sits under it), so nothing is lost by hiding.
  */
 export interface WhatsAppFloatProps {
   /** International digits only, e.g. 972523055110. Defaults to WHATSAPP_PHONE. */
@@ -25,9 +38,13 @@ const WhatsAppIcon = () => (
   </svg>
 )
 
-// How close to the bottom of the page (px) before the float fades out,
-// so it doesn't sit on top of the footer disclaimer on short/mobile screens.
-const FOOTER_CLEARANCE_PX = 220
+// Regions the float must never sit on top of. Add a selector here and the
+// float stays out of its way — no layout change needed.
+const KEEP_OUT_SELECTORS = ['footer', '#faq']
+
+// Small threshold so the float doesn't flicker on and off around the exact
+// edge of a region.
+const KEEP_OUT_THRESHOLD = 0.05
 
 export function WhatsAppFloat({
   phone = WHATSAPP_PHONE,
@@ -35,22 +52,28 @@ export function WhatsAppFloat({
   message,
   className = '',
 }: WhatsAppFloatProps) {
-  const [nearBottom, setNearBottom] = useState(false)
+  const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => {
-      const scrolledToBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - FOOTER_CLEARANCE_PX
-      setNearBottom(scrolledToBottom)
-    }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-    }
+    const targets = KEEP_OUT_SELECTORS.flatMap((s) =>
+      Array.from(document.querySelectorAll(s))
+    )
+    if (targets.length === 0) return
+
+    // Track which regions are currently on screen; hide while any of them is.
+    const visible = new Set<Element>()
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target)
+          else visible.delete(entry.target)
+        }
+        setHidden(visible.size > 0)
+      },
+      { threshold: KEEP_OUT_THRESHOLD }
+    )
+    targets.forEach((t) => observer.observe(t))
+    return () => observer.disconnect()
   }, [])
 
   const finalMessage = message ?? buildWhatsAppMessage(funnel)
@@ -61,10 +84,10 @@ export function WhatsAppFloat({
       target="_blank"
       rel="noopener noreferrer"
       aria-label="בואי נדבר בוואטסאפ עם ניקול בן מלך"
-      aria-hidden={nearBottom}
-      tabIndex={nearBottom ? -1 : 0}
+      aria-hidden={hidden}
+      tabIndex={hidden ? -1 : 0}
       className={`fixed z-40 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
-        nearBottom ? 'pointer-events-none translate-y-4 opacity-0' : 'opacity-100'
+        hidden ? 'pointer-events-none translate-y-4 opacity-0' : 'opacity-100'
       } ${className}`}
       style={{
         bottom: 'max(1.25rem, env(safe-area-inset-bottom))',

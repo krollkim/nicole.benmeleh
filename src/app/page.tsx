@@ -24,7 +24,9 @@ import Closing from '@/components/sections/Closing'
 export default function Home() {
   return (
     <>
-      <Navbar brand={brand.brand.name} links={brand.nav.links} ctaLabel={brand.nav.cta.label} />
+      {/* No ctaLabel: the navbar renders the real <WhatsAppLeadButton />,
+          whose label is hardcoded so the CTA copy can't drift. */}
+      <Navbar brand={brand.brand.name} links={brand.nav.links} />
       <main>
         <Hero />        {/* 1 — Hero, the page's only <h1> */}
         <Symptoms />    {/* 2 — מה מביא נשים לקליניקה */}
