@@ -31,7 +31,7 @@ import PinnedSequence, { PinnedSequenceStep } from '@/components/ui/PinnedSequen
  */
 
 const roomMedia = (
-  <div className="relative aspect-square w-full overflow-hidden rounded-card">
+  <div className="relative aspect-square w-full overflow-hidden">
     <Image
       src="/images/I-room-1920.webp"
       alt="חדר הטיפולים בקליניקה ברחוב אחד העם — שרפרף, חלון ופרגוד"
@@ -52,7 +52,7 @@ const roomMedia = (
  * that suits its format.
  */
 const handsMedia = (
-  <div className="relative aspect-square w-full overflow-hidden rounded-card">
+  <div className="relative aspect-square w-full overflow-hidden">
     <Image
       src="/images/D-hands-top-1920.webp"
       alt="קלוז־אפ על ידיים בעבודת שיאצו, מבט מלמעלה"
@@ -123,7 +123,7 @@ export default function Session() {
   }))
 
   return (
-    <section id="session" className="bg-bg px-4 py-20 sm:px-6 md:py-36">
+    <section id="session" className="bg-surface px-4 py-20 sm:px-6 md:py-36">
       <div className="mx-auto max-w-5xl">
         <ScrollReveal>
           <h2 className="text-start font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">

@@ -13,7 +13,7 @@ interface ReviewsProps {
 
 export default function Reviews({ children }: ReviewsProps) {
   return (
-    <section id="reviews" className="bg-bg px-4 py-20 sm:px-6 md:py-36">
+    <section id="reviews" className="bg-voice px-4 py-20 sm:px-6 md:py-36">
       <div className="mx-auto max-w-3xl">
         <ScrollReveal>
           <h2 className="text-start font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
@@ -29,7 +29,7 @@ export default function Reviews({ children }: ReviewsProps) {
                  approved for publication (see docs/nicole-assets-map.md ⚠️). */
               <div
                 role="note"
-                className="flex min-h-[220px] items-center justify-center rounded-card border-2 border-dashed border-primary-300 bg-surface p-6 text-center"
+                className="flex min-h-[220px] items-center justify-center border-2 border-dashed border-primary-300/70 p-6 text-center"
               >
                 <span className="text-sm text-muted">
                   מקום שמור לקומפוננטת הביקורות

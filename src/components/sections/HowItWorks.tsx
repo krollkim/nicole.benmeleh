@@ -32,7 +32,7 @@ import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
  */
 export default function HowItWorks() {
   return (
-    <section id="howitworks" className="bg-bg">
+    <section id="howitworks" className="bg-voice">
       <div className="px-4 py-20 sm:px-6 md:py-36">
         <div className="mx-auto max-w-2xl">
           <ScrollReveal className="flex flex-col items-start gap-6 text-start">

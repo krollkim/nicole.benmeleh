@@ -16,7 +16,7 @@ import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
  */
 export default function Closing() {
   return (
-    <section id="contact" className="bg-bg px-4 py-20 sm:px-6 md:py-36">
+    <section id="contact" className="bg-surface px-4 py-20 sm:px-6 md:py-36">
       <div className="mx-auto max-w-3xl">
         <ScrollReveal className="flex flex-col items-center gap-8 text-center">
           <h2 className="font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
@@ -30,7 +30,7 @@ export default function Closing() {
               Remove this block when the real photo arrives. */}
           <div
             role="note"
-            className="flex min-h-[200px] w-full items-center justify-center rounded-card border-2 border-dashed border-primary-300 bg-surface p-6 text-center"
+            className="flex min-h-[320px] w-full items-center justify-center border-2 border-dashed border-primary-300/70 p-6 text-center"
           >
             <span className="text-sm text-muted">
               מקום שמור לתמונת החדר הריק

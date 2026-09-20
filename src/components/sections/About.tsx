@@ -8,32 +8,32 @@ import ClipReveal from '@/components/ui/ClipReveal'
 
 export default function About() {
   return (
-    <section id="about" className="bg-surface px-4 py-20 sm:px-6 md:py-36">
-      <div className="mx-auto max-w-4xl">
+    <section id="about" className="bg-surface">
+      <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           {/* Side swap with section 4: Session puts its media on the reading-
               start edge (the right in RTL), so this one takes the far edge.
               `md:order-2` moves the portrait after the text on desktop while
               keeping it FIRST on mobile, where a face before the bio reads
               better in a single column. */}
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_minmax(0,320px)] md:items-start md:gap-12">
+          <div className="grid grid-cols-1 items-stretch md:grid-cols-[1fr_minmax(0,46%)]">
             {/* PLACEHOLDER — C-portrait in a vertical crop. Swap for the real portrait when it arrives (copy doc §"מה חסר", item 3). */}
             <DriftReveal
               side="end"
-              className="mx-auto w-full max-w-[320px] md:order-2 md:mx-0"
+              className="w-full md:order-2 md:h-full"
             >
-              <ClipReveal className="relative aspect-[3/4] w-full overflow-hidden rounded-card shadow-lg">
+              <ClipReveal className="relative h-[60vh] w-full overflow-hidden md:h-full md:min-h-[78vh]">
                 <Image
                   src="/images/C-portrait-1920.webp"
                   alt="ניקול בן מלך מחייכת, פורטרט זמני עד לצילום פורטרט מוקדש"
                   fill
-                  sizes="(max-width: 768px) 80vw, 320px"
+                  sizes="(max-width: 768px) 100vw, 46vw"
                   className="object-cover object-top"
                 />
               </ClipReveal>
             </DriftReveal>
 
-            <div>
+            <div className="flex flex-col justify-center px-4 py-20 sm:px-8 md:py-36">
               <h2 className="text-start font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
                 נעים להכיר, אני ניקול בן מלך
               </h2>

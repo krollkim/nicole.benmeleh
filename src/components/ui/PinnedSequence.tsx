@@ -157,7 +157,7 @@ export default function PinnedSequence({
             properties (x / clip-path) from the crossfade below (opacity). */}
         <DriftReveal side={driftSide}>
           <ClipReveal
-            className={`relative overflow-hidden rounded-card shadow-md ${mediaClassName}`}
+            className={`relative overflow-hidden ${mediaClassName}`}
           >
             {resolvedMedia.map((node, i) => (
               <div

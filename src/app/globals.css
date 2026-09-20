@@ -15,6 +15,14 @@
   --color-secondary: #CDB18D;
   --color-accent: #6B5B95;
 
+  /* ── voice surfaces (layer 2 lavender, pastel) ──
+     The binary law: a ROOM section is warm and carries a full-bleed photo;
+     a VOICE section has no image at all and sits on cool lavender. These two
+     tokens are what makes that alternation read as colour and not just as
+     layout. Lavender only — not a fourth colour. */
+  --color-voice: #E8E3F2;
+  --color-voice-deep: #B9AED6;
+
   /* ── full brand scales (use e.g. bg-primary-600, text-accent-300) ── */
   --color-primary-50: #f6f4ff;
   --color-primary-100: #ece7fe;

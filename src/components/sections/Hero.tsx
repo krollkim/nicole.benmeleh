@@ -3,53 +3,62 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 
 /**
- * סקשן 1 — Hero.
+ * סקשן 1 — Hero. A ROOM section under the binary law.
  *
- * This <h1> is the ONLY <h1> on the entire page — every other section (here
- * and in the other six sections built by sibling agents) uses <h2>.
+ * The photograph is the section: full-bleed, edge to edge, no frame, no
+ * rounded corner, no shadow. The heading lives INSIDE the image rather than
+ * in a box beside it — the visitor is meant to be standing in the room, not
+ * reading about it.
  *
- * Copy is verbatim from docs/nicole-page-copy-v11.md, headline option א׳
- * (the one marked "✅ א׳ — נבחרה"). Options ב׳/ג׳ are not used.
+ * This <h1> is the ONLY <h1> on the entire page; every other section uses
+ * <h2>. Copy is verbatim from docs/nicole-page-copy-v11.md, headline option
+ * א׳ (marked "✅ א׳ — נבחרה"). Options ב׳/ג׳ are not used.
  *
- * Image: A-hero (A-hero-800.webp / A-hero-1200.webp) — this asset only
- * exists at 800/1200 widths (no 1920), so next/image is never asked to
- * source anything wider than 1200.
+ * LCP: the image is `priority`, never lazy, and — deliberately — NOT wrapped
+ * in any reveal. It is the largest paint on the page, and putting it behind a
+ * scroll animation delays that paint. Only the text reveals.
+ *
+ * Contrast: white text over a photograph needs a scrim, and the check has to
+ * be made against the BRIGHTEST part of the image (here the window). The
+ * gradient below runs from the reading edge (right in RTL) and is measured,
+ * not eyeballed.
+ *
+ * Asset note: A-hero exists only at 800/1200 (no 1920), so next/image is
+ * never asked to source anything wider than 1200.
  */
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      className="relative overflow-hidden bg-bg px-4 pt-28 pb-20 sm:px-8 md:pt-40 md:pb-36"
-    >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        {/* Text column — heading, subhead, CTA. No grid here, so a single
-            ScrollReveal owner for the whole block is correct. */}
-        <ScrollReveal className="flex flex-col items-center text-center lg:items-start lg:text-start">
-          <h1 className="max-w-xl text-balance font-display text-3xl font-bold leading-[1.2] text-ink sm:text-4xl md:text-5xl">
-            ווסת שמכאיבה. עיכול שלא מסתדר. כאב שחוזר ולא עובר.
-          </h1>
-          <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted md:text-xl">
-            רפואה סינית לנשים, בקליניקה בתל אביב. מתחילות באבחון, ומשם מטפלות בשורש.
-          </p>
-          <div className="mt-8">
-            <WhatsAppLeadButton buttonClassName="text-base md:text-lg px-8 py-4" />
-          </div>
-        </ScrollReveal>
+    <section id="hero" className="relative min-h-[88vh] w-full overflow-hidden">
+      <Image
+        src="/images/A-hero-1200.webp"
+        alt="חדר הקליניקה של ניקול בן מלך בתל אביב — חלון גדול, עץ בחוץ, וניקול מביטה למצלמה"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
 
-        {/* Image column — separate top-level reveal, sibling (not nested)
-            of the text column's ScrollReveal. */}
-        <ScrollReveal className="w-full">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-card shadow-lg md:aspect-[3/4]">
-            <Image
-              src="/images/A-hero-1200.webp"
-              alt="חדר הקליניקה של ניקול בן מלך בתל אביב — חלון גדול, עץ בחוץ, וניקול מביטה למצלמה"
-              fill
-              priority
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-        </ScrollReveal>
+      {/* Scrim. Strongest at the reading edge where the text sits, fading out
+          across the frame so the room stays visible. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(to_left,rgba(32,27,27,0.88)_0%,rgba(32,27,27,0.76)_52%,rgba(32,27,27,0.30)_74%,rgba(32,27,27,0.10)_100%)]"
+      />
+
+      <div className="relative flex min-h-[88vh] items-end">
+        <div className="mx-auto w-full max-w-7xl px-4 pb-20 pt-40 sm:px-8 md:pb-28">
+          <ScrollReveal className="flex max-w-2xl flex-col items-start text-start">
+            <h1 className="text-balance font-display text-3xl font-bold leading-[1.15] text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              ווסת שמכאיבה. עיכול שלא מסתדר. כאב שחוזר ולא עובר.
+            </h1>
+            <p className="mt-6 max-w-[46ch] text-lg leading-relaxed text-white/90 md:text-xl">
+              רפואה סינית לנשים, בקליניקה בתל אביב. מתחילות באבחון, ומשם מטפלות בשורש.
+            </p>
+            <div className="mt-9">
+              <WhatsAppLeadButton tone="onImage" buttonClassName="text-base md:text-lg px-8 py-4" />
+            </div>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   )

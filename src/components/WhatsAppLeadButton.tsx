@@ -17,6 +17,9 @@ export interface WhatsAppLeadButtonProps {
   funnel?: string
   /** Override the prefilled message entirely. Must stay short, warm, neutral — no price, no promises. */
   message?: string
+  /** Sub-line colour context. "onImage" is for ROOM sections, where the
+   *  default muted tone sits on a photograph and fails contrast. */
+  tone?: 'default' | 'onImage'
   /** Show the "לא קובעות כלום לפני שדיברנו." sub-line beneath the button. Default true. */
   showSubtext?: boolean
   /** Classes for the outer wrapper (button + optional sub-line). */
@@ -36,6 +39,7 @@ export function WhatsAppLeadButton({
   funnel = WHATSAPP_FUNNEL,
   message,
   showSubtext = true,
+  tone = 'default',
   className = '',
   buttonClassName = '',
 }: WhatsAppLeadButtonProps) {
@@ -54,7 +58,7 @@ export function WhatsAppLeadButton({
         <span>בואי נדבר בוואטסאפ</span>
       </a>
       {showSubtext && (
-        <p className="text-sm text-muted">לא קובעות כלום לפני שדיברנו.</p>
+        <p className={tone === 'onImage' ? 'text-sm text-white/85' : 'text-sm text-muted'}>לא קובעות כלום לפני שדיברנו.</p>
       )}
     </div>
   )

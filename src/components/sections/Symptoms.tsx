@@ -1,7 +1,5 @@
 import type { ReactElement } from 'react'
-import Image from 'next/image'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import ClipReveal from '@/components/ui/ClipReveal'
 import StaggerReveal from '@/components/ui/StaggerReveal'
 
 /**
@@ -9,6 +7,11 @@ import StaggerReveal from '@/components/ui/StaggerReveal'
  *
  * Six entries, verbatim titles + bodies from docs/nicole-page-copy-v11.md,
  * laid out as a two-column list separated by hairlines (not as cards).
+ *
+ * VOICE section under the binary law: no image at all. The photograph that
+ * used to sit beside the heading was removed — a voice section is carried by
+ * typography and air, and an image here competes with the ROOM sections that
+ * are supposed to own the photographs.
  * Heading and the list are two separate top-level reveals
  * (ScrollReveal + StaggerReveal side by side, never nested) per the
  * gsap-scroll-reveal double-opacity rule.
@@ -119,22 +122,13 @@ const cards: SymptomCard[] = [
 
 export default function Symptoms() {
   return (
-    <section id="symptoms" className="bg-surface px-4 py-20 sm:px-8 md:py-36">
+    <section id="symptoms" className="bg-voice px-4 py-20 sm:px-8 md:py-36">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
-          <div className="flex flex-col items-start gap-8 text-start lg:flex-row lg:items-center lg:justify-between">
+          <div className="text-start">
             <h2 className="font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
               מה מביא נשים לקליניקה
             </h2>
-            <ClipReveal className="relative hidden aspect-[4/3] w-full max-w-xs overflow-hidden rounded-card shadow-md lg:block">
-              <Image
-                src="/images/F-mid-1200.webp"
-                alt="ניקול מטפלת בקליניקה שלה, בחדר מואר ונעים עם אור טבעי"
-                fill
-                sizes="320px"
-                className="object-cover"
-              />
-            </ClipReveal>
           </div>
         </ScrollReveal>
 

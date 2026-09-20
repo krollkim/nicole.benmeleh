@@ -58,7 +58,7 @@ const faqs: QA[] = [
 
 export default function Faq() {
   return (
-    <section id="faq" className="bg-surface px-4 py-20 sm:px-6 md:py-36">
+    <section id="faq" className="bg-voice px-4 py-20 sm:px-6 md:py-36">
       <div className="mx-auto max-w-3xl">
         <ScrollReveal>
           <h2 className="text-start font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
@@ -66,12 +66,12 @@ export default function Faq() {
           </h2>
         </ScrollReveal>
 
-        <StaggerReveal stagger={0.1} columns={1} className="mt-10 flex flex-col gap-4">
+        <StaggerReveal stagger={0.1} columns={1} className="mt-12 flex flex-col border-t border-primary-200/60">
           {faqs.map((item) => {
             const isPainQuestion = item.q === 'זה כואב?'
             return (
               <div key={item.q}>
-                <details className="group rounded-card border border-primary-200 bg-bg p-5 open:shadow-md">
+                <details className="group border-b border-primary-200/60 py-5">
                   <summary
                     className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-medium text-ink [&::-webkit-details-marker]:hidden [&::marker]:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 rounded-sm"
                   >
@@ -96,7 +96,7 @@ export default function Faq() {
                           Do NOT substitute another image. Remove this block when the real photo arrives. */}
                       <div
                         role="note"
-                        className="flex min-h-[200px] items-center justify-center rounded-card border-2 border-dashed border-primary-300 bg-surface p-6 text-center mt-4"
+                        className="mt-5 flex min-h-[200px] items-center justify-center border-2 border-dashed border-primary-300/70 p-6 text-center"
                       >
                         <span className="text-sm text-muted">
                           מקום שמור לתמונת דיקור

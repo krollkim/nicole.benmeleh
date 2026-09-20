@@ -14,7 +14,7 @@ import LineReveal from '@/components/ui/LineReveal'
  */
 export default function Approach() {
   return (
-    <section id="approach" className="bg-bg px-4 py-20 sm:px-8 md:py-36">
+    <section id="approach" className="bg-voice px-4 py-20 sm:px-8 md:py-36">
       <ScrollReveal className="mx-auto max-w-xl">
         {/* Revealed one rendered line at a time. The string is passed verbatim
             and LineReveal only splits it on spaces for measurement. */}
@@ -35,7 +35,7 @@ export default function Approach() {
           </p>
         </div>
 
-        <div className="mt-14 rounded-card border border-secondary-200 bg-secondary-50 p-7 md:p-10">
+        <div className="mt-16 border-t border-primary-300/60 pt-8">
           <h3 className="font-display text-xl font-semibold text-ink">
             למה זו סדרה ולא טיפול בודד
           </h3>
