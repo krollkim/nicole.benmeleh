@@ -17,7 +17,7 @@ export default function Footer({ brand, tagline, disclaimer }: FooterProps) {
     <footer className="border-t border-black/5 bg-surface px-6 py-10">
       <div className="max-w-3xl mx-auto flex flex-col items-center gap-4 text-center">
         <p className="text-sm font-semibold text-ink">{tagline}</p>
-        <p className="max-w-2xl text-xs leading-relaxed text-muted">{disclaimer}</p>
+        <p className="max-w-[46ch] text-sm leading-relaxed text-muted">{disclaimer}</p>
         <p className="text-xs text-muted">
           © {year} {brand}. כל הזכויות שמורות.
         </p>

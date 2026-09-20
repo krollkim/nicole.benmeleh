@@ -47,7 +47,7 @@ export default function Closing() {
                 href="https://www.instagram.com/nicole.benmeleh/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium text-primary underline underline-offset-2 hover:text-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 rounded-sm"
+                className="inline-block py-1.5 font-medium text-primary underline underline-offset-2 hover:text-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 rounded-sm"
               >
                 @nicole.benmeleh
               </a>

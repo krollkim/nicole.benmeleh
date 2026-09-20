@@ -63,7 +63,7 @@ export default function Navbar({ brand, links }: NavbarProps) {
         {/* Mobile hamburger */}
         <button
           type="button"
-          className="md:hidden text-ink text-2xl leading-none"
+          className="md:hidden -me-2 flex h-11 w-11 items-center justify-center text-2xl leading-none text-ink"
           aria-label="תפריט"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}

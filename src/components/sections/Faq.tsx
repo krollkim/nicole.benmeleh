@@ -73,7 +73,7 @@ export default function Faq() {
               <div key={item.q}>
                 <details className="group rounded-card border border-primary-200 bg-bg p-5 open:shadow-md">
                   <summary
-                    className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-medium text-ink [&::-webkit-details-marker]:hidden [&::marker]:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 rounded-sm"
+                    className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-medium text-ink [&::-webkit-details-marker]:hidden [&::marker]:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 rounded-sm"
                   >
                     <span>{item.q}</span>
                     <svg
