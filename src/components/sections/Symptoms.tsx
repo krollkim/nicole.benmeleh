@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react'
 import Image from 'next/image'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import ClipReveal from '@/components/ui/ClipReveal'
 import StaggerReveal from '@/components/ui/StaggerReveal'
 
 /**
@@ -124,7 +125,7 @@ export default function Symptoms() {
             <h2 className="font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
               מה מביא נשים לקליניקה
             </h2>
-            <div className="relative hidden aspect-[4/3] w-full max-w-xs overflow-hidden rounded-card shadow-md lg:block">
+            <ClipReveal className="relative hidden aspect-[4/3] w-full max-w-xs overflow-hidden rounded-card shadow-md lg:block">
               <Image
                 src="/images/F-mid-1200.webp"
                 alt="ניקול מטפלת בקליניקה שלה, בחדר מואר ונעים עם אור טבעי"
@@ -132,7 +133,7 @@ export default function Symptoms() {
                 sizes="320px"
                 className="object-cover"
               />
-            </div>
+            </ClipReveal>
           </div>
         </ScrollReveal>
 

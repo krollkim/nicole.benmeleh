@@ -3,23 +3,35 @@
 import Image from 'next/image'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import AnimatedCounter from '@/components/ui/AnimatedCounter'
+import DriftReveal from '@/components/ui/DriftReveal'
+import ClipReveal from '@/components/ui/ClipReveal'
 
 export default function About() {
   return (
     <section id="about" className="bg-surface px-4 py-16 sm:px-6 md:py-24">
       <div className="mx-auto max-w-4xl">
         <ScrollReveal>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,320px)_1fr] md:items-start md:gap-12">
+          {/* Side swap with section 4: Session puts its media on the reading-
+              start edge (the right in RTL), so this one takes the far edge.
+              `md:order-2` moves the portrait after the text on desktop while
+              keeping it FIRST on mobile, where a face before the bio reads
+              better in a single column. */}
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_minmax(0,320px)] md:items-start md:gap-12">
             {/* PLACEHOLDER — C-portrait in a vertical crop. Swap for the real portrait when it arrives (copy doc §"מה חסר", item 3). */}
-            <div className="relative mx-auto aspect-[3/4] w-full max-w-[320px] overflow-hidden rounded-card shadow-lg md:mx-0">
-              <Image
-                src="/images/C-portrait-1920.webp"
-                alt="ניקול בן מלך מחייכת, פורטרט זמני עד לצילום פורטרט מוקדש"
-                fill
-                sizes="(max-width: 768px) 80vw, 320px"
-                className="object-cover object-top"
-              />
-            </div>
+            <DriftReveal
+              side="end"
+              className="mx-auto w-full max-w-[320px] md:order-2 md:mx-0"
+            >
+              <ClipReveal className="relative aspect-[3/4] w-full overflow-hidden rounded-card shadow-lg">
+                <Image
+                  src="/images/C-portrait-1920.webp"
+                  alt="ניקול בן מלך מחייכת, פורטרט זמני עד לצילום פורטרט מוקדש"
+                  fill
+                  sizes="(max-width: 768px) 80vw, 320px"
+                  className="object-cover object-top"
+                />
+              </ClipReveal>
+            </DriftReveal>
 
             <div>
               <h2 className="text-start font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">

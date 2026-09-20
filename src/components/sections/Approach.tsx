@@ -1,4 +1,7 @@
+'use client'
+
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import LineReveal from '@/components/ui/LineReveal'
 
 /**
  * סקשן 3 — הדבר שמבדל (the emotional core of the page).
@@ -13,8 +16,10 @@ export default function Approach() {
   return (
     <section id="approach" className="bg-bg px-4 py-16 sm:px-8 md:py-24">
       <ScrollReveal className="mx-auto max-w-3xl">
+        {/* Revealed one rendered line at a time. The string is passed verbatim
+            and LineReveal only splits it on spaces for measurement. */}
         <h2 className="text-center font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
-          לא כל אחת מקבלת את אותו טיפול
+          <LineReveal text="לא כל אחת מקבלת את אותו טיפול" stagger={0.08} />
         </h2>
 
         <div className="mt-8 space-y-5 text-lg leading-relaxed text-ink">

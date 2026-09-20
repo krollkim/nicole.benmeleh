@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState, ReactNode } from 'react'
 import { gsap, ScrollTrigger, REDUCED_MOTION_QUERY } from '@/lib/gsap'
 import StaggerReveal from '@/components/ui/StaggerReveal'
+import DriftReveal from '@/components/ui/DriftReveal'
+import ClipReveal from '@/components/ui/ClipReveal'
 
 /**
  * Pinned media column + a scrolling column of steps.
@@ -49,6 +51,8 @@ interface PinnedSequenceProps {
   mediaClassName?: string
   /** Passed to the internal StaggerReveal that owns the step nodes. */
   stagger?: number
+  /** Logical edge the media frame drifts in from. See DriftReveal. */
+  driftSide?: 'start' | 'end'
   className?: string
 }
 
@@ -59,6 +63,7 @@ export default function PinnedSequence({
   steps,
   mediaClassName = '',
   stagger = 0.15,
+  driftSide = 'start',
   className = '',
 }: PinnedSequenceProps) {
   const rootRef = useRef<HTMLDivElement>(null)
@@ -145,17 +150,26 @@ export default function PinnedSequence({
         aria-hidden="true"
         className="hidden md:block motion-reduce:md:hidden"
       >
-        <div className={`relative overflow-hidden rounded-card shadow-md ${mediaClassName}`}>
-          {resolvedMedia.map((node, i) => (
-            <div
-              key={steps[i].key}
-              className="absolute inset-0 transition-opacity duration-700 ease-out motion-reduce:transition-none"
-              style={{ opacity: i === active ? 1 : 0 }}
-            >
-              {node}
-            </div>
-          ))}
-        </div>
+        {/* Drift + clip go on the INNER frame, never on the pinned element
+            itself: a transformed ancestor becomes the containing block for
+            `position: fixed`, which would break the pin outright. Both tweens
+            finish well before the pin engages, and they own different
+            properties (x / clip-path) from the crossfade below (opacity). */}
+        <DriftReveal side={driftSide}>
+          <ClipReveal
+            className={`relative overflow-hidden rounded-card shadow-md ${mediaClassName}`}
+          >
+            {resolvedMedia.map((node, i) => (
+              <div
+                key={steps[i].key}
+                className="absolute inset-0 transition-opacity duration-700 ease-out motion-reduce:transition-none"
+                style={{ opacity: i === active ? 1 : 0 }}
+              >
+                {node}
+              </div>
+            ))}
+          </ClipReveal>
+        </DriftReveal>
       </div>
 
       {/* Steps column. StaggerReveal lives INSIDE this component and wraps the

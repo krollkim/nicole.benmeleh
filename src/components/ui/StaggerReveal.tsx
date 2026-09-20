@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, ReactNode } from 'react'
-import { gsap, REDUCED_MOTION_QUERY } from '@/lib/gsap'
+import { gsap, REDUCED_MOTION_QUERY, ALWAYS_MATCHES } from '@/lib/gsap'
 
 interface StaggerRevealProps {
   children: ReactNode
@@ -71,7 +71,7 @@ export default function StaggerReveal({
     const mm = gsap.matchMedia()
 
     mm.add(
-      { reduce: REDUCED_MOTION_QUERY },
+      { reduce: REDUCED_MOTION_QUERY, base: ALWAYS_MATCHES },
       (context) => {
         const { reduce } = context.conditions as { reduce: boolean }
 

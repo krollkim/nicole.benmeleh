@@ -14,16 +14,16 @@ import PinnedSequence, { PinnedSequenceStep } from '@/components/ui/PinnedSequen
  * and this stays the plain vertical timeline (see PinnedSequence).
  *
  * Media: only TWO states across the four steps, deliberately.
- *   steps 1–2  the room (I-room)  — you arrive, and you talk, in that room
- *   steps 3–4  the hands (D + E)  — the treatment, carrying into "after"
+ *   steps 1–2  the room (I-room)      — you arrive, and you talk, in that room
+ *   steps 3–4  the hands (D-hands-top) — the treatment, carrying into "after"
  * Four photo changes would be decoration; two follow the content. Step 4 is
  * about leaving calm, so it deliberately does NOT get a fresh photo of hands
  * still working — that would quietly contradict the copy.
  *
- * The frame is square on purpose: I-room is landscape 4:3 while D and E are
- * portrait 3:4, and a square is the only frame that crops both fairly. A
- * tighter ratio is exactly what made the H-band image read as a body
- * close-up instead of a space (see HowItWorks).
+ * The frame is square on purpose: I-room is landscape 4:3 while D is portrait
+ * 3:4, and a square is the only frame that crops both fairly. A tighter ratio
+ * is exactly what made the H-band image read as a body close-up instead of a
+ * space (see HowItWorks).
  *
  * Reveal ownership: PinnedSequence owns the media column (pin + crossfade)
  * and, internally, the StaggerReveal over the step nodes. One owner per
@@ -42,26 +42,24 @@ const roomMedia = (
   </div>
 )
 
+/**
+ * D alone, square — not the D+E pair. Both are portrait 3:4; pairing them
+ * side by side squeezed each into a 1:2 sliver, which is the same mistake
+ * that killed the H-band image: the wrong format for the frame. One photo
+ * that sits correctly beats two that are cut to fit.
+ *
+ * E-hands-foot is not dropped from the project — it is waiting for a place
+ * that suits its format.
+ */
 const handsMedia = (
-  <div className="grid aspect-square w-full grid-cols-2 gap-2">
-    <div className="relative overflow-hidden rounded-card">
-      <Image
-        src="/images/D-hands-top-1920.webp"
-        alt="קלוז־אפ על ידיים בעבודת שיאצו, מבט מלמעלה"
-        fill
-        sizes="(max-width: 767px) 45vw, 20vw"
-        className="object-cover"
-      />
-    </div>
-    <div className="relative overflow-hidden rounded-card">
-      <Image
-        src="/images/E-hands-foot-1920.webp"
-        alt="קלוז־אפ על ידיים עובדות על כף רגל"
-        fill
-        sizes="(max-width: 767px) 45vw, 20vw"
-        className="object-cover"
-      />
-    </div>
+  <div className="relative aspect-square w-full overflow-hidden rounded-card">
+    <Image
+      src="/images/D-hands-top-1920.webp"
+      alt="קלוז־אפ על ידיים בעבודת שיאצו, מבט מלמעלה"
+      fill
+      sizes="(max-width: 767px) 100vw, 40vw"
+      className="object-cover"
+    />
   </div>
 )
 
@@ -133,7 +131,14 @@ export default function Session() {
           </h2>
         </ScrollReveal>
 
-        <PinnedSequence steps={steps} mediaClassName="aspect-square" className="mt-12" />
+        {/* Media sits on the reading-start edge (the right in RTL) and drifts
+            in from that same edge. Section 5 takes the opposite side. */}
+        <PinnedSequence
+          steps={steps}
+          mediaClassName="aspect-square"
+          driftSide="start"
+          className="mt-12"
+        />
 
         <ScrollReveal className="mt-10 md:mt-16">
           <p className="max-w-3xl text-base leading-relaxed text-ink">

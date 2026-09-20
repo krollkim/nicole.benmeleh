@@ -40,7 +40,18 @@ const WhatsAppIcon = () => (
 
 // Regions the float must never sit on top of. Add a selector here and the
 // float stays out of its way — no layout change needed.
-const KEEP_OUT_SELECTORS = ['footer', '#faq']
+//
+// Keep an eye on the length of this list. At four or five selectors the float
+// is hidden over most of the page, and the honest conclusion is not "add
+// another selector" but "this button may not be earning its place" — at that
+// point reconsider the floating button itself rather than patching around it.
+//
+//   footer   — never cover the legal disclaimer.
+//   #faq     — it sat on the accordion rows and stole taps (measured).
+//   #session — it covered the end of a line in the step text at 360px. Not a
+//              mis-tap, but this page is read by people with migraines and
+//              dizziness; obscured text is a real cost here.
+const KEEP_OUT_SELECTORS = ['footer', '#faq', '#session']
 
 // Small threshold so the float doesn't flicker on and off around the exact
 // edge of a region.
