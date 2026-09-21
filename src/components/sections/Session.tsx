@@ -31,7 +31,7 @@ import PinnedSequence, { PinnedSequenceStep } from '@/components/ui/PinnedSequen
  */
 
 const roomMedia = (
-  <div className="relative h-full w-full overflow-hidden">
+  <div className="relative h-full min-h-[80vh] w-full overflow-hidden md:min-h-0">
     <Image
       src="/images/I-room-1920.webp"
       alt="חדר הטיפולים בקליניקה ברחוב אחד העם — שרפרף, חלון ופרגוד"
@@ -52,7 +52,7 @@ const roomMedia = (
  * that suits its format.
  */
 const handsMedia = (
-  <div className="relative h-full min-h-[55vh] w-full overflow-hidden md:min-h-0">
+  <div className="relative h-full min-h-[80vh] w-full overflow-hidden md:min-h-0">
     <Image
       src="/images/D-hands-top-1920.webp"
       alt="קלוז־אפ על ידיים בעבודת שיאצו, מבט מלמעלה"
