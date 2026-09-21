@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 
 /**
@@ -31,56 +31,18 @@ interface NavbarProps {
 
 export default function Navbar({ brand, links }: NavbarProps) {
   const [open, setOpen] = useState(false)
-  // Over the hero the bar is transparent: the hero is a ROOM section that runs
-  // edge to edge, and a solid strip across the top of it reads as a separate
-  // band instead of part of the room. Same IntersectionObserver pattern the
-  // float uses for its keep-out regions.
-  const [overHero, setOverHero] = useState(true)
-
-  useEffect(() => {
-    // Scroll position, not IntersectionObserver. The hero's height depends on
-    // its image finishing layout, so an observer's first callback can fire
-    // against a hero that is still 0px tall and latch the wrong state. Reading
-    // the hero's height on each scroll is immune to that ordering.
-    const update = () => {
-      const hero = document.querySelector('#hero')
-      if (!hero) return setOverHero(false)
-      setOverHero(window.scrollY < hero.getBoundingClientRect().height - 80)
-    }
-    update()
-    window.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
-    // one more pass after images settle, so the first paint is not judged on a
-    // hero that has not reached its full height yet
-    const t = setTimeout(update, 600)
-    return () => {
-      clearTimeout(t)
-      window.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
-    }
-  }, [])
-
   return (
-    <header className="fixed top-0 inset-x-0 z-50">
-      {/* The solid bar is a separate layer whose OPACITY animates, not a
-          background-colour that transitions. Chrome will not interpolate
-          between `transparent` and a color-mix() value — the class flips but
-          the colour stays stuck at the start — so the fade has to ride on
-          opacity, which always interpolates. */}
-      <div
-        aria-hidden="true"
-        className={`absolute inset-0 border-b border-black/5 bg-bg/90 backdrop-blur-md transition-opacity duration-500 ${overHero ? 'opacity-0' : 'opacity-100'}`}
-      />
+    <header className="fixed top-0 inset-x-0 z-50 border-b border-black/5 bg-bg/90 backdrop-blur-md">
       <div className="relative max-w-7xl mx-auto h-16 px-4 sm:px-8 flex items-center justify-between">
         {/* Brand — sits at the start (right) in RTL */}
-        <span className={`font-display font-bold tracking-tight select-none transition-colors duration-500 ${overHero ? 'text-white' : 'text-ink'}`}>
+        <span className="font-display font-bold tracking-tight text-ink select-none">
           {brand}
         </span>
 
         {/* Desktop links (center) */}
         <nav className="hidden md:flex gap-8 flex-1 justify-center">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className={`transition-colors duration-500 ${overHero ? 'text-white/90 hover:text-white' : 'text-ink hover:text-primary'}`}>
+            <a key={l.href} href={l.href} className="text-ink transition-colors hover:text-primary">
               {l.label}
             </a>
           ))}
@@ -100,7 +62,7 @@ export default function Navbar({ brand, links }: NavbarProps) {
         {/* Mobile hamburger */}
         <button
           type="button"
-          className={`md:hidden -me-2 flex h-11 w-11 items-center justify-center text-2xl leading-none transition-colors duration-500 ${overHero ? 'text-white' : 'text-ink'}`}
+          className="md:hidden -me-2 flex h-11 w-11 items-center justify-center text-2xl leading-none text-ink"
           aria-label="תפריט"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}

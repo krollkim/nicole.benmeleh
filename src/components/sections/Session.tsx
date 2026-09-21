@@ -31,7 +31,7 @@ import PinnedSequence, { PinnedSequenceStep } from '@/components/ui/PinnedSequen
  */
 
 const roomMedia = (
-  <div className="relative h-full min-h-[55vh] w-full overflow-hidden md:min-h-0">
+  <div className="relative h-full w-full overflow-hidden">
     <Image
       src="/images/I-room-1920.webp"
       alt="חדר הטיפולים בקליניקה ברחוב אחד העם — שרפרף, חלון ופרגוד"
@@ -135,7 +135,7 @@ export default function Session() {
             in from that same edge. Section 5 takes the opposite side. */}
         <PinnedSequence
           steps={steps}
-          mediaClassName="h-full min-h-[78vh]"
+          mediaClassName="h-[80vh] md:h-[calc(100vh-7rem)]"
           driftSide="start"
           className="mt-12"
         />

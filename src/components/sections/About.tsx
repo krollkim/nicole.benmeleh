@@ -12,7 +12,8 @@ export default function About() {
   // exactly that much on mobile. The shift is intentional; the container clips it.
   return (
     <section id="about" className="overflow-hidden bg-surface">
-      <div className="mx-auto max-w-7xl">
+      {/* full width, like the hero: a ROOM photo reaches the edge of the page */}
+      <div>
         <ScrollReveal>
           {/* Side swap with section 4: Session puts its media on the reading-
               start edge (the right in RTL), so this one takes the far edge.
@@ -25,7 +26,7 @@ export default function About() {
               side="end"
               className="w-full md:order-2 md:h-full"
             >
-              <ClipReveal className="relative h-[60vh] w-full overflow-hidden md:h-full md:min-h-[78vh]">
+              <ClipReveal className="relative h-[80vh] w-full overflow-hidden md:h-screen">
                 <Image
                   src="/images/C-portrait-1920.webp"
                   alt="ניקול בן מלך מחייכת, פורטרט זמני עד לצילום פורטרט מוקדש"

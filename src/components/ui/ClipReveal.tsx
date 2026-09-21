@@ -30,7 +30,7 @@ interface ClipRevealProps {
 
 export default function ClipReveal({
   children,
-  duration = 1.0,
+  duration = 1.2,
   className = '',
 }: ClipRevealProps) {
   const ref = useRef<HTMLDivElement>(null)

@@ -1,66 +1,70 @@
 import Image from 'next/image'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import ScrubZoom from '@/components/ui/ScrubZoom'
 import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 
 /**
- * סקשן 1 — Hero. A ROOM section under the binary law.
+ * סקשן 1 — Hero. A ROOM section: full viewport HEIGHT, not full width.
  *
- * The photograph is the section: full-bleed, edge to edge, no frame, no
- * rounded corner, no shadow. The heading lives INSIDE the image rather than
- * in a box beside it — the visitor is meant to be standing in the room, not
- * reading about it.
+ * Split layout — the photograph is a vertical column filling the viewport
+ * height on one side, the heading and CTA on the other. On mobile the photo
+ * fills the screen and the text sits beneath it. No frame, no rounded corner,
+ * no shadow.
  *
- * This <h1> is the ONLY <h1> on the entire page; every other section uses
- * <h2>. Copy is verbatim from docs/nicole-page-copy-v11.md, headline option
- * א׳ (marked "✅ א׳ — נבחרה"). Options ב׳/ג׳ are not used.
+ * WHY NOT FULL-WIDTH (direction v3): ten of the twelve photographs are 3:4
+ * portrait and they are composed vertically — window at the top, treatment bed
+ * at the bottom. Cropping one into a horizontal band deletes the bed and
+ * leaves a window with a tree. That is exactly what killed the H-band image.
+ * Rule: never crop a portrait photograph into a horizontal band.
  *
- * LCP: the image is `priority`, never lazy, and — deliberately — NOT wrapped
- * in any reveal. It is the largest paint on the page, and putting it behind a
- * scroll animation delays that paint. Only the text reveals.
+ * THE PHOTOGRAPH HERE IS TEMPORARY — DO NOT TREAT IT AS CHOSEN.
+ * Every existing photograph shows a treatment in progress, and in this layout
+ * the largest thing in frame is a patient's body. A woman arriving because of
+ * her own pain would meet someone else being treated first, which seats her as
+ * a spectator instead of putting her in the room. The hero needs either the
+ * empty room or ניקול alone, and neither has been shot yet.
  *
- * Contrast: white text over a photograph needs a scrim, and the check has to
- * be made against the BRIGHTEST part of the image (here the window). The
- * gradient below runs from the reading edge (right in RTL) and is measured,
- * not eyeballed.
+ * I-room stands in because it was shot LANDSCAPE and shows the space with no
+ * exposed limbs dominating the frame. The trade-off, stated honestly: a
+ * landscape photo in a vertical column gets cropped at the sides — the inverse
+ * of the H-band problem — which is another reason this is a placeholder and
+ * not a decision. Replace it the moment the real photograph exists.
  *
- * Asset note: A-hero exists only at 800/1200 (no 1920), so next/image is
- * never asked to source anything wider than 1200.
+ * This <h1> is the ONLY <h1> on the page. Copy is verbatim from
+ * docs/nicole-page-copy-v11.md, headline option א׳.
+ *
+ * LCP: the photo is `priority`, never lazy, and not wrapped in any reveal.
+ * ScrubZoom starts at rest, so the first frame is the finished frame.
  */
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-[88vh] w-full overflow-hidden">
-      <Image
-        src="/images/A-hero-1200.webp"
-        alt="חדר הקליניקה של ניקול בן מלך בתל אביב — חלון גדול, עץ בחוץ, וניקול מביטה למצלמה"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center"
-      />
+    <section id="hero" className="overflow-hidden bg-surface">
+      <div className="grid grid-cols-1 items-stretch md:grid-cols-2">
+        {/* The room. Vertical column, full viewport height on desktop. */}
+        <div className="relative h-[80vh] w-full overflow-hidden md:h-screen">
+          <ScrubZoom className="absolute inset-0" to={1.06} drift={30}>
+            <Image
+              src="/images/I-room-1920.webp"
+              alt="חדר הטיפולים של ניקול בן מלך ברחוב אחד העם בתל אביב — חלון גדול, עץ בחוץ ואור יום"
+              fill
+              priority
+              sizes="(max-width: 767px) 100vw, 50vw"
+              className="object-cover object-center"
+            />
+          </ScrubZoom>
+        </div>
 
-      {/* Scrim, and it has to change axis with the viewport.
-          On a narrow screen the text spans the full width, so a HORIZONTAL
-          gradient leaves its far edge on the weak end — measured at 360px the
-          h1 came out at 1.65:1 and the subhead at 1.49:1, both failing. Mobile
-          therefore darkens from the BOTTOM, where the text actually sits.
-          From md up the text occupies only the reading edge, so the horizontal
-          gradient returns and keeps the rest of the room visible. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(to_top,rgba(32,27,27,0.92)_0%,rgba(32,27,27,0.82)_46%,rgba(32,27,27,0.40)_72%,rgba(32,27,27,0.18)_100%)] md:bg-[linear-gradient(to_left,rgba(32,27,27,0.88)_0%,rgba(32,27,27,0.76)_52%,rgba(32,27,27,0.30)_74%,rgba(32,27,27,0.10)_100%)]"
-      />
-
-      <div className="relative flex min-h-[88vh] items-end">
-        <div className="mx-auto w-full max-w-7xl px-4 pb-20 pt-40 sm:px-8 md:pb-28">
-          <ScrollReveal className="flex max-w-2xl flex-col items-start text-start">
-            <h1 className="text-balance font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+        {/* The voice. */}
+        <div className="flex flex-col justify-center px-4 py-16 sm:px-8 md:py-24">
+          <ScrollReveal className="flex flex-col items-start text-start">
+            <h1 className="text-balance font-display text-3xl font-bold leading-[1.15] text-ink sm:text-4xl lg:text-5xl">
               ווסת שמכאיבה. עיכול שלא מסתדר. כאב שחוזר ולא עובר.
             </h1>
-            <p className="mt-6 max-w-[46ch] text-lg leading-[1.6] text-white/90 md:text-xl">
+            <p className="mt-6 max-w-[46ch] text-lg leading-[1.6] text-muted">
               רפואה סינית לנשים, בקליניקה בתל אביב. מתחילות באבחון, ומשם מטפלות בשורש.
             </p>
             <div className="mt-9">
-              <WhatsAppLeadButton tone="onImage" buttonClassName="text-base md:text-lg px-8 py-4" />
+              <WhatsAppLeadButton buttonClassName="text-base md:text-lg px-8 py-4" />
             </div>
           </ScrollReveal>
         </div>

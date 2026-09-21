@@ -71,7 +71,7 @@ export default function LineReveal({
           .sort((a, b) => a[0] - b[0])
           .map(([, group]) => group)
 
-        gsap.set(words, { opacity: 0, y: 14 })
+        gsap.set(words, { opacity: 0, y: 10 })
 
         timeline = gsap.timeline({
           scrollTrigger: {
@@ -83,7 +83,7 @@ export default function LineReveal({
         ordered.forEach((group, i) => {
           timeline!.to(
             group,
-            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
+            { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' },
             i * stagger
           )
         })
