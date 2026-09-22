@@ -72,7 +72,11 @@ export function collectEvidence(palette) {
     if (pad < 12) continue
     const parentBg = el.parentElement ? getComputedStyle(el.parentElement).backgroundColor : ''
     const ownBg = cs.backgroundColor
-    const hasOwnSurface = ownBg !== parentBg && toHex(ownBg) !== null
+    // A translucent surface is still a surface. toHex() rejects any alpha < 1,
+    // so bg-*/95 used to slip past this check entirely and a real card passed.
+    const alpha = (/^rgba(([^)]+))$/.exec(ownBg) || [])[1]
+    const ownAlpha = alpha ? (parseFloat(alpha.split(',')[3]) || 1) : 1
+    const hasOwnSurface = ownBg !== parentBg && ownAlpha >= 0.5
     const decorated = px(cs.borderTopLeftRadius) > 0 || cs.boxShadow !== 'none' || px(cs.borderTopWidth) > 0
     if (hasOwnSurface && decorated) {
       cardSuspects.push({
@@ -109,6 +113,7 @@ export function collectEvidence(palette) {
       sectionId: sectionOf(el),
       tag: el.tagName,
       isWhatsApp: !!el.closest('a[href*="wa.me"], a[href*="whatsapp"]') || !!el.querySelector('a[href*="wa.me"]'),
+      isInteractive: !!el.closest('button, a, [role="button"], summary'),
       // Not truncated to 40 like the other captures: rules match against this
       // string, and the class that identifies an element is often the last one.
       cls: String(el.className).slice(0, 160),

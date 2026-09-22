@@ -1,166 +1,177 @@
-import type { ReactElement } from 'react'
+'use client'
+
+import { useState } from 'react'
+import Image from 'next/image'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import StaggerReveal from '@/components/ui/StaggerReveal'
 
 /**
- * סקשן 2 — מגיעות אליי עם.
+ * סקשן 2 — מה מביא נשים לקליניקה.
  *
- * Six entries, verbatim titles + bodies from docs/nicole-page-copy-v11.md,
- * laid out as a two-column list separated by hairlines (not as cards).
+ * מפת גוף: שש נקודות על צילום בובת העץ. מעבר עכבר / פוקוס / נגיעה
+ * מחליפים את הכרטיס הצף. הטקסטים מילה במילה מ־docs/nicole-page-copy-v11.md.
  *
- * VOICE section under the binary law: no image at all. The photograph that
- * used to sit beside the heading was removed — a voice section is carried by
- * typography and air, and an image here competes with the ROOM sections that
- * are supposed to own the photographs.
- * Heading and the list are two separate top-level reveals
- * (ScrollReveal + StaggerReveal side by side, never nested) per the
- * gsap-scroll-reveal double-opacity rule.
- *
- * Icons are simple inline thin-line SVGs, abstract and calm — no needles,
- * no anatomy.
+ * דורש: public/images/body-mannequin-848.webp
  */
 
-type IconProps = { className?: string }
-
-const iconBase = 'h-8 w-8 text-primary'
-
-function IconFertility({ className = iconBase }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <circle cx="9" cy="12" r="5.5" />
-      <circle cx="15" cy="12" r="5.5" />
-    </svg>
-  )
-}
-
-function IconCycle({ className = iconBase }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <path d="M4 12a8 8 0 0 1 13.66-5.66L20 8" />
-      <path d="M20 4v4h-4" />
-      <path d="M20 12a8 8 0 0 1-13.66 5.66L4 16" />
-      <path d="M4 20v-4h4" />
-    </svg>
-  )
-}
-
-function IconLayers({ className = iconBase }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <path d="M4 8c2-1.5 4-1.5 6 0s4 1.5 6 0" />
-      <path d="M4 12.5c2-1.5 4-1.5 6 0s4 1.5 6 0" />
-      <path d="M4 17c2-1.5 4-1.5 6 0s4 1.5 6 0" />
-    </svg>
-  )
-}
-
-function IconDigestion({ className = iconBase }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <path d="M12 4c3 0 5 1.8 5 4s-2 3.2-4.2 3.8C10.5 12.3 8 13.4 8 16c0 2.2 2 4 4.5 4S17 18.6 17 17" />
-    </svg>
-  )
-}
-
-function IconNeckShoulders({ className = iconBase }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <path d="M4 17c0-4 3-8 4-8" />
-      <path d="M20 17c0-4-3-8-4-8" />
-      <path d="M8 9a4 4 0 0 1 8 0" />
-    </svg>
-  )
-}
-
-function IconMigraine({ className = iconBase }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <circle cx="12" cy="12" r="7.5" />
-      <path d="M8.5 12h1.8l1.2-2.5 1.5 5 1.2-2.5h1.8" />
-    </svg>
-  )
-}
+type Point = { top: string; left: string }
 
 interface SymptomCard {
+  n: string
   title: string
   body: string
-  Icon: (props: IconProps) => ReactElement
+  point: Point
 }
 
+/* y מתוך BODY_POINTS של הפרויקט; זוגות שנפלו על אותה נקודה הוזזו הצידה
+   כדי ששתי הנקודות יישארו לחיצות. */
 const cards: SymptomCard[] = [
   {
+    n: '01',
     title: 'פוריות והריון',
     body: 'ניסיונות להיכנס להריון, ליווי לאורך ההריון, והגוף שצריך להיות מאוזן בשביל שניהם.',
-    Icon: IconFertility,
+    point: { top: '45.5%', left: '50%' },
   },
   {
+    n: '02',
     title: 'ווסת ואיזון הורמונלי',
     body: 'מחזור כואב או לא סדיר, תסמינים שחוזרים כל חודש ומשבשים את החיים.',
-    Icon: IconCycle,
+    point: { top: '43%', left: '40%' },
   },
   {
+    n: '03',
     title: 'כאב שיש מתחתיו עוד משהו',
-    body: 'כאבי גב, כתפיים, ברכיים: מקרים אורתופדיים שהשורש שלהם לא רק פיזי.',
-    Icon: IconLayers,
+    body: 'כאבי גב, כתפיים, ברכיים — מקרים אורתופדיים שהשורש שלהם לא רק פיזי.',
+    point: { top: '39.5%', left: '61%' },
   },
   {
+    n: '04',
     title: 'מערכת עיכול',
     body: 'נפיחות, כובד, אי־נוחות שנמשכת שנים ו"התרגלת אליה".',
-    Icon: IconDigestion,
+    point: { top: '37.6%', left: '50%' },
   },
   {
+    n: '05',
     title: 'צוואר וכתפיים',
     body: 'תפיסות, מתח שלא משתחרר, ראש שמרגיש כבד בסוף היום.',
-    Icon: IconNeckShoulders,
+    point: { top: '22.9%', left: '57%' },
   },
   {
+    n: '06',
     title: 'מיגרנות',
     body: 'כאבי ראש חוזרים שמכתיבים לך את היום.',
-    Icon: IconMigraine,
+    point: { top: '15%', left: '50%' },
   },
 ]
 
+const ARCH = { borderRadius: '200px 200px 40px 40px' } as const
+
 export default function Symptoms() {
+  const [active, setActive] = useState(0)
+  const card = cards[active]
+
   return (
-    <section id="symptoms" className="bg-voice px-4 py-20 sm:px-8 md:py-36">
+    <section id="symptoms" className="bg-surface px-4 py-16 sm:px-8 md:py-24">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
-          <div className="text-start">
-            <h2 className="font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
-              מה מביא נשים לקליניקה
-            </h2>
-          </div>
-        </ScrollReveal>
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_470px] lg:gap-14">
+            {/* טקסט */}
+            <div className="flex flex-col gap-6">
+              <h2 className="font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
+                מה מביא נשים לקליניקה
+              </h2>
+              <p className="max-w-[40ch] leading-relaxed text-muted">
+                רוב הנשים מגיעות עם דבר אחד, ומגלות שהוא מחובר לעוד שלושה.
+              </p>
 
-        {/* A two-column list, not six cards. Cards gave each symptom a box,
-            a shadow and a hover state — six competing objects for something
-            the reader is meant to scan and recognise herself in. A hairline
-            between entries does the grouping without the chrome, and the
-            extra column gap is what makes the airiness readable rather than
-            merely present. `columns={2}` so the stagger resets each row. */}
-        <StaggerReveal
-          columns={2}
-          stagger={0.12}
-          className="mt-14 grid grid-cols-1 gap-x-16 md:grid-cols-2"
-        >
-          {cards.map(({ title, body, Icon }) => (
+              <div className="flex flex-wrap gap-2.5">
+                {cards.map((c, i) => (
+                  <button
+                    key={c.title}
+                    type="button"
+                    onMouseEnter={() => setActive(i)}
+                    onFocus={() => setActive(i)}
+                    onClick={() => setActive(i)}
+                    aria-pressed={i === active}
+                    className={
+                      'rounded-pill border px-5 py-2.5 text-start transition-colors ' +
+                      (i === active
+                        ? 'border-primary bg-primary font-semibold text-bg'
+                        : 'border-primary/30 text-ink hover:bg-primary/10')
+                    }
+                  >
+                    {c.title}
+                  </button>
+                ))}
+              </div>
+
+              <p className="max-w-[46ch] leading-relaxed text-muted">
+                לא מצאת את עצמך ברשימה? כתבי לי בכל זאת. חלק גדול מהנשים שמגיעות אליי הגיעו עם משהו
+                שלא ידעו איך לקרוא לו.
+              </p>
+            </div>
+
+            {/* מפת הגוף */}
             <div
-              key={title}
-              className="flex gap-5 border-t border-primary-200/70 py-8 text-start"
+              className="relative mx-auto mb-16 w-full max-w-[470px] lg:mb-10"
+              style={{ aspectRatio: '470 / 700' }}
             >
-              <Icon className="h-7 w-7 shrink-0 text-primary" />
-              <div>
-                <h3 className="font-display text-2xl font-medium text-ink">{title}</h3>
-                <p className="mt-2 max-w-[46ch] leading-[1.6] text-muted">{body}</p>
+              <div className="absolute inset-0 overflow-hidden shadow-lg" style={ARCH}>
+                <Image
+                  src="/images/body-mannequin-848.webp"
+                  alt="בובת עץ מפרקית עומדת, שישה אזורי טיפול מסומנים עליה"
+                  fill
+                  sizes="(max-width: 1023px) 100vw, 470px"
+                  className="object-cover"
+                  priority={false}
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, rgba(198,150,90,.12) 0%, rgba(245,238,228,.10) 45%, rgba(42,38,51,.18) 100%)',
+                  }}
+                />
+              </div>
+
+              {cards.map((c, i) => {
+                const on = i === active
+                return (
+                  <button
+                    key={c.title}
+                    type="button"
+                    aria-label={c.title}
+                    onMouseEnter={() => setActive(i)}
+                    onFocus={() => setActive(i)}
+                    onClick={() => setActive(i)}
+                    className="absolute grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 place-items-center"
+                    style={{ top: c.point.top, left: c.point.left }}
+                  >
+                    {on && (
+                      <span className="absolute h-[30px] w-[30px] animate-ping rounded-pill border border-primary-800" />
+                    )}
+                    <span
+                      className={
+                        'block rounded-pill transition-all duration-300 ' +
+                        (on
+                          ? 'h-5 w-5 bg-primary shadow-[0_0_0_7px_rgba(251,247,241,.55)]'
+                          : 'h-3 w-3 bg-primary/60 shadow-sm')
+                      }
+                    />
+                  </button>
+                )
+              })}
+
+              <div className="absolute inset-x-6 -bottom-18 rounded-card bg-bg p-6 shadow-lg">
+                <span className="font-mono text-xs font-semibold tracking-widest text-primary">
+                  {card.n}
+                </span>
+                <h3 className="mt-2 font-display text-xl font-bold leading-snug text-ink">
+                  {card.title}
+                </h3>
+                <p className="mt-2 leading-relaxed text-muted">{card.body}</p>
               </div>
             </div>
-          ))}
-        </StaggerReveal>
-
-        <ScrollReveal className="mt-10">
-          <p className="max-w-2xl text-start leading-[1.6] text-muted">
-            לא מצאת את עצמך ברשימה? כתבי לי בכל זאת. חלק גדול מהנשים שמגיעות אליי הגיעו עם משהו שלא ידעו איך לקרוא לו.
-          </p>
+          </div>
         </ScrollReveal>
       </div>
     </section>

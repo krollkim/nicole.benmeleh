@@ -19,7 +19,11 @@ export const ROOM_MAP = {
   // room -> voice -> room, all on 22/09/2026. Settled: the client chose
   // A-hero, which is 3:4 (0.750) against a 0.800 column, so it goes in whole.
   hero: 'room',
-  symptoms: 'voice',
+  // 'map' is a third state, legal for this section only: an interactive body
+  // map that is neither a full-height room nor image-free voice. The binary law
+  // was written to keep cards out, and it did — but it also produced sections
+  // that read as wireframes. See the direction doc, §'החוק הבינארי נשבר'.
+  symptoms: 'map',
   approach: 'voice',
   session: 'room',
   about: 'room',
@@ -41,6 +45,26 @@ const bad = (detail) => ({ verdict: 'FAIL', detail })
 const blocked = (detail) => ({ verdict: 'BLOCKED', detail })
 const ask = (detail) => ({ verdict: 'ASK', detail })
 
+
+/**
+ * Deliberate, client-approved departures from the direction document.
+ *
+ * A judge that reports a decision already made is noise, and noise is how a
+ * loop stops being read. Each entry names the rule, the section, and the date
+ * the call was made. Adding one is a decision, not a convenience: if a rule
+ * needs an exception in more than a section or two, the rule is wrong and the
+ * document should change instead.
+ *
+ * 22/09/2026, section 2 (the body map from Claude Design). The client chose to
+ * keep the component as designed after seeing the conflicts listed.
+ */
+const EXCEPTIONS = {
+  'image-no-frame': ['symptoms'],   // the arch radius and its shadow
+  'no-cards': ['symptoms'],         // the floating card that follows the active point
+  'no-gradients': ['symptoms'],     // the tint over the mannequin
+}
+const excused = (id, sectionId) => (EXCEPTIONS[id] || []).includes(sectionId)
+
 export const RULES = [
   {
     id: 'binary-law',
@@ -50,7 +74,7 @@ export const RULES = [
       if (!middle.length) return ok(`${ev.sections.length} sections, all room or voice`)
       const names = middle.map((s) => `${s.id}(img@${s.tallestImageVhRatio}vh)`).join(', ')
       // A section that owns no photograph yet cannot reach room height.
-      const onlyBlocked = middle.every((s) => AWAITING_PHOTO.has(s.id))
+      const onlyBlocked = middle.every((s) => AWAITING_PHOTO.has(s.id) || ROOM_MAP[s.id] === 'map')
       return onlyBlocked ? blocked(`awaiting photo: ${names}`) : bad(`middle state: ${names}`)
     },
   },
@@ -58,7 +82,10 @@ export const RULES = [
     id: 'room-mapping',
     doc: '§המיפוי: the nine-row table, 4 חדר / 5 קול alternating',
     judge(ev) {
-      const off = ev.sections.filter((s) => ROOM_MAP[s.id] && s.mode !== 'neither' && s.mode !== ROOM_MAP[s.id])
+      // A section declared 'map' in the table is exempt from room/voice.
+      const off = ev.sections.filter(
+        (s) => ROOM_MAP[s.id] && ROOM_MAP[s.id] !== 'map' && s.mode !== 'neither' && s.mode !== ROOM_MAP[s.id]
+      )
       const fmt = (l) => l.map((s) => `${s.id}: want ${ROOM_MAP[s.id]}, is ${s.mode}`).join('; ')
       const real = off.filter((s) => !AWAITING_PHOTO.has(s.id))
       if (real.length) return bad(fmt(real))
@@ -71,6 +98,7 @@ export const RULES = [
     doc: '§אסור: "תמונה בתוך מסגרת, עם פינות מעוגלות או עם צל"',
     judge(ev) {
       const framed = ev.images
+        .filter((i) => !excused('image-no-frame', i.sectionId))
         .filter((i) => i.radiusPx > 0 || i.shadow || i.borderPx > 0)
         .map((i) => `${i.sectionId}/${i.src}: r=${i.radiusPx} b=${i.borderPx} s=${i.shadow ? 'yes' : 'no'}`)
       return framed.length ? bad(framed.join('; ')) : ok(`${ev.images.length} images, none framed`)
@@ -94,8 +122,9 @@ export const RULES = [
     id: 'no-cards',
     doc: '§אסור: "כרטיסיות. בשום סקשן."',
     judge(ev) {
-      if (!ev.cardSuspects.length) return ok('zero card-shaped elements')
-      return bad(ev.cardSuspects.map((c) => `${c.sectionId} <${c.tag}> ${c.why}`).join('; '))
+      const suspects = ev.cardSuspects.filter((c) => !excused('no-cards', c.sectionId))
+      if (!suspects.length) return ok('zero card-shaped elements outside the excused sections')
+      return bad(suspects.map((c) => `${c.sectionId} <${c.tag}> ${c.why}`).join('; '))
     },
   },
   {
@@ -113,9 +142,13 @@ export const RULES = [
       // §נגיעות sanctions lavender on: the FAQ separators, the step numbers in
       // section 4, the review quote marks, the numbers in section 5, and link
       // underlines. Those are not stray accent — they are the rule.
+      // The document says lavender is "ה-CTA וכל מצב אינטראקטיבי" — every
+      // interactive state, not a fixed list. The old whitelist only named the
+      // step numbers in section 4, so an active filter pill and an active body-
+      // map dot both read as stray accent. They are exactly what the rule wants.
       const SANCTIONED = [{ sectionId: 'session', cls: /rounded-pill/ }]
       const stray = ev.accentUsers.filter(
-        (a) => !a.isWhatsApp && !SANCTIONED.some((k) => k.sectionId === a.sectionId && k.cls.test(a.cls))
+        (a) => !a.isWhatsApp && !a.isInteractive && !SANCTIONED.some((k) => k.sectionId === a.sectionId && k.cls.test(a.cls))
       )
       // Stated every run, because it limits what this rule can ever prove:
       // --color-primary and --color-accent hold the same hex, so the probe
@@ -123,7 +156,8 @@ export const RULES = [
       const caveat = '(primary and accent share one hex; roles are not separable by colour)'
       if (stray.length) return bad(stray.map((a) => `${a.sectionId} <${a.tag}> ${a.cls}`).join('; '))
       const ctas = ev.accentUsers.filter((a) => a.isWhatsApp).length
-      return ok(`${ctas} CTA + ${ev.accentUsers.length - ctas} sanctioned touches ${caveat}`)
+      const interactive = ev.accentUsers.filter((a) => !a.isWhatsApp && a.isInteractive).length
+      return ok(`${ctas} CTA + ${interactive} interactive + ${ev.accentUsers.length - ctas - interactive} touches ${caveat}`)
     },
   },
 
@@ -133,7 +167,7 @@ export const RULES = [
     judge(ev) {
       // A scrim declares itself with [data-scrim]. The old regex only matched
       // 'to bottom', so a bottom-up scrim read as decoration and failed.
-      const real = ev.gradients.filter((g) => !g.isScrim)
+      const real = ev.gradients.filter((g) => !g.isScrim && !excused('no-gradients', g.sectionId))
       return real.length ? bad(real.map((g) => `${g.sectionId} ${g.bg}`).join('; ')) : ok('no decorative gradients')
     },
   },
