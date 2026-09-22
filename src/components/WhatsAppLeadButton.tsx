@@ -22,6 +22,17 @@ export interface WhatsAppLeadButtonProps {
   tone?: 'default' | 'onImage'
   /** Show the "לא קובעות כלום לפני שדיברנו." sub-line beneath the button. Default true. */
   showSubtext?: boolean
+  /**
+   * Where the button and its sub-line sit inside their own box.
+   *
+   * 'center' keeps the historical behaviour. 'start' exists because the
+   * centred sub-line lands 39px inside the content column: the wrapper centres
+   * it under the BUTTON, not under the column, so in a left-aligned text block
+   * it reads as a stray indent. Passing a className cannot fix this — items-center
+   * and items-start carry equal specificity and the winner depends on stylesheet
+   * order, not on the order they are written in.
+   */
+  align?: 'center' | 'start'
   /** Classes for the outer wrapper (button + optional sub-line). */
   className?: string
   /** Classes for the <a> button itself, for per-section sizing/placement. */
@@ -39,6 +50,7 @@ export function WhatsAppLeadButton({
   funnel = WHATSAPP_FUNNEL,
   message,
   showSubtext = true,
+  align = 'center',
   tone = 'default',
   className = '',
   buttonClassName = '',
@@ -46,7 +58,9 @@ export function WhatsAppLeadButton({
   const finalMessage = message ?? buildWhatsAppMessage(funnel)
 
   return (
-    <div className={`inline-flex flex-col items-center gap-2 text-center ${className}`}>
+    <div
+      className={`inline-flex flex-col gap-2 ${align === 'start' ? 'items-start text-start' : 'items-center text-center'} ${className}`}
+    >
       <a
         href={buildWhatsAppUrl(phone, finalMessage)}
         target="_blank"

@@ -59,10 +59,11 @@ export default function Hero() {
       <div
         data-scrim
         aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(to_top,rgba(32,27,27,0.94)_0%,rgba(32,27,27,0.86)_46%,rgba(32,27,27,0.55)_74%,transparent_94%)] md:bg-[linear-gradient(to_top,rgba(32,27,27,0.92)_0%,rgba(32,27,27,0.78)_30%,rgba(32,27,27,0.40)_58%,transparent_82%)]"
+        className="absolute inset-0 bg-[linear-gradient(to_top,rgba(32,27,27,0.72)_0%,rgba(32,27,27,0.42)_38%,rgba(32,27,27,0.18)_64%,transparent_88%)]"
       />
 
-      <div className="absolute inset-x-0 bottom-0 px-4 pb-12 sm:px-8 md:pb-20">
+      <div data-scrim
+        className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgba(32,27,27,0.88)_0%,rgba(32,27,27,0.80)_55%,rgba(32,27,27,0.55)_82%,transparent_100%)] px-4 pb-12 pt-28 sm:px-8 md:pb-20 md:pt-36">
         <ScrollReveal className="mx-auto flex w-full max-w-5xl flex-col items-start text-start">
           <h1 className="text-balance font-display text-3xl font-bold leading-[1.15] text-white sm:text-4xl lg:text-5xl">
             ווסת שמכאיבה. עיכול שלא מסתדר. כאב שחוזר ולא עובר.
@@ -71,7 +72,7 @@ export default function Hero() {
             רפואה סינית לנשים, בקליניקה בתל אביב. מתחילות באבחון, ומשם מטפלות בשורש.
           </p>
           <div className="mt-8">
-            <WhatsAppLeadButton tone="onImage" buttonClassName="text-base md:text-lg px-8 py-4" />
+            <WhatsAppLeadButton tone="onImage" align="start" buttonClassName="text-base md:text-lg px-8 py-4" />
           </div>
         </ScrollReveal>
       </div>
