@@ -7,8 +7,8 @@
    ============================================================ */
 @theme {
   /* ── base (scaffold contract: bg/surface/ink/muted/primary/accent) ── */
-  --color-bg: #E2E4E2;
-  --color-surface: #CCC9BE;
+  --color-bg: #FAF5ED;
+  --color-surface: #F0E7D9;
   --color-ink: #201B1B;
   --color-muted: #6F5E52;
   --color-primary: #6B5B95;
@@ -20,7 +20,7 @@
      a VOICE section has no image at all and sits on cool lavender. These two
      tokens are what makes that alternation read as colour and not just as
      layout. Lavender only — not a fourth colour. */
-  --color-voice: #E8E3F2;
+  --color-voice: #F5EFE4;
   --color-voice-deep: #B9AED6;
 
   /* ── full brand scales (use e.g. bg-primary-600, text-accent-300) ── */

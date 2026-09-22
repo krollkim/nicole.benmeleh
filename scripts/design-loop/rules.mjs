@@ -16,6 +16,8 @@
 
 /** Section → mode, from the mapping table (direction v3, §המיפוי). */
 export const ROOM_MAP = {
+  // room -> voice -> room, all on 22/09/2026. Settled: the client chose
+  // A-hero, which is 3:4 (0.750) against a 0.800 column, so it goes in whole.
   hero: 'room',
   symptoms: 'voice',
   approach: 'voice',
@@ -76,12 +78,16 @@ export const RULES = [
   },
   {
     id: 'no-portrait-band',
-    doc: '§אסור: "לעולם לא לחתוך תמונת פורטרט לרצועה אופקית"',
+    doc: '§אסור + §קלוז-אפ שורד כל מסגרת: the ban is for scenes, not close-ups',
     judge(ev) {
       const cropped = ev.images
-        .filter((i) => i.naturalRatio && i.naturalRatio < 1 && i.renderedRatio && i.renderedRatio > 1.5)
+        // A close-up declares itself with data-crop="closeup". The subject fills
+        // the frame, so there is no composition for a wide crop to destroy. The
+        // ban exists for SCENES, where the framing is the content.
+        .filter((i) => !i.isCloseUp && i.naturalRatio && i.naturalRatio < 1 && i.renderedRatio && i.renderedRatio > 1.5)
         .map((i) => `${i.sectionId}/${i.src}: shot ${i.naturalRatio}, rendered ${i.renderedRatio}`)
-      return cropped.length ? bad(cropped.join('; ')) : ok('no portrait squeezed into a band')
+      const closeups = ev.images.filter((i) => i.isCloseUp).length
+      return cropped.length ? bad(cropped.join('; ')) : ok(`no scene squeezed into a band (${closeups} declared close-up)`)
     },
   },
   {
@@ -123,9 +129,11 @@ export const RULES = [
 
   {
     id: 'no-gradients',
-    doc: 'slop tell: the indigo→purple gradient',
+    doc: 'slop tell: the indigo→purple gradient (a [data-scrim] is functional, not decoration)',
     judge(ev) {
-      const real = ev.gradients.filter((g) => !/scrim|to bottom, rgba\(32/.test(g.bg))
+      // A scrim declares itself with [data-scrim]. The old regex only matched
+      // 'to bottom', so a bottom-up scrim read as decoration and failed.
+      const real = ev.gradients.filter((g) => !g.isScrim)
       return real.length ? bad(real.map((g) => `${g.sectionId} ${g.bg}`).join('; ')) : ok('no decorative gradients')
     },
   },

@@ -59,6 +59,7 @@ export function collectEvidence(palette) {
       radiusPx: Math.max(px(cs.borderTopLeftRadius), wrap ? px(wrap.borderTopLeftRadius) : 0),
       shadow: cs.boxShadow !== 'none' ? cs.boxShadow.slice(0, 40) : (wrap && wrap.boxShadow !== 'none' ? wrap.boxShadow.slice(0, 40) : null),
       borderPx: Math.max(px(cs.borderTopWidth), wrap ? px(wrap.borderTopWidth) : 0),
+      isCloseUp: i.dataset.crop === 'closeup',
     }
   })
 
@@ -119,7 +120,15 @@ export function collectEvidence(palette) {
     .map((el) => ({ sectionId: sectionOf(el), tag: el.tagName, filter: getComputedStyle(el).backdropFilter }))
   const gradients = all
     .filter((el) => /gradient/.test(getComputedStyle(el).backgroundImage))
-    .map((el) => ({ sectionId: sectionOf(el), tag: el.tagName, bg: getComputedStyle(el).backgroundImage.slice(0, 60) }))
+    .map((el) => ({
+      sectionId: sectionOf(el),
+      tag: el.tagName,
+      bg: getComputedStyle(el).backgroundImage.slice(0, 60),
+      // A scrim declares itself. Guessing from the gradient string was fragile:
+      // it only matched 'to bottom', so flipping the direction made a legitimate
+      // scrim read as decoration.
+      isScrim: el.hasAttribute('data-scrim'),
+    }))
 
   // ---- typography ------------------------------------------------------
   const h1s = Array.from(document.querySelectorAll('h1'))

@@ -20,7 +20,7 @@ export default function Closing() {
       <div className="mx-auto max-w-3xl">
         <ScrollReveal className="flex flex-col items-start gap-8 text-start">
           <h2 className="font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
-            אם משהו בגוף שלך מבקש תשומת לב — זה הזמן לדבר עליו
+            אם משהו בגוף שלך מבקש תשומת לב, זה הזמן לדבר עליו
           </h2>
 
           <WhatsAppLeadButton />

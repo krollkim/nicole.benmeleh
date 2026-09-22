@@ -34,7 +34,7 @@ const roomMedia = (
   <div className="relative h-full min-h-[80vh] w-full overflow-hidden md:min-h-0">
     <Image
       src="/images/I-room-1920.webp"
-      alt="חדר הטיפולים בקליניקה ברחוב אחד העם — שרפרף, חלון ופרגוד"
+      alt="חדר הטיפולים בקליניקה ברחוב אחד העם: שרפרף, חלון ופרגוד"
       fill
       sizes="(max-width: 767px) 100vw, 40vw"
       className="object-cover"
@@ -54,8 +54,8 @@ const roomMedia = (
 const handsMedia = (
   <div className="relative h-full min-h-[80vh] w-full overflow-hidden md:min-h-0">
     <Image
-      src="/images/D-hands-top-1920.webp"
-      alt="קלוז־אפ על ידיים בעבודת שיאצו, מבט מלמעלה"
+      src="/images/E-hands-foot-1920.webp"
+      alt="קלוז־אפ על ידיים בעבודת שיאצו על כף רגל"
       fill
       sizes="(max-width: 767px) 100vw, 40vw"
       className="object-cover"
@@ -86,12 +86,12 @@ const stepCopy: StepCopy[] = [
   },
   {
     title: 'הטיפול',
-    body: 'כ־45 דקות. שיאצו הוא לחץ ותנועה — מרגיש נעים, מרפה, ומניע דם בגוף. דיקור הוא דקירה קלה, וכשהמחטים בפנים לא כואב, להפך. רוב הנשים נרדמות.',
+    body: 'כ־45 דקות. שיאצו הוא לחץ ותנועה, מרגיש נעים, מרפה, ומניע דם בגוף. דיקור הוא דקירה קלה, וכשהמחטים בפנים לא כואב, להפך. רוב הנשים נרדמות.',
     media: handsMedia,
   },
   {
     title: 'אחרי',
-    body: 'יוצאות רגועות, לפעמים קצת מרחפות. למחרת בדרך כלל מרגישים הקלה. לפעמים דווקא עולה כאב ליום־יומיים, כי הגוף עבר שינוי — ואז הוא מתייצב.',
+    body: 'יוצאות רגועות, לפעמים קצת מרחפות. למחרת בדרך כלל מרגישים הקלה. לפעמים דווקא עולה כאב ליום־יומיים, כי הגוף עבר שינוי, ואז הוא מתייצב.',
   },
 ]
 
@@ -143,7 +143,7 @@ export default function Session() {
         <ScrollReveal className="mx-auto mt-10 w-full max-w-7xl md:mt-16">
           <p className="max-w-[46ch] px-4 text-[17px] leading-[1.6] text-ink sm:px-8">
             רוב הנשים שמגיעות אליי לא חוששות מהטיפול. הן חוששות ממה שקורה להן בגוף. התפקיד שלי
-            הוא קודם כל לייצר מקום בטוח — בלי זה אין טיפול.
+            הוא קודם כל לייצר מקום בטוח. בלי זה אין טיפול.
           </p>
         </ScrollReveal>
       </div>

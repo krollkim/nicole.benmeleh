@@ -21,15 +21,18 @@ export default function About() {
               keeping it FIRST on mobile, where a face before the bio reads
               better in a single column. */}
           <div className="grid grid-cols-1 items-stretch md:grid-cols-[1fr_minmax(0,46%)]">
-            {/* PLACEHOLDER — C-portrait in a vertical crop. Swap for the real portrait when it arrives (copy doc §"מה חסר", item 3). */}
+            {/* The portrait the assets map listed as missing, found by cropping
+                rather than shooting: G-mid is the only frame in which ניקול meets
+                the camera. The crop takes a 3:4 window from the upper right, which drops
+                both the patient and the clinic bin out of frame entirely. */}
             <DriftReveal
               side="end"
               className="w-full md:order-2 md:h-full"
             >
               <ClipReveal className="relative h-[80vh] w-full overflow-hidden md:h-screen">
                 <Image
-                  src="/images/C-portrait-1920.webp"
-                  alt="ניקול בן מלך מחייכת, פורטרט זמני עד לצילום פורטרט מוקדש"
+                  src="/images/G-portrait-1360.webp"
+                  alt="ניקול בן מלך בקליניקה, מחייכת אל המצלמה לצד החלון הגדול"
                   fill
                   sizes="(max-width: 768px) 100vw, 46vw"
                   className="object-cover object-top"
@@ -43,14 +46,14 @@ export default function About() {
               </h2>
 
               <div className="mt-6 flex flex-col gap-4 text-[17px] leading-[1.6] text-ink max-w-[46ch]">
-                <p>אני מטפלת ברפואה סינית — דיקור, שיאצו, כוסות רוח ופורמולות צמחים.</p>
+                <p>אני מטפלת ברפואה סינית: דיקור, שיאצו, כוסות רוח ופורמולות צמחים.</p>
                 <p>
                   למדתי ארבע שנים במכללת תמורות, התמחיתי בבית החולים בני ציון בחיפה, והיום אני
                   מרצה במכללה ומלווה כיתות שיאצו משנה א׳ עד ג׳. המשכתי לקורסים מתקדמים באבחנות
                   בטן ובדיקור קרקפת בשיטת YNSA, ואני מוסמכת מטעם האיגוד העולמי של רפואה סינית.
                 </p>
                 <p>
-                  מעבר לתעודות — עברתי בעצמי את הדברים שנשים מגיעות אליי איתם. אני יודעת איך זה
+                  מעבר לתעודות, עברתי בעצמי את הדברים שנשים מגיעות אליי איתם. אני יודעת איך זה
                   מרגיש לשבת מול מישהי ולא לדעת אם היא מבינה אותך. בגלל זה אני מתחילה תמיד
                   מלהקשיב.
                 </p>
