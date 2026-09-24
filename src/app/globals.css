@@ -7,7 +7,12 @@
    ============================================================ */
 @theme {
   /* ── base (scaffold contract: bg/surface/ink/muted/primary/accent) ── */
-  --color-bg: #FAF5ED;
+  /* THE single page ground. Rule 1 from the grow.business read: one background
+     for the whole document. Sections must NOT set their own — four background
+     changes down the page read as seams, which is the opposite of spacious.
+     --color-surface and --color-voice stay defined for components, never for
+     a section background. */
+  --color-bg: #F5EFE4;
   --color-surface: #F0E7D9;
   --color-ink: #201B1B;
   --color-muted: #6F5E52;

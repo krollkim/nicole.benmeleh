@@ -70,13 +70,13 @@ export default function Symptoms() {
   const card = cards[active]
 
   return (
-    <section id="symptoms" className="bg-surface px-4 py-16 sm:px-8 md:py-24">
+    <section id="symptoms" className="px-4 py-16 sm:px-8 md:py-24">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_470px] lg:gap-14">
             {/* טקסט */}
             <div className="flex flex-col gap-6">
-              <h2 className="font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
+              <h2 className="font-display text-3xl font-medium leading-[1.08] text-ink sm:text-4xl lg:text-5xl">
                 מה מביא נשים לקליניקה
               </h2>
               <p className="max-w-[40ch] leading-relaxed text-muted">
@@ -165,7 +165,7 @@ export default function Symptoms() {
                 <span className="font-mono text-xs font-semibold tracking-widest text-primary">
                   {card.n}
                 </span>
-                <h3 className="mt-2 font-display text-xl font-bold leading-snug text-ink">
+                <h3 className="mt-2 font-display text-2xl font-medium leading-snug text-ink">
                   {card.title}
                 </h3>
                 <p className="mt-2 leading-relaxed text-muted">{card.body}</p>

@@ -116,17 +116,17 @@ export default function Session() {
           {i + 1}
         </span>
 
-        <h3 className="font-display text-2xl font-medium text-ink">{step.title}</h3>
+        <h3 className="font-display text-2xl font-medium text-ink sm:text-3xl">{step.title}</h3>
         <p className="mt-2 text-[17px] leading-[1.6] text-muted">{step.body}</p>
       </div>
     ),
   }))
 
   return (
-    <section id="session" className="overflow-hidden bg-surface py-20 md:py-36">
+    <section id="session" className="overflow-hidden py-20 md:py-36">
       <div>
         <ScrollReveal>
-          <h2 className="mx-auto w-full max-w-7xl px-4 text-start font-display text-3xl font-medium leading-[1.12] text-ink sm:px-8 sm:text-5xl lg:text-6xl">
+          <h2 className="mx-auto w-full max-w-7xl px-4 text-start font-display text-3xl font-medium leading-[1.08] text-ink sm:px-8 sm:text-4xl lg:text-5xl">
             בלי הפתעות: ככה נראית שעה אצלי
           </h2>
         </ScrollReveal>

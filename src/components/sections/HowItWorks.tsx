@@ -32,11 +32,11 @@ import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
  */
 export default function HowItWorks() {
   return (
-    <section id="howitworks" className="bg-voice">
+    <section id="howitworks" className="">
       <div className="px-4 py-20 sm:px-6 md:py-36">
         <div className="mx-auto max-w-2xl">
           <ScrollReveal className="flex flex-col items-start gap-6 text-start">
-            <h2 className="font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
+            <h2 className="font-display text-3xl font-medium leading-[1.08] text-ink sm:text-4xl lg:text-5xl">
               אין פה כפתור &quot;קבעי תור&quot;
             </h2>
 

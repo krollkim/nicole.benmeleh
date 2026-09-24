@@ -14,11 +14,11 @@ import LineReveal from '@/components/ui/LineReveal'
  */
 export default function Approach() {
   return (
-    <section id="approach" className="bg-voice px-4 py-20 sm:px-8 md:py-36">
+    <section id="approach" className="px-4 py-20 sm:px-8 md:py-36">
       <ScrollReveal className="mx-auto max-w-xl">
         {/* Revealed one rendered line at a time. The string is passed verbatim
             and LineReveal only splits it on spaces for measurement. */}
-        <h2 className="text-start font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
+        <h2 className="text-start font-display text-3xl font-medium leading-[1.08] text-ink sm:text-4xl lg:text-5xl">
           <LineReveal text="לא כל אחת מקבלת את אותו טיפול" stagger={0.08} />
         </h2>
 
@@ -35,8 +35,8 @@ export default function Approach() {
           </p>
         </div>
 
-        <div className="mt-16 border-t border-primary-300/60 pt-8">
-          <h3 className="font-display text-2xl font-medium text-ink">
+        <div className="mt-16 pt-8">
+          <h3 className="font-display text-2xl font-medium text-ink sm:text-3xl">
             למה זו סדרה ולא טיפול בודד
           </h3>
           <p className="mt-3 leading-relaxed text-ink">

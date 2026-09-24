@@ -32,7 +32,7 @@ interface NavbarProps {
 export default function Navbar({ brand, links }: NavbarProps) {
   const [open, setOpen] = useState(false)
   return (
-    <header className="fixed top-0 inset-x-0 z-50 border-b border-black/5 bg-bg/90 backdrop-blur-md">
+    <header className="fixed top-0 inset-x-0 z-50 bg-bg">
       <div className="relative max-w-7xl mx-auto h-16 px-4 sm:px-8 flex items-center justify-between">
         {/* Brand — sits at the start (right) in RTL */}
         <span className="font-display font-bold tracking-tight text-ink select-none">
@@ -73,7 +73,7 @@ export default function Navbar({ brand, links }: NavbarProps) {
 
       {/* Mobile menu */}
       {open && (
-        <nav className="md:hidden bg-surface px-4 py-4 flex flex-col gap-4">
+        <nav className="md:hidden bg-bg px-4 py-4 flex flex-col gap-4">
           {links.map((l) => (
             <a
               key={l.href}

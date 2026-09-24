@@ -22,7 +22,10 @@ export function collectEvidence(palette) {
     return '#' + p.slice(0, 3).map((n) => Math.round(n).toString(16).padStart(2, '0')).join('').toUpperCase()
   }
 
-  const all = Array.from(document.querySelectorAll('main *, header *, footer *'))
+  // Include the header/footer elements THEMSELVES, not just their descendants.
+  // The old selector missed the navbar's own backdrop-blur, so no-frosted-glass
+  // reported PASS on a frosted navbar for weeks.
+  const all = Array.from(document.querySelectorAll('main, header, footer, main *, header *, footer *'))
   const sectionOf = (el) => {
     const s = el.closest('section')
     return s ? s.id || '?' : el.closest('footer') ? 'footer' : el.closest('header') ? 'navbar' : '?'

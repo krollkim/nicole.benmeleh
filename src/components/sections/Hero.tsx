@@ -65,7 +65,7 @@ export default function Hero() {
       <div data-scrim
         className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgba(32,27,27,0.88)_0%,rgba(32,27,27,0.80)_55%,rgba(32,27,27,0.55)_82%,transparent_100%)] px-4 pb-12 pt-28 sm:px-8 md:pb-20 md:pt-36">
         <ScrollReveal className="mx-auto flex w-full max-w-5xl flex-col items-start text-start">
-          <h1 className="text-balance font-display text-3xl font-bold leading-[1.15] text-white sm:text-4xl lg:text-5xl">
+          <h1 className="text-balance font-display text-4xl font-medium leading-[1.02] text-white sm:text-5xl lg:text-6xl">
             ווסת שמכאיבה. עיכול שלא מסתדר. כאב שחוזר ולא עובר.
           </h1>
           <p className="mt-5 max-w-[46ch] text-lg leading-[1.6] text-white/85">

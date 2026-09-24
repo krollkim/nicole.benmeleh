@@ -11,7 +11,7 @@ export default function About() {
   // translates it 32px on entry, which would otherwise widen the page by
   // exactly that much on mobile. The shift is intentional; the container clips it.
   return (
-    <section id="about" className="overflow-hidden bg-surface">
+    <section id="about" className="overflow-hidden">
       {/* full width, like the hero: a ROOM photo reaches the edge of the page */}
       <div>
         <ScrollReveal>
@@ -41,7 +41,7 @@ export default function About() {
             </DriftReveal>
 
             <div className="flex flex-col justify-center px-4 py-20 sm:px-8 md:py-36">
-              <h2 className="text-start font-display text-3xl font-medium leading-[1.12] text-ink sm:text-5xl lg:text-6xl">
+              <h2 className="text-start font-display text-3xl font-medium leading-[1.08] text-ink sm:text-4xl lg:text-5xl">
                 נעים להכיר, אני ניקול בן מלך
               </h2>
 
@@ -59,7 +59,7 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-primary-200 pt-6">
+              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 pt-6">
                 <div className="flex items-baseline gap-1">
                   <AnimatedCounter to={4} className="font-display text-2xl font-medium text-primary" />
                   <span className="text-sm text-muted">שנות לימוד</span>
