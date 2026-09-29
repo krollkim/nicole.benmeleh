@@ -62,6 +62,14 @@ const EXCEPTIONS = {
   'image-no-frame': ['symptoms'],   // the arch radius and its shadow
   'no-cards': ['symptoms'],         // the floating card that follows the active point
   'no-gradients': ['symptoms'],     // the tint over the mannequin
+  // 28/09/2026, section 1. The hero photograph is a SCENE (a room with a
+  // person), shot 0.75 and shown full-bleed at 1.58. The scene/close-up rule
+  // says that should not survive — and normally it does not. It survives here
+  // because the subject is the tree filling the window, which spans the whole
+  // frame horizontally, so a wide crop takes sky and floor rather than the
+  // subject. Verified on screen before this line was written, not assumed.
+  // Do NOT copy this exception onto another scene without looking first.
+  'no-portrait-band': ['hero'],
 }
 const excused = (id, sectionId) => (EXCEPTIONS[id] || []).includes(sectionId)
 
@@ -112,10 +120,15 @@ export const RULES = [
         // A close-up declares itself with data-crop="closeup". The subject fills
         // the frame, so there is no composition for a wide crop to destroy. The
         // ban exists for SCENES, where the framing is the content.
-        .filter((i) => !i.isCloseUp && i.naturalRatio && i.naturalRatio < 1 && i.renderedRatio && i.renderedRatio > 1.5)
-        .map((i) => `${i.sectionId}/${i.src}: shot ${i.naturalRatio}, rendered ${i.renderedRatio}`)
+        .filter((i) => !excused('no-portrait-band', i.sectionId))
+        // Threshold is the CHANGE in aspect, not the rendered aspect. The old
+        // test asked "is it wider than 1.5", which let a 0.75 scene shown at
+        // 1.33 through — a 44% height crop that simply sat under the number.
+        // What matters is how far the frame moved from the shot.
+        .filter((i) => !i.isCloseUp && i.naturalRatio && i.renderedRatio && i.renderedRatio / i.naturalRatio > 1.6)
+        .map((i) => `${i.sectionId}/${i.src}: shot ${i.naturalRatio}, rendered ${i.renderedRatio} (${(i.renderedRatio/i.naturalRatio).toFixed(1)}x)`)
       const closeups = ev.images.filter((i) => i.isCloseUp).length
-      return cropped.length ? bad(cropped.join('; ')) : ok(`no scene squeezed into a band (${closeups} declared close-up)`)
+      return cropped.length ? bad(cropped.join('; ')) : ok(`no scene stretched past 1.6x its shot aspect (${closeups} declared close-up)`)
     },
   },
   {

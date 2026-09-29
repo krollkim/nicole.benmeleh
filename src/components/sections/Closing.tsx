@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 
@@ -25,21 +26,20 @@ export default function Closing() {
 
           <WhatsAppLeadButton />
 
-          {/* PLACEHOLDER — no empty clinic-room photo exists yet (assets map §"מה חסר", item 3).
-              Do NOT substitute I-room (used elsewhere in the page) or any other photo.
-              Remove this block when the real photo arrives. */}
-          <div
-            role="note"
-            className="flex min-h-[60vh] w-full items-center justify-center border-2 border-dashed border-primary-300/70 p-6 text-center"
-          >
-            <span className="text-sm text-muted">
-              מקום שמור לתמונת החדר הריק
-              <br />
-              טרם צולמה
-            </span>
-          </div>
-
-          <div className="text-[17px] leading-[1.6] text-ink">
+          {/* The empty room. Shot 27/09/2026 — this slot carried a dashed
+              placeholder reading "טרם צולמה" from the first build until now.
+              Shot 3:4. The frame stays 3:4 on the phone and opens only to 1:1
+              on wider screens — a 4:3 frame stretched it 1.8x past its shot
+              aspect and the design loop caught it. */}
+          <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-[1/1]">
+            <Image
+              src="/images/room-empty-1200.webp"
+              alt="חדר הטיפולים של ניקול בן מלך ריק — מיטת טיפולים, חלון מהרצפה לתקרה ועץ בחוץ"
+              fill
+              sizes="(max-width: 767px) 100vw, 768px"
+              className="object-cover object-center"
+            />
+          </div>      <div className="text-[17px] leading-[1.6] text-ink">
             <p>קליניקת &quot;בית מרפה&quot;, אחד העם 89, תל אביב</p>
             <p className="mt-1">
               אינסטגרם:{' '}

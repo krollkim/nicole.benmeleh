@@ -31,8 +31,8 @@ export default function About() {
             >
               <ClipReveal className="relative h-[80vh] w-full overflow-hidden md:h-screen">
                 <Image
-                  src="/images/G-portrait-1360.webp"
-                  alt="ניקול בן מלך בקליניקה, מחייכת אל המצלמה לצד החלון הגדול"
+                  src="/images/portrait-1200.webp"
+                  alt="ניקול בן מלך בקליניקה שלה, מחייכת אל המצלמה לצד החלון"
                   fill
                   sizes="(max-width: 768px) 100vw, 46vw"
                   className="object-cover object-top"

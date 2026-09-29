@@ -10,20 +10,19 @@ import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
  * 50/50 split left half the screen empty and made the page read as a
  * wireframe.
  *
- * THE IMAGE RULE THIS FOLLOWS — close-up survives any frame, a scene does not:
- *   scene    (a room, a portrait in its surroundings) — the composition IS the
- *            content, so it needs the aspect it was shot at, or it stays off.
- *   close-up (hands, touch) — the subject fills the frame and there is no
- *            composition to destroy, so full-bleed at any ratio is fine.
+ * THE PHOTOGRAPH: hero-window, shot 27/09/2026. ניקול drawing the curtain,
+ * the tree filling the window behind her. This slot was blocked from the very
+ * first build — every earlier photograph showed a treatment in progress, and
+ * four different layouts were built and rejected trying to work around it.
  *
- * D-hands-top is a close-up: ניקול's hands holding a patient's hand, shot from
- * above over a warm wood floor. That is why cropping it to 1.6 on desktop and
- * 0.49 on a phone costs nothing, while every crop of the ROOM photographs
- * killed them.
+ * IT BREAKS THE SCENE/CLOSE-UP RULE ON PURPOSE, and the exception is recorded
+ * in scripts/design-loop/rules.mjs. The rule says a scene cannot survive a
+ * crop this wide: shot at 0.75, shown full-bleed at 1.58. It survives here for
+ * one specific reason — the subject is the TREE, and the tree spans the whole
+ * frame horizontally, so a wide crop removes sky and floor rather than the
+ * subject. That was checked on screen before the exception was written.
  *
- * It also settles the older argument. A treatment in progress was banned from
- * the hero because a wide frame shows a woman being worked on. A tight frame
- * shows touch instead. The content was never the problem; the framing was.
+ * Do not reuse this exception for another photograph without looking first.
  *
  * No photograph fills two slots: section 4 took E-hands-foot when this took D.
  *
@@ -43,16 +42,12 @@ export default function Hero() {
   return (
     <section id="hero" className="relative h-[92svh] w-full overflow-hidden md:h-screen">
       <Image
-        src="/images/D-hands-top-1920.webp"
-        alt="ידיה של ניקול בן מלך אוחזות בידה של מטופלת במהלך טיפול שיאצו"
-        // Declares the scene/close-up distinction to the design loop. A close-up
-        // has no composition to destroy, so any frame is legitimate. Never put
-        // this on a room or an environmental portrait.
-        data-crop="closeup"
+        src="/images/hero-window-1200.webp"
+        alt="ניקול בן מלך פותחת את הווילון בחדר הטיפולים שלה, עץ גדול מעבר לחלון"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[center_68%] md:object-[center_72%]"
+        className="object-cover object-[center_52%] md:object-[center_48%]"
       />
 
       {/* Functional scrim. Declared, not inferred — see the design loop. */}
