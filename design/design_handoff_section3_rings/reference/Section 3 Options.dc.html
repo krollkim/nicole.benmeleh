@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap">
+<script src="./image-slot.js"></script>
+<style>
+body { margin: 0; background: #E4DCCD; }
+a { color: #6B5B95; }
+a:hover { color: #5B4C84; }
+</style>
+</helmet>
+<div dir="rtl" style="font-family: 'Assistant', sans-serif; color: #201B1B; padding: 96px; display: flex; flex-direction: column; gap: 64px; min-width: max-content;">
+
+<div style="display: flex; flex-direction: column; gap: 8px; max-width: 1100px;">
+  <div style="font-size: 15px; font-weight: 600;">סבב 2 · סקשן 3</div>
+  <h1 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 44px; line-height: 1.15; letter-spacing: -0.01em; margin: 0;">לא כל אחת מקבלת את אותו טיפול · ארבע אופציות</h1>
+  <p style="font-size: 18px; line-height: 1.65; margin: 0; color: #6F5E52; text-wrap: pretty;">הקופי שלך, מילה במילה. בכל האופציות נשארת רק שורת התזה ופסקת האבחון. "למה זו סדרה ולא טיפול בודד" עונה על "כמה זמן?", ולכן מוצע להעביר אותה לסקשן 8. פסקת הקצב ("משם מתקדמות לאט…") חופפת לסקשן 4.</p>
+</div>
+
+<section id="turn-3" style="display: flex; flex-direction: column; gap: 96px;">
+  <div style="display: flex; flex-direction: column; gap: 8px; max-width: 1100px;">
+    <div style="font-size: 15px; font-weight: 600;">סבב 3 · ויזואל חי</div>
+    <p style="font-size: 18px; line-height: 1.65; margin: 0; color: #6F5E52; text-wrap: pretty;">תנועה איטית אחת, בלי חלקיקים, זוהר או תלת־ממד. prefers-reduced-motion מקפיא לפריים אחד.</p>
+  </div>
+
+  <div id="3e" style="display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <span style="background: #201B1B; color: #F5EFE4; font-weight: 600; font-size: 15px; padding: 4px 12px;">3e</span>
+      <span style="font-size: 18px; font-weight: 600;">שלושה דפקים</span>
+      <span style="font-size: 15px; color: #6F5E52;">שלוש נקודות המישוש בשורש כף היד. כל קו פועם אחרת, והצורות מתחלפות לאט. הפסקה שלידו מתחילה ב"אני בודקת דופק"</span>
+    </div>
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <div data-screen-label="3e · 1440" style="width: 1440px; height: 792px; background: #F5EFE4; display: grid; grid-template-columns: minmax(0,55fr) minmax(0,45fr); overflow: hidden;">
+        <div style="padding: 0 80px 0 64px; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 15px; line-height: 1.4; font-weight: 600; color: #6F5E52; margin-bottom: 24px;">לא כל אחת מקבלת את אותו טיפול</div>
+          <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 76px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 64px;">המפגש הראשון<br>הוא לא טיפול.<br>הוא אבחון.</h2>
+          <p style="font-size: 18px; line-height: 1.65; max-width: 46ch; margin: 0; text-wrap: pretty;">אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור, לא רק את התסמין שהביא אותך. מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+        </div>
+        <div style="position: relative; min-width: 0; background: #CDB18D;">{{ pulseD }}</div>
+      </div>
+      <div data-screen-label="3e · 390" style="width: 390px; background: #F5EFE4; display: flex; flex-direction: column;">
+        <div style="position: relative; height: 320px; background: #CDB18D;">{{ pulseM }}</div>
+        <div style="padding: 64px 24px 96px;">
+          <div style="font-size: 13px; line-height: 1.4; font-weight: 600; color: #6F5E52; margin-bottom: 16px;">לא כל אחת מקבלת את אותו טיפול</div>
+          <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 42px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 40px; text-wrap: balance;">המפגש הראשון הוא לא טיפול. הוא אבחון.</h2>
+          <p style="font-size: 17px; line-height: 1.65; margin: 0; text-wrap: pretty;">אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור, לא רק את התסמין שהביא אותך. מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="3f" style="display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <span style="background: #201B1B; color: #F5EFE4; font-weight: 600; font-size: 15px; padding: 4px 12px;">3f</span>
+      <span style="font-size: 18px; font-weight: 600;">טבעות עץ</span>
+      <span style="font-size: 15px; color: #6F5E52;">דפוס שנוצר מחדש בכל טעינה, אף פעם לא אותו דבר. מתחבר לעץ שבחלון בהירו. זזות לאט מאוד</span>
+    </div>
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <div data-screen-label="3f · 1440" style="width: 1440px; height: 792px; background: #F5EFE4; display: grid; grid-template-columns: minmax(0,55fr) minmax(0,45fr); overflow: hidden;">
+        <div style="padding: 0 80px 0 64px; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 15px; line-height: 1.4; font-weight: 600; color: #6F5E52; margin-bottom: 24px;">לא כל אחת מקבלת את אותו טיפול</div>
+          <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 76px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 64px;">המפגש הראשון<br>הוא לא טיפול.<br>הוא אבחון.</h2>
+          <p style="font-size: 18px; line-height: 1.65; max-width: 46ch; margin: 0; text-wrap: pretty;">אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור, לא רק את התסמין שהביא אותך. מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+        </div>
+        <div style="position: relative; min-width: 0; background: #201B1B;">{{ ringsD }}</div>
+      </div>
+      <div data-screen-label="3f · 390" style="width: 390px; background: #F5EFE4; display: flex; flex-direction: column;">
+        <div style="position: relative; height: 320px; background: #201B1B;">{{ ringsM }}</div>
+        <div style="padding: 64px 24px 96px;">
+          <div style="font-size: 13px; line-height: 1.4; font-weight: 600; color: #6F5E52; margin-bottom: 16px;">לא כל אחת מקבלת את אותו טיפול</div>
+          <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 42px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 40px; text-wrap: balance;">המפגש הראשון הוא לא טיפול. הוא אבחון.</h2>
+          <p style="font-size: 17px; line-height: 1.65; margin: 0; text-wrap: pretty;">אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור, לא רק את התסמין שהביא אותך. מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="turn-2" style="display: flex; flex-direction: column; gap: 96px;">
+
+  <div id="3a" style="display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <span style="background: #201B1B; color: #F5EFE4; font-weight: 600; font-size: 15px; padding: 4px 12px;">3a</span>
+      <span style="font-size: 18px; font-weight: 600;">התזה לבד</span>
+      <span style="font-size: 15px; color: #6F5E52;">בלוק ממורכז. משפט אחד בגודל Display, פסקה אחת. הכי שקט, הכי קל</span>
+    </div>
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <div data-screen-label="3a · 1440" style="width: 1440px; background: #F5EFE4; box-sizing: border-box; padding: 160px 80px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <div style="font-size: 15px; line-height: 1.4; font-weight: 600; color: #6F5E52; margin-bottom: 24px;">לא כל אחת מקבלת את אותו טיפול</div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 76px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 64px;">המפגש הראשון הוא לא טיפול.<br>הוא אבחון.</h2>
+        <p style="font-size: 21px; line-height: 1.5; max-width: 46ch; margin: 0; text-wrap: pretty;">אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור, לא רק את התסמין שהביא אותך. מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+      </div>
+      <div data-screen-label="3a · 390" style="width: 390px; background: #F5EFE4; box-sizing: border-box; padding: 96px 24px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <div style="font-size: 13px; line-height: 1.4; font-weight: 600; color: #6F5E52; margin-bottom: 16px;">לא כל אחת מקבלת את אותו טיפול</div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 42px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 40px; text-wrap: balance;">המפגש הראשון הוא לא טיפול. הוא אבחון.</h2>
+        <p style="font-size: 19px; line-height: 1.5; margin: 0; text-wrap: pretty;">אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור, לא רק את התסמין שהביא אותך. מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="3b" style="display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <span style="background: #201B1B; color: #F5EFE4; font-weight: 600; font-size: 15px; padding: 4px 12px;">3b</span>
+      <span style="font-size: 18px; font-weight: 600;">שדה דבש</span>
+      <span style="font-size: 15px; color: #6F5E52;">התזה על חצי דבש שנוגע בקצה. הצבע עושה את עבודת התמונה, בלי נכס חדש</span>
+    </div>
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <div data-screen-label="3b · 1440" style="width: 1440px; min-height: 640px; background: #F5EFE4; display: grid; grid-template-columns: minmax(0,55fr) minmax(0,45fr);">
+        <div style="background: #CDB18D; padding: 160px 80px 160px 64px; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 15px; line-height: 1.4; font-weight: 600; color: #201B1B; margin-bottom: 24px;">לא כל אחת מקבלת את אותו טיפול</div>
+          <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 76px; line-height: 1.05; letter-spacing: -0.02em; margin: 0;">המפגש הראשון<br>הוא לא טיפול.<br>הוא אבחון.</h2>
+        </div>
+        <div style="padding: 160px 64px 160px 80px; display: flex; align-items: center;">
+          <p style="font-size: 18px; line-height: 1.65; max-width: 46ch; margin: 0; text-wrap: pretty;">אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור, לא רק את התסמין שהביא אותך. מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+        </div>
+      </div>
+      <div data-screen-label="3b · 390" style="width: 390px; background: #F5EFE4; display: flex; flex-direction: column;">
+        <div style="background: #CDB18D; padding: 96px 24px 64px;">
+          <div style="font-size: 13px; line-height: 1.4; font-weight: 600; color: #201B1B; margin-bottom: 16px;">לא כל אחת מקבלת את אותו טיפול</div>
+          <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 42px; line-height: 1.05; letter-spacing: -0.02em; margin: 0;">המפגש הראשון הוא לא טיפול.<br>הוא אבחון.</h2>
+        </div>
+        <div style="padding: 40px 24px 96px;">
+          <p style="font-size: 17px; line-height: 1.65; margin: 0; text-wrap: pretty;">אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור, לא רק את התסמין שהביא אותך. מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="3c" style="display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <span style="background: #201B1B; color: #F5EFE4; font-weight: 600; font-size: 15px; padding: 4px 12px;">3c</span>
+      <span style="font-size: 18px; font-weight: 600;">מה אני עושה, ואז למה</span>
+      <span style="font-size: 15px; color: #6F5E52;">משפט האבחון שבור לשורות בגודל H2. התזה סוגרת. צמוד לימין, אוויר משמאל</span>
+    </div>
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <div data-screen-label="3c · 1440" style="width: 1440px; background: #F5EFE4; box-sizing: border-box; padding: 160px 80px;">
+        <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start;">
+          <div style="font-size: 15px; line-height: 1.4; font-weight: 600; color: #6F5E52; margin-bottom: 40px;">לא כל אחת מקבלת את אותו טיפול</div>
+          <div style="display: flex; flex-direction: column; gap: 16px; font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 44px; line-height: 1.15; letter-spacing: -0.01em;">
+            <div>אני בודקת דופק,</div>
+            <div>מאבחנת את הבטן,</div>
+            <div>ושומעת ממך את כל הסיפור,</div>
+            <div style="color: #6F5E52;">לא רק את התסמין שהביא אותך.</div>
+          </div>
+          <div style="display: grid; grid-template-columns: minmax(0,55fr) minmax(0,45fr); gap: 80px; align-items: end; width: 100%; margin-top: 96px;">
+            <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 76px; line-height: 1.05; letter-spacing: -0.02em; margin: 0;">המפגש הראשון הוא לא טיפול.<br>הוא אבחון.</h2>
+            <p style="font-size: 18px; line-height: 1.65; max-width: 46ch; margin: 0; text-wrap: pretty;">מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+          </div>
+        </div>
+      </div>
+      <div data-screen-label="3c · 390" style="width: 390px; background: #F5EFE4; box-sizing: border-box; padding: 96px 24px; display: flex; flex-direction: column;">
+        <div style="font-size: 13px; line-height: 1.4; font-weight: 600; color: #6F5E52; margin-bottom: 24px;">לא כל אחת מקבלת את אותו טיפול</div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 26px; line-height: 1.3;">
+          <div>אני בודקת דופק,</div>
+          <div>מאבחנת את הבטן,</div>
+          <div>ושומעת ממך את כל הסיפור,</div>
+          <div style="color: #6F5E52;">לא רק את התסמין שהביא אותך.</div>
+        </div>
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 42px; line-height: 1.05; letter-spacing: -0.02em; margin: 64px 0 24px; text-wrap: balance;">המפגש הראשון הוא לא טיפול. הוא אבחון.</h2>
+        <p style="font-size: 17px; line-height: 1.65; margin: 0; text-wrap: pretty;">מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="3d" style="display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <span style="background: #201B1B; color: #F5EFE4; font-weight: 600; font-size: 15px; padding: 4px 12px;">3d</span>
+      <span style="font-size: 18px; font-weight: 600;">חדר עם תמונת אבחון</span>
+      <span style="font-size: 15px; color: #6F5E52;">דורש צילום שאין עדיין (יד על דופק). הופך את 3 לסקשן כבד, וכך 2, 3 ו-4 כבדים ברצף</span>
+    </div>
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <div data-screen-label="3d · 1440" style="width: 1440px; height: 792px; background: #F5EFE4; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); overflow: hidden;">
+        <div style="padding: 0 80px 0 80px; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 15px; line-height: 1.4; font-weight: 600; color: #6F5E52; margin-bottom: 24px;">לא כל אחת מקבלת את אותו טיפול</div>
+          <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 76px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 64px;">המפגש הראשון הוא לא טיפול.<br>הוא אבחון.</h2>
+          <p style="font-size: 18px; line-height: 1.65; max-width: 46ch; margin: 0; text-wrap: pretty;">אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור, לא רק את התסמין שהביא אותך. מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+        </div>
+        <div style="position: relative; height: 100%; min-width: 0; overflow: hidden;">
+          <image-slot id="s3-diagnosis-desktop" shape="rect" style="position: absolute; inset: 0; width: 100%; height: 100%;" placeholder="חסר: צילום אבחון, 3:4 — יד על דופק"></image-slot>
+        </div>
+      </div>
+      <div data-screen-label="3d · 390" style="width: 390px; background: #F5EFE4; display: flex; flex-direction: column;">
+        <div style="position: relative; width: 390px; height: 520px; overflow: hidden;">
+          <image-slot id="s3-diagnosis-mobile" shape="rect" style="position: absolute; inset: 0; width: 100%; height: 100%;" placeholder="חסר: צילום אבחון, 3:4"></image-slot>
+        </div>
+        <div style="padding: 64px 24px 96px;">
+          <div style="font-size: 13px; line-height: 1.4; font-weight: 600; color: #6F5E52; margin-bottom: 16px;">לא כל אחת מקבלת את אותו טיפול</div>
+          <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 42px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 40px; text-wrap: balance;">המפגש הראשון הוא לא טיפול. הוא אבחון.</h2>
+          <p style="font-size: 17px; line-height: 1.65; margin: 0; text-wrap: pretty;">אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור, לא רק את התסמין שהביא אותך. מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או בשילוב.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const Motif = ({ kind, fg }) => {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const cv = ref.current, ctx = cv.getContext('2d');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    let w = 0, h = 0, raf = 0;
+    const rgba = a => `rgba(${fg[0]},${fg[1]},${fg[2]},${a})`;
+    const resize = () => {
+      w = cv.offsetWidth; h = cv.offsetHeight;
+      cv.width = w * dpr; cv.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    let rnd = Math.random() * 1e4;
+    const rand = () => { rnd = (rnd * 9301 + 49297) % 233280; return rnd / 233280; };
+    const harm = [2, 3, 4, 5, 7].map(k => ({ k, a: (0.25 + rand()) / k, p: rand() * 6.28, s: (rand() - 0.5) * 0.12 }));
+    const cx = 0.35 + rand() * 0.3, cy = 0.35 + rand() * 0.3;
+
+    const P = [
+      { a: 1, w: 0.07, d: 0.35, dw: 0.08 },
+      { a: 0.55, w: 0.12, d: 0.15, dw: 0.1 },
+      { a: 0.85, w: 0.045, d: 0.55, dw: 0.05 },
+      { a: 0.4, w: 0.09, d: 0.05, dw: 0.12 },
+      { a: 0.7, w: 0.06, d: 0.45, dw: 0.07 },
+    ];
+    const ease = x => x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+    const mix = (A, B, m) => ({ a: A.a + (B.a - A.a) * m, w: A.w + (B.w - A.w) * m, d: A.d + (B.d - A.d) * m, dw: A.dw + (B.dw - A.dw) * m });
+    const g = (p, c, s) => Math.exp(-Math.pow((p - c) / s, 2));
+
+    const drawPulse = t => {
+      ctx.clearRect(0, 0, w, h);
+      const rows = 3, padY = h * 0.18, span = h - padY * 2;
+      const grad = ctx.createLinearGradient(0, 0, w, 0);
+      grad.addColorStop(0, rgba(0)); grad.addColorStop(0.15, rgba(1)); grad.addColorStop(0.85, rgba(1)); grad.addColorStop(1, rgba(0));
+      ctx.strokeStyle = grad; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      for (let r = 0; r < rows; r++) {
+        const base = padY + span * (r + 0.5) / rows + span / rows * 0.2;
+        const amp = span / rows * 0.55;
+        const cyc = 8, ph = t / cyc + r * 0.37, i = Math.floor(ph), f = ph - i;
+        const m = ease(Math.min(1, Math.max(0, (f - 0.7) / 0.3)));
+        const n = P.length, at = k => P[((k % n) + n) % n];
+        const q = mix(at(i + r * 2), at(i + 1 + r * 2), m);
+        const L = Math.max(140, w * (0.36 + r * 0.05));
+        const off = t / (1.05 + r * 0.12) * L;
+        ctx.beginPath();
+        for (let x = 0; x <= w; x += 2) {
+          const p = (((x + off) / L) % 1 + 1) % 1;
+          const y = base - amp * q.a * (g(p, 0.18, q.w) + q.d * g(p, 0.42, q.dw));
+          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+    };
+
+    const drawRings = t => {
+      ctx.clearRect(0, 0, w, h);
+      const ox = w * cx, oy = h * cy, sp = Math.max(w, h) * 0.04, N = 26;
+      ctx.strokeStyle = rgba(0.9); ctx.lineWidth = 1.5;
+      for (let i = 1; i <= N; i++) {
+        const R = i * sp;
+        ctx.beginPath();
+        for (let j = 0; j <= 180; j++) {
+          const th = j / 180 * Math.PI * 2;
+          let s = 0;
+          for (const hm of harm) s += hm.a * Math.sin(hm.k * th + hm.p + t * hm.s);
+          const r = R + R * 0.09 * s + sp * 0.12 * Math.sin(3 * th + i * 0.9 + t * 0.05);
+          const x = ox + r * Math.cos(th), y = oy + r * Math.sin(th);
+          j === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.closePath(); ctx.stroke();
+      }
+    };
+
+    const draw = kind === 'pulse' ? drawPulse : drawRings;
+    resize();
+    const ro = new ResizeObserver(() => { resize(); if (reduce) draw(3); });
+    ro.observe(cv);
+    const t0 = performance.now();
+    const loop = now => { draw(Math.max(0, (now - t0) / 1000)); raf = requestAnimationFrame(loop); };
+    if (reduce) draw(3); else raf = requestAnimationFrame(loop);
+    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
+  }, [kind]);
+  return React.createElement('canvas', { ref, 'aria-hidden': true, style: { position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' } });
+};
+
+class Component extends DCLogic {
+  renderVals() {
+    const ink = [32, 27, 27], honey = [205, 177, 141];
+    return {
+      pulseD: React.createElement(Motif, { kind: 'pulse', fg: ink }),
+      pulseM: React.createElement(Motif, { kind: 'pulse', fg: ink }),
+      ringsD: React.createElement(Motif, { kind: 'rings', fg: honey }),
+      ringsM: React.createElement(Motif, { kind: 'rings', fg: honey }),
+    };
+  }
+}
+</script>
+</body>
+</html>

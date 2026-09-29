@@ -28,10 +28,10 @@ import LineReveal from '@/components/ui/LineReveal'
 export default function Approach() {
   return (
     <section id="approach" className="px-4 py-24 sm:px-8 md:py-32">
-      <ScrollReveal className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] md:gap-20">
+      <ScrollReveal className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] md:gap-20">
         {/* The claim. */}
         <div>
-          <h2 className="text-start font-display text-3xl font-medium leading-[1.08] text-ink sm:text-4xl lg:text-5xl">
+          <h2 className="text-start font-display text-3xl font-medium leading-[1.12] tracking-[-0.01em] text-ink sm:text-4xl lg:text-[2.75rem]">
             <LineReveal text="לא כל אחת מקבלת את אותו טיפול" stagger={0.08} />
           </h2>
           <p className="mt-8 font-display text-2xl leading-[1.3] text-ink sm:text-[26px]">
@@ -42,7 +42,7 @@ export default function Approach() {
             <h3 className="font-display text-2xl font-medium text-ink sm:text-3xl">
               למה זו סדרה ולא טיפול בודד
             </h3>
-            <p className="mt-3 text-lg leading-[1.6] text-ink">
+            <p className="mt-3 max-w-[46ch] text-lg leading-[1.6] text-ink">
               טיפול אחד יכול להקל. הוא לא מטפל בשורש. אם נטפל רק בסימפטום, הוא יחזור, ולכן אנחנו
               הולכות למקום שממנו הוא מגיע.
             </p>
@@ -51,7 +51,7 @@ export default function Approach() {
 
         {/* What that actually means. */}
         <div>
-          <div className="space-y-6 text-lg leading-[1.6] text-ink">
+          <div className="max-w-[46ch] space-y-6 text-lg leading-[1.6] text-ink">
             <p>
               אני בודקת דופק, מאבחנת את הבטן, ושומעת ממך את כל הסיפור, לא רק את התסמין שהביא
               אותך. מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור,

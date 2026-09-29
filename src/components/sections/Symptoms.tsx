@@ -10,7 +10,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
  * מפת גוף: שש נקודות על צילום בובת העץ. מעבר עכבר / פוקוס / נגיעה
  * מחליפים את הכרטיס הצף. הטקסטים מילה במילה מ־docs/nicole-page-copy-v11.md.
  *
- * דורש: public/images/body-mannequin-848.webp
+ * דורש: public/images/body-mannequin-848-g.webp
  */
 
 type Point = { top: string; left: string }
@@ -70,13 +70,13 @@ export default function Symptoms() {
   const card = cards[active]
 
   return (
-    <section id="symptoms" className="px-4 py-16 sm:px-8 md:py-24">
+    <section id="symptoms" className="px-4 py-24 sm:px-8 md:py-32">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_470px] lg:gap-14">
             {/* טקסט */}
             <div className="flex flex-col gap-6">
-              <h2 className="font-display text-3xl font-medium leading-[1.08] text-ink sm:text-4xl lg:text-5xl">
+              <h2 className="font-display text-3xl font-medium leading-[1.12] tracking-[-0.01em] text-ink sm:text-4xl lg:text-[2.75rem]">
                 מה מביא נשים לקליניקה
               </h2>
               <p className="max-w-[40ch] leading-relaxed text-muted">
@@ -95,8 +95,8 @@ export default function Symptoms() {
                     className={
                       'rounded-pill border px-5 py-2.5 text-start transition-colors ' +
                       (i === active
-                        ? 'border-primary bg-primary font-semibold text-bg'
-                        : 'border-primary/30 text-ink hover:bg-primary/10')
+                        ? 'border-transparent bg-ink font-semibold text-bg'
+                        : 'border-transparent bg-primary/8 text-ink hover:bg-primary/15')
                     }
                   >
                     {c.title}
@@ -117,7 +117,7 @@ export default function Symptoms() {
             >
               <div className="absolute inset-0 overflow-hidden shadow-lg" style={ARCH}>
                 <Image
-                  src="/images/body-mannequin-848.webp"
+                  src="/images/body-mannequin-848-g.webp"
                   alt="בובת עץ מפרקית עומדת, שישה אזורי טיפול מסומנים עליה"
                   fill
                   sizes="(max-width: 1023px) 100vw, 470px"

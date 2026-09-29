@@ -20,7 +20,7 @@ export default function About() {
               `md:order-2` moves the portrait after the text on desktop while
               keeping it FIRST on mobile, where a face before the bio reads
               better in a single column. */}
-          <div className="grid grid-cols-1 items-stretch md:grid-cols-[1fr_minmax(0,46%)]">
+          <div className="grid grid-cols-1 items-stretch md:grid-cols-2">
             {/* The portrait the assets map listed as missing, found by cropping
                 rather than shooting: G-mid is the only frame in which ניקול meets
                 the camera. The crop takes a 3:4 window from the upper right, which drops
@@ -29,19 +29,19 @@ export default function About() {
               side="end"
               className="w-full md:order-2 md:h-full"
             >
-              <ClipReveal className="relative h-[80vh] w-full overflow-hidden md:h-screen">
+              <ClipReveal className="relative h-[82svh] w-full overflow-hidden md:h-[88vh]">
                 <Image
-                  src="/images/portrait-1200.webp"
+                  src="/images/portrait-1200-g.webp"
                   alt="ניקול בן מלך בקליניקה שלה, מחייכת אל המצלמה לצד החלון"
                   fill
-                  sizes="(max-width: 768px) 100vw, 46vw"
+                  sizes="(max-width: 767px) 100vw, 50vw"
                   className="object-cover object-top"
                 />
               </ClipReveal>
             </DriftReveal>
 
-            <div className="flex flex-col justify-center px-4 py-20 sm:px-8 md:py-36">
-              <h2 className="text-start font-display text-3xl font-medium leading-[1.08] text-ink sm:text-4xl lg:text-5xl">
+            <div className="flex flex-col justify-center px-4 py-16 sm:px-8 md:py-24 md:pe-16">
+              <h2 className="text-start font-display text-3xl font-medium leading-[1.12] tracking-[-0.01em] text-ink sm:text-4xl lg:text-[2.75rem]">
                 נעים להכיר, אני ניקול בן מלך
               </h2>
 

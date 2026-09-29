@@ -13,10 +13,10 @@ interface ReviewsProps {
 
 export default function Reviews({ children }: ReviewsProps) {
   return (
-    <section id="reviews" className="px-4 py-20 sm:px-6 md:py-36">
-      <div className="mx-auto max-w-3xl">
+    <section id="reviews" className="px-4 py-24 sm:px-8 md:py-32">
+      <div className="mx-auto w-full max-w-3xl text-center">
         <ScrollReveal>
-          <h2 className="text-start font-display text-3xl font-medium leading-[1.08] text-ink sm:text-4xl lg:text-5xl">
+          <h2 className="text-start font-display text-3xl font-medium leading-[1.12] tracking-[-0.01em] text-ink sm:text-4xl lg:text-[2.75rem]">
             מה אומרות נשים שטיפלתי בהן
           </h2>
 

@@ -33,7 +33,7 @@ import PinnedSequence, { PinnedSequenceStep } from '@/components/ui/PinnedSequen
 const roomMedia = (
   <div className="relative h-full min-h-[80vh] w-full overflow-hidden md:min-h-0">
     <Image
-      src="/images/I-room-1920.webp"
+      src="/images/I-room-1920-g.webp"
       alt="חדר הטיפולים בקליניקה ברחוב אחד העם: שרפרף, חלון ופרגוד"
       fill
       sizes="(max-width: 767px) 100vw, 40vw"
@@ -54,7 +54,7 @@ const roomMedia = (
 const handsMedia = (
   <div className="relative h-full min-h-[80vh] w-full overflow-hidden md:min-h-0">
     <Image
-      src="/images/E-hands-foot-1920.webp"
+      src="/images/E-hands-foot-1920-g.webp"
       alt="קלוז־אפ על ידיים בעבודת שיאצו על כף רגל"
       fill
       sizes="(max-width: 767px) 100vw, 40vw"
@@ -126,7 +126,7 @@ export default function Session() {
     <section id="session" className="overflow-hidden py-20 md:py-36">
       <div>
         <ScrollReveal>
-          <h2 className="mx-auto w-full max-w-7xl px-4 text-start font-display text-3xl font-medium leading-[1.08] text-ink sm:px-8 sm:text-4xl lg:text-5xl">
+          <h2 className="mx-auto w-full max-w-7xl px-4 text-start font-display text-3xl font-medium leading-[1.12] tracking-[-0.01em] text-ink sm:px-8 sm:text-4xl lg:text-[2.75rem]">
             בלי הפתעות: ככה נראית שעה אצלי
           </h2>
         </ScrollReveal>

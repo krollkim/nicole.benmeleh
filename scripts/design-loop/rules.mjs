@@ -82,6 +82,8 @@ export const RULES = [
       if (!middle.length) return ok(`${ev.sections.length} sections, all room or voice`)
       const names = middle.map((s) => `${s.id}(img@${s.tallestImageVhRatio}vh)`).join(', ')
       // A section that owns no photograph yet cannot reach room height.
+            // A 'map' section is a middle state by design — that is what the third
+      // state means. It is not a defect and never becomes one.
       const onlyBlocked = middle.every((s) => AWAITING_PHOTO.has(s.id) || ROOM_MAP[s.id] === 'map')
       return onlyBlocked ? blocked(`awaiting photo: ${names}`) : bad(`middle state: ${names}`)
     },

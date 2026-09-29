@@ -58,10 +58,10 @@ const faqs: QA[] = [
 
 export default function Faq() {
   return (
-    <section id="faq" className="px-4 py-20 sm:px-6 md:py-36">
-      <div className="mx-auto max-w-3xl">
+    <section id="faq" className="px-4 py-24 sm:px-8 md:py-32">
+      <div className="mx-auto w-full max-w-2xl">
         <ScrollReveal>
-          <h2 className="text-start font-display text-3xl font-medium leading-[1.08] text-ink sm:text-4xl lg:text-5xl">
+          <h2 className="text-start font-display text-3xl font-medium leading-[1.12] tracking-[-0.01em] text-ink sm:text-4xl lg:text-[2.75rem]">
             שאלות שחוזרות
           </h2>
         </ScrollReveal>

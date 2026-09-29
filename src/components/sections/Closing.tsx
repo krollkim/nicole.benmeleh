@@ -17,43 +17,31 @@ import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
  */
 export default function Closing() {
   return (
-    <section id="contact" className="px-4 py-20 sm:px-6 md:py-36">
-      <div className="mx-auto max-w-3xl">
-        <ScrollReveal className="flex flex-col items-start gap-8 text-start">
-          <h2 className="font-display text-3xl font-medium leading-[1.08] text-ink sm:text-4xl lg:text-5xl">
+    <section id="contact" className="pb-24 md:flex md:items-center md:gap-0 md:pb-0">
+      {/* The room, full-bleed. It is the best photograph on the site and it
+          was being served at 45% width with margins. A room section touches
+          the edges — that is the whole definition. */}
+      <div className="relative mb-16 h-[82svh] w-full overflow-hidden md:mb-0 md:aspect-auto md:h-[88vh] md:w-[48%]">
+        <Image
+          src="/images/room-empty-1200-gc.webp"
+          alt="חדר הטיפולים של ניקול בן מלך ריק — מיטת טיפולים, חלון מהרצפה לתקרה ועץ בחוץ"
+          fill
+          sizes="100vw"
+          className="object-cover object-[center_38%]"
+        />
+      </div>
+      <div className="px-4 sm:px-8 md:flex-1 md:py-24 md:pe-20 md:ps-16">
+      <div className="mx-auto w-full max-w-7xl">
+        <ScrollReveal className="flex flex-col items-start gap-10 text-start">
+          <h2 className="font-display text-3xl font-medium leading-[1.12] tracking-[-0.01em] text-ink sm:text-4xl lg:text-[2.75rem]">
             אם משהו בגוף שלך מבקש תשומת לב, זה הזמן לדבר עליו
           </h2>
 
-          <WhatsAppLeadButton />
+          <WhatsAppLeadButton buttonClassName="text-base md:text-lg px-8 py-4" />
 
-          {/* The empty room. Shot 27/09/2026 — this slot carried a dashed
-              placeholder reading "טרם צולמה" from the first build until now.
-              Shot 3:4. The frame stays 3:4 on the phone and opens only to 1:1
-              on wider screens — a 4:3 frame stretched it 1.8x past its shot
-              aspect and the design loop caught it. */}
-          <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-[1/1]">
-            <Image
-              src="/images/room-empty-1200.webp"
-              alt="חדר הטיפולים של ניקול בן מלך ריק — מיטת טיפולים, חלון מהרצפה לתקרה ועץ בחוץ"
-              fill
-              sizes="(max-width: 767px) 100vw, 768px"
-              className="object-cover object-center"
-            />
-          </div>      <div className="text-[17px] leading-[1.6] text-ink">
-            <p>קליניקת &quot;בית מרפה&quot;, אחד העם 89, תל אביב</p>
-            <p className="mt-1">
-              אינסטגרם:{' '}
-              <a
-                href="https://www.instagram.com/nicole.benmeleh/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block py-1.5 font-medium text-primary underline underline-offset-2 hover:text-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 rounded-sm"
-              >
-                @nicole.benmeleh
-              </a>
-            </p>
-          </div>
+
         </ScrollReveal>
+      </div>
       </div>
     </section>
   )

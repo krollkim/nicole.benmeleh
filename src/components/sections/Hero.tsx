@@ -40,36 +40,35 @@ import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
  */
 export default function Hero() {
   return (
-    <section id="hero" className="relative h-[92svh] w-full overflow-hidden md:h-screen">
-      <Image
-        src="/images/hero-window-1200.webp"
-        alt="ניקול בן מלך פותחת את הווילון בחדר הטיפולים שלה, עץ גדול מעבר לחלון"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[center_52%] md:object-[center_48%]"
-      />
+    <section id="hero" className="w-full overflow-hidden">
+      <div className="grid grid-cols-1 items-stretch md:grid-cols-[minmax(0,44%)_minmax(0,56%)]">
+        {/* The voice. No scrim, because nothing sits on the photograph. */}
+        <div className="flex flex-col justify-center px-4 py-16 sm:px-8 md:py-24 md:ps-16">
+          <ScrollReveal className="flex max-w-[34rem] flex-col items-start text-start">
+            <h1 className="text-balance font-display text-[2.6rem] font-medium leading-[1.04] tracking-[-0.01em] text-ink sm:text-6xl lg:text-[4.75rem]">
+              ווסת שמכאיבה. עיכול שלא מסתדר. כאב שחוזר ולא עובר.
+            </h1>
+            <p className="mt-6 max-w-[46ch] text-lg leading-[1.6] text-muted">
+              רפואה סינית לנשים, בקליניקה בתל אביב. מתחילות באבחון, ומשם מטפלות בשורש.
+            </p>
+            <div className="mt-10">
+              <WhatsAppLeadButton align="start" buttonClassName="text-base md:text-lg px-8 py-4" />
+            </div>
+          </ScrollReveal>
+        </div>
 
-      {/* Functional scrim. Declared, not inferred — see the design loop. */}
-      <div
-        data-scrim
-        aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(to_top,rgba(32,27,27,0.72)_0%,rgba(32,27,27,0.42)_38%,rgba(32,27,27,0.18)_64%,transparent_88%)]"
-      />
-
-      <div data-scrim
-        className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgba(32,27,27,0.88)_0%,rgba(32,27,27,0.80)_55%,rgba(32,27,27,0.55)_82%,transparent_100%)] px-4 pb-12 pt-28 sm:px-8 md:pb-20 md:pt-36">
-        <ScrollReveal className="mx-auto flex w-full max-w-5xl flex-col items-start text-start">
-          <h1 className="text-balance font-display text-4xl font-medium leading-[1.02] text-white sm:text-5xl lg:text-6xl">
-            ווסת שמכאיבה. עיכול שלא מסתדר. כאב שחוזר ולא עובר.
-          </h1>
-          <p className="mt-5 max-w-[46ch] text-lg leading-[1.6] text-white/85">
-            רפואה סינית לנשים, בקליניקה בתל אביב. מתחילות באבחון, ומשם מטפלות בשורש.
-          </p>
-          <div className="mt-8">
-            <WhatsAppLeadButton tone="onImage" align="start" buttonClassName="text-base md:text-lg px-8 py-4" />
-          </div>
-        </ScrollReveal>
+        {/* The room. Touches the edge and owns the height — that is what makes
+            it a room rather than a picture in a box. */}
+        <div className="relative h-[78svh] w-full overflow-hidden md:h-[92vh]">
+          <Image
+            src="/images/hero-window-1200-g.webp"
+            alt="ניקול בן מלך פותחת את הווילון בחדר הטיפולים שלה, עץ גדול מעבר לחלון"
+            fill
+            priority
+            sizes="(max-width: 767px) 100vw, 56vw"
+            className="object-cover object-[center_45%]"
+          />
+        </div>
       </div>
     </section>
   )

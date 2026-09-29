@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
+import { WHATSAPP_PHONE, buildWhatsAppUrl, buildWhatsAppMessage } from '@/lib/whatsapp'
 
 /**
  * Fixed RTL navbar (landing mode: lives in page.tsx, PIC pattern).
@@ -52,12 +53,17 @@ export default function Navbar({ brand, links }: NavbarProps) {
             The wrapper does the responsive hiding: WhatsAppLeadButton's own
             root carries `inline-flex`, which beats a `hidden` passed through
             className, so hiding has to happen on an element outside it. */}
-        <div className="hidden md:block">
-          <WhatsAppLeadButton
-            showSubtext={false}
-            buttonClassName="px-5 py-2 text-sm shadow-sm"
-          />
-        </div>
+        {/* A text link, not a fifth filled button. The primary style appears
+            exactly once on the page — in the hero — which is the only way it
+            keeps meaning anything. */}
+        <a
+          href={buildWhatsAppUrl(WHATSAPP_PHONE, buildWhatsAppMessage())}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden text-ink underline underline-offset-4 transition-opacity hover:opacity-70 md:block"
+        >
+          בואי נדבר
+        </a>
 
         {/* Mobile hamburger */}
         <button
