@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import ScrollReveal from '@/components/ui/ScrollReveal'
 import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 
 /**
@@ -40,32 +39,63 @@ import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
  */
 export default function Hero() {
   return (
-    <section id="hero" className="w-full overflow-hidden">
-      <div className="grid grid-cols-1 items-stretch md:grid-cols-[minmax(0,44%)_minmax(0,56%)]">
-        {/* The voice. No scrim, because nothing sits on the photograph. */}
-        <div className="flex flex-col justify-center px-4 py-16 sm:px-8 md:py-24 md:ps-16">
-          <ScrollReveal className="flex max-w-[34rem] flex-col items-start text-start">
-            <h1 className="text-balance font-display text-[2.6rem] font-medium leading-[1.04] tracking-[-0.01em] text-ink sm:text-6xl lg:text-[4.75rem]">
+    <section id="hero" className="w-full overflow-hidden pb-16 lg:py-24">
+      {/* הפיצול מתחיל ב-md ולא ב-lg. בגרסה הקודמת טור אחד נמשך עד 1024,
+          ושם התמונה הוצגה 1023x540 — יחס 1.89 מול 0.75 מקורי, מתיחה של
+          פי 2.5 כשהכלל עוצר ב-1.6. הטווח 600–1023 היה שבור.
+
+          הטור של הטקסט רחב יותר ב-md (58%) כי שם ה-Display הוא 54px
+          ובטור צר הוא מתפרק. ב-lg הוא חוזר ל-48%. */}
+      <div className="relative grid grid-cols-1 items-center md:grid-cols-[minmax(0,58%)_minmax(0,42%)] lg:grid-cols-[minmax(0,48%)_minmax(0,52%)]">
+        {/* הקול. בדסקטופ ראשון ברשת = ימין ב-RTL.
+
+            order: במובייל התמונה ראשונה והבלוק נדחף עליה ב--mt-20, כך
+            שהטקסט והכפתור יושבים על התצלום ולא מעליו. bg-ground על
+            הבלוק הפנימי הוא מה שהופך אותו לכרטיס אטום שם.
+
+            בדסקטופ אין חפיפה, וזו החלטה: ניסיתי אותה ועם קרקע אחת היא
+            נקראת כנגיסה בתצלום ולא כשכבה שמעליו. חפיפה דורשת שני
+            משטחים שנבדלים, ולדף הזה יש צבע רקע אחד. מה ששובר את תחושת
+            הווייארפריים הוא שהתמונה לא ממלאת את מלוא הגובה והטקסט
+            ממורכז אנכית מולה. */}
+        <div className="relative z-10 order-2 -mt-20 px-4 md:order-1 md:mt-0 md:px-0 md:ps-6 lg:ps-24">
+          <div className="bg-ground p-6 lg:p-0 lg:py-14">
+            <h1 className="text-balance font-display text-display font-medium text-ink">
               ווסת שמכאיבה. עיכול שלא מסתדר. כאב שחוזר ולא עובר.
             </h1>
-            <p className="mt-6 max-w-[46ch] text-lg leading-[1.6] text-muted">
+            <p className="mt-6 max-w-measure text-lead text-ink-soft">
               רפואה סינית לנשים, בקליניקה בתל אביב. מתחילות באבחון, ומשם מטפלות בשורש.
             </p>
             <div className="mt-10">
-              <WhatsAppLeadButton align="start" buttonClassName="text-base md:text-lg px-8 py-4" />
+              {/* text-lead בכל הרוחבים. התפקיד כבר נוזלי 19→21, ודריסה
+                  בברייקפוינט מחזירה בדיוק את הכפילות שהמערכת באה להעיף.
+                  px-10 py-4 = 40×16, על סקלת ה-8. px-8 היה 32. */}
+              {/* showSubtext כבוי: "לא קובעות כלום לפני שדיברנו" מופיע
+                  בדף שלוש פעמים, והליד כאן כבר אומר את אותו דבר. השורה
+                  שייכת לכפתור של סקשן 7, שכל תפקידו הוא חוסר המחויבות.
+                  נמדד גם שהיא יתומה: 169px מתחת לכפתור של 258px, מיושרת
+                  נכון לימין אבל הקצה השמאלי שלה נוחת באמצע כלום. */}
+              <WhatsAppLeadButton
+                align="start"
+                showSubtext={false}
+                buttonClassName="text-lead px-10 py-4"
+              />
             </div>
-          </ScrollReveal>
+          </div>
         </div>
 
-        {/* The room. Touches the edge and owns the height — that is what makes
-            it a room rather than a picture in a box. */}
-        <div className="relative h-[78svh] w-full overflow-hidden md:h-[92vh]">
+        {/* החדר הריק. הטור יוצא בערך 750x740, יחס 1.01, מול 0.75 מקורי —
+            שינוי של פי 1.35, בתוך כלל ה-1.6. ברוחב מלא זה היה פי 2.4. */}
+        {/* 60svh ולא 72: ב-390x844 הגובה הכולל הוא נאבבר 65 + תמונה
+            פחות 80 של החפיפה + הכרטיס. ב-72svh הכפתור נפל מתחת לקיפול,
+            והקהל מגיע מאינסטגרם — ההנעה לפעולה חייבת להיראות בלי גלילה. */}
+        <div className="relative order-1 h-[60svh] w-full overflow-hidden lg:order-2 lg:h-[82vh]">
           <Image
-            src="/images/hero-window-1200-g.webp"
-            alt="ניקול בן מלך פותחת את הווילון בחדר הטיפולים שלה, עץ גדול מעבר לחלון"
+            src="/images/room-empty-1200-gc.webp"
+            alt="חדר הטיפולים של ניקול בן מלך: מיטת טיפולים, חלון מהרצפה לתקרה ועץ גדול בחוץ"
             fill
             priority
-            sizes="(max-width: 767px) 100vw, 56vw"
+            sizes="(max-width: 1023px) 100vw, 52vw"
             className="object-cover object-[center_45%]"
           />
         </div>

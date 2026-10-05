@@ -30,14 +30,14 @@ export default function Closing() {
           className="object-cover object-[center_38%]"
         />
       </div>
-      <div className="px-4 sm:px-8 md:flex-1 md:py-24 md:pe-20 md:ps-16">
-      <div className="mx-auto w-full max-w-7xl">
+      <div className="px-4 md:px-8 md:flex-1 md:py-24 md:pe-20 md:ps-16">
+      <div className="mx-auto w-full max-w-voice">
         <ScrollReveal className="flex flex-col items-start gap-10 text-start">
-          <h2 className="font-display text-3xl font-medium leading-[1.12] tracking-[-0.01em] text-ink sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="font-display text-h2 font-medium text-ink">
             אם משהו בגוף שלך מבקש תשומת לב, זה הזמן לדבר עליו
           </h2>
 
-          <WhatsAppLeadButton buttonClassName="text-base md:text-lg px-8 py-4" />
+          <WhatsAppLeadButton buttonClassName="text-body md:text-lead px-8 py-4" />
 
 
         </ScrollReveal>

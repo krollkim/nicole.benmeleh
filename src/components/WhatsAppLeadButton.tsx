@@ -17,9 +17,19 @@ export interface WhatsAppLeadButtonProps {
   funnel?: string
   /** Override the prefilled message entirely. Must stay short, warm, neutral — no price, no promises. */
   message?: string
-  /** Sub-line colour context. "onImage" is for ROOM sections, where the
-   *  default muted tone sits on a photograph and fails contrast. */
-  tone?: 'default' | 'onImage'
+  /**
+   * הקשר הצבע של שורת המשנה.
+   *
+   * 'default' — טקסט משני על הקרקע הקרמית. נמדד 5.40:1.
+   * 'onBand'  — על פס צבע ברוחב מלא, כלומר הדבש בסקשן 7. שם
+   *             text-ink-soft נותן 3.02:1 ונופל, ולכן השורה עוברת
+   *             לדיו מלא: 8.32:1.
+   *
+   * החליף את 'onImage', שהיה ענף מת — הוא לא הועבר מאף מקום, והוא
+   * נתן text-ground/85 שנמדד 4.24:1 ונפל גם הוא. הוא נכתב לכפתור
+   * שיושב על תצלום, וההירו ויתר על הסקרים.
+   */
+  tone?: 'default' | 'onBand'
   /** Show the "לא קובעות כלום לפני שדיברנו." sub-line beneath the button. Default true. */
   showSubtext?: boolean
   /**
@@ -66,13 +76,15 @@ export function WhatsAppLeadButton({
         target="_blank"
         rel="noopener noreferrer"
         aria-label="בואי נדבר בוואטסאפ עם ניקול בן מלך"
-        className={`inline-flex items-center gap-2 rounded-pill bg-accent px-7 py-3.5 text-base font-medium text-white shadow-md transition-transform hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${buttonClassName}`}
+        className={`inline-flex items-center gap-2 rounded-pill bg-lavender px-7 py-3.5 text-body font-medium text-ground transition-transform hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 ${buttonClassName}`}
       >
         <WhatsAppIcon />
         <span>בואי נדבר בוואטסאפ</span>
       </a>
       {showSubtext && (
-        <p className={tone === 'onImage' ? 'text-sm text-white/85' : 'text-sm text-muted'}>לא קובעות כלום לפני שדיברנו.</p>
+        <p className={tone === 'onBand' ? 'text-label text-ink' : 'text-label text-ink-soft'}>
+          לא קובעות כלום לפני שדיברנו.
+        </p>
       )}
     </div>
   )

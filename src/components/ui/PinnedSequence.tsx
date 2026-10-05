@@ -177,7 +177,7 @@ export default function PinnedSequence({
           (`Array.from(el.children)`) — putting a PinnedSequence inside a
           StaggerReveal instead would hand it a single wrapper div, killing the
           cascade AND making it a second opacity owner of the media column. */}
-      <div ref={stepsColRef} className="mx-auto w-full max-w-2xl px-4 pt-12 sm:px-8 md:pt-0 md:pe-12">
+      <div ref={stepsColRef} className="mx-auto w-full max-w-measure-wide px-4 pt-12 md:px-8 md:pt-0 md:pe-12">
         {/* On desktop each step gets a tall slot rather than a gap: the pin
             lasts (stepsColumnHeight − mediaHeight), so short steps make the
             pin flicker past in a couple of hundred pixels. A slot per step

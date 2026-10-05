@@ -33,17 +33,17 @@ interface NavbarProps {
 export default function Navbar({ brand, links }: NavbarProps) {
   const [open, setOpen] = useState(false)
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-bg">
-      <div className="relative max-w-7xl mx-auto h-16 px-4 sm:px-8 flex items-center justify-between">
+    <header className="fixed top-0 inset-x-0 z-50 bg-ground">
+      <div className="relative max-w-voice mx-auto h-16 px-4 md:px-8 flex items-center justify-between">
         {/* Brand — sits at the start (right) in RTL */}
-        <span className="font-display font-bold tracking-tight text-ink select-none">
+        <span className="font-display font-semibold text-ink select-none">
           {brand}
         </span>
 
         {/* Desktop links (center) */}
         <nav className="hidden md:flex gap-8 flex-1 justify-center">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-ink transition-colors hover:text-primary">
+            <a key={l.href} href={l.href} className="text-ink transition-colors hover:text-lavender">
               {l.label}
             </a>
           ))}
@@ -68,7 +68,7 @@ export default function Navbar({ brand, links }: NavbarProps) {
         {/* Mobile hamburger */}
         <button
           type="button"
-          className="md:hidden -me-2 flex h-11 w-11 items-center justify-center text-2xl leading-none text-ink"
+          className="md:hidden -me-2 flex h-11 w-11 items-center justify-center text-h3 text-ink"
           aria-label="תפריט"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -79,12 +79,12 @@ export default function Navbar({ brand, links }: NavbarProps) {
 
       {/* Mobile menu */}
       {open && (
-        <nav className="md:hidden bg-bg px-4 py-4 flex flex-col gap-4">
+        <nav className="md:hidden bg-ground px-4 py-4 flex flex-col gap-4">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-ink hover:text-primary transition-colors"
+              className="text-ink hover:text-lavender transition-colors"
               onClick={() => setOpen(false)}
             >
               {l.label}

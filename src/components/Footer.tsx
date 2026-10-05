@@ -29,18 +29,18 @@ export default function Footer({ brand, tagline, disclaimer }: FooterProps) {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="w-full bg-ink px-4 py-20 text-bg sm:px-8 md:py-24">
-      <div className="mx-auto w-full max-w-7xl">
+    <footer className="w-full bg-ink px-4 py-20 text-ground md:px-8 md:py-24">
+      <div className="mx-auto w-full max-w-voice">
         <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.2fr)] md:gap-16">
           {/* who */}
           <div>
-            <p className="font-display text-2xl font-medium text-bg">{brand}</p>
-            <p className="mt-3 text-[15px] leading-[1.6] text-bg/70">{tagline}</p>
+            <p className="font-display text-h3 font-medium text-ground">{brand}</p>
+            <p className="mt-3 text-micro text-ground/70">{tagline}</p>
           </div>
 
           {/* where, and how to reach her */}
-          <div className="flex flex-col gap-3 text-[15px] leading-[1.6]">
-            <p className="text-bg/70">
+          <div className="flex flex-col gap-3 text-micro">
+            <p className="text-ground/70">
               קליניקת &quot;בית מרפה&quot;
               <br />
               אחד העם 89, תל אביב
@@ -49,7 +49,7 @@ export default function Footer({ brand, tagline, disclaimer }: FooterProps) {
               href={buildWhatsAppUrl(WHATSAPP_PHONE, buildWhatsAppMessage('footer'))}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-fit text-bg underline underline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg/50"
+              className="w-fit text-ground underline underline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ground/50"
             >
               וואטסאפ
             </a>
@@ -59,7 +59,7 @@ export default function Footer({ brand, tagline, disclaimer }: FooterProps) {
               target="_blank"
               rel="noopener noreferrer"
               dir="ltr"
-              className="w-fit text-bg underline underline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg/50"
+              className="w-fit text-ground underline underline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ground/50"
             >
               @nicole.benmeleh
             </a>
@@ -67,11 +67,12 @@ export default function Footer({ brand, tagline, disclaimer }: FooterProps) {
 
           {/* the line the law requires, at a size a person can actually read */}
           <div>
-            <p className="max-w-[46ch] text-[15px] leading-[1.6] text-bg/70">{disclaimer}</p>
+            <p className="max-w-measure text-micro text-ground/70">{disclaimer}</p>
           </div>
         </div>
 
-        <p className="mt-16 text-sm text-bg/45">
+        {/* /45 נמדד 4.02:1 על הדיו ונפל. /50 נותן 4.67 בקושי, /55 נותן 5.38. */}
+        <p className="mt-16 text-label text-ground/55">
           © {year} {brand}. כל הזכויות שמורות.
         </p>
       </div>

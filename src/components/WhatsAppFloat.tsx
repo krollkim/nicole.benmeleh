@@ -97,7 +97,7 @@ export function WhatsAppFloat({
       aria-label="בואי נדבר בוואטסאפ עם ניקול בן מלך"
       aria-hidden={hidden}
       tabIndex={hidden ? -1 : 0}
-      className={`fixed z-40 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+      className={`fixed z-40 flex h-14 w-14 items-center justify-center rounded-full bg-lavender text-ground shadow-float transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 ${
         hidden ? 'pointer-events-none translate-y-4 opacity-0' : 'opacity-100'
       } ${className}`}
       style={{

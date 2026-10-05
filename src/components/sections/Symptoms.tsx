@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 
 /**
  * סקשן 2 — מה מביא נשים לקליניקה.
@@ -11,6 +12,8 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
  * מחליפים את הכרטיס הצף. הטקסטים מילה במילה מ־docs/nicole-page-copy-v11.md.
  *
  * דורש: public/images/body-mannequin-848-g.webp
+ *
+ * ה-CTA כאן הוא לינק בתוך המשפט ולא כפתור — ראה ההערה מעל הפסקה.
  */
 
 type Point = { top: string; left: string }
@@ -70,16 +73,16 @@ export default function Symptoms() {
   const card = cards[active]
 
   return (
-    <section id="symptoms" className="px-4 py-24 sm:px-8 md:py-32">
-      <div className="mx-auto max-w-7xl">
+    <section id="symptoms" className="px-4 py-24 md:px-8 md:py-32">
+      <div className="mx-auto max-w-voice">
         <ScrollReveal>
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_470px] lg:gap-14">
             {/* טקסט */}
             <div className="flex flex-col gap-6">
-              <h2 className="font-display text-3xl font-medium leading-[1.12] tracking-[-0.01em] text-ink sm:text-4xl lg:text-[2.75rem]">
+              <h2 className="font-display text-h2 font-medium text-ink">
                 מה מביא נשים לקליניקה
               </h2>
-              <p className="max-w-[40ch] leading-relaxed text-muted">
+              <p className="max-w-measure text-ink-soft">
                 רוב הנשים מגיעות עם דבר אחד, ומגלות שהוא מחובר לעוד שלושה.
               </p>
 
@@ -95,7 +98,7 @@ export default function Symptoms() {
                     className={
                       'rounded-pill border px-5 py-2.5 text-start transition-colors ' +
                       (i === active
-                        ? 'border-transparent bg-ink font-semibold text-bg'
+                        ? 'border-transparent bg-ink font-semibold text-ground'
                         : 'border-transparent bg-primary/8 text-ink hover:bg-primary/15')
                     }
                   >
@@ -104,10 +107,29 @@ export default function Symptoms() {
                 ))}
               </div>
 
-              <p className="max-w-[46ch] leading-relaxed text-muted">
-                לא מצאת את עצמך ברשימה? כתבי לי בכל זאת. חלק גדול מהנשים שמגיעות אליי הגיעו עם משהו
-                שלא ידעו איך לקרוא לו.
+              {/* "כתבי לי בכל זאת" היה טקסט מת — הקופי הזמין לפעולה ולא
+                  היה לאן ללחוץ. ניסיתי לינק בתוך המשפט והוא נפסל: הסקיל
+                  אוסר ghost buttons בנימוק ש"אנשים לא רואים אותם ולא
+                  לוחצים עליהם", ולינק טקסט חלש מ-ghost button, כלומר
+                  אותו נימוק פוסל אותו. והוא גם פוגע בהיררכיה — רמת
+                  הדגשה שלישית שאינה כותרת ואינה כפתור, רעש בלי משקל.
+
+                  הכפתור זהה לזה שבהירו, במלוא עוצמתו. "עד שלוש הופעות"
+                  ירד מהבריף: כלל הדילול הוא על אלמנטים שמתחרים באותו
+                  מסך, לא על חזרות לאורך גלילה. */}
+              <p className="max-w-measure text-ink-soft">
+                לא מצאת את עצמך ברשימה? חלק גדול מהנשים שמגיעות אליי הגיעו עם משהו שלא ידעו איך
+                לקרוא לו.
               </p>
+
+              <div className="mt-8">
+                <WhatsAppLeadButton
+                  align="start"
+                  funnel="symptoms"
+                  showSubtext={false}
+                  buttonClassName="text-lead px-10 py-4"
+                />
+              </div>
             </div>
 
             {/* מפת הגוף */}
@@ -115,7 +137,7 @@ export default function Symptoms() {
               className="relative mx-auto mb-16 w-full max-w-[470px] lg:mb-10"
               style={{ aspectRatio: '470 / 700' }}
             >
-              <div className="absolute inset-0 overflow-hidden shadow-lg" style={ARCH}>
+              <div className="absolute inset-0 overflow-hidden shadow-arch" style={ARCH}>
                 <Image
                   src="/images/body-mannequin-848-g.webp"
                   alt="בובת עץ מפרקית עומדת, שישה אזורי טיפול מסומנים עליה"
@@ -147,13 +169,13 @@ export default function Symptoms() {
                     style={{ top: c.point.top, left: c.point.left }}
                   >
                     {on && (
-                      <span className="absolute h-[30px] w-[30px] animate-ping rounded-pill border border-primary-800" />
+                      <span className="absolute h-[30px] w-[30px] animate-ping rounded-pill border border-lavender" />
                     )}
                     <span
                       className={
                         'block rounded-pill transition-all duration-300 ' +
                         (on
-                          ? 'h-5 w-5 bg-primary shadow-[0_0_0_7px_rgba(251,247,241,.55)]'
+                          ? 'h-5 w-5 bg-lavender shadow-[0_0_0_7px_rgba(251,247,241,.55)]'
                           : 'h-3 w-3 bg-primary/60 shadow-sm')
                       }
                     />
@@ -161,14 +183,14 @@ export default function Symptoms() {
                 )
               })}
 
-              <div className="absolute inset-x-6 -bottom-18 rounded-card bg-bg p-6 shadow-lg">
-                <span className="font-mono text-xs font-semibold tracking-widest text-primary">
+              <div className="absolute inset-x-6 -bottom-18 rounded-arch bg-ground p-6 shadow-arch">
+                <span className="text-label font-semibold text-lavender">
                   {card.n}
                 </span>
-                <h3 className="mt-2 font-display text-2xl font-medium leading-snug text-ink">
+                <h3 className="mt-2 font-display text-h3 font-medium text-ink">
                   {card.title}
                 </h3>
-                <p className="mt-2 leading-relaxed text-muted">{card.body}</p>
+                <p className="mt-2 text-ink-soft">{card.body}</p>
               </div>
             </div>
           </div>

@@ -106,18 +106,18 @@ export default function Session() {
         {i < stepCopy.length - 1 && (
           <span
             aria-hidden="true"
-            className="absolute bottom-[-2.5rem] top-9 w-px bg-primary-200 start-[15px] md:hidden"
+            className="absolute bottom-[-2.5rem] top-9 w-px bg-ink/15 start-[15px] md:hidden"
           />
         )}
         <span
           aria-hidden="true"
-          className="absolute top-0 flex h-8 w-8 items-center justify-center rounded-pill bg-primary text-sm font-semibold text-white start-0"
+          className="absolute top-0 flex h-8 w-8 items-center justify-center rounded-pill bg-lavender text-label font-semibold text-ground start-0"
         >
           {i + 1}
         </span>
 
-        <h3 className="font-display text-2xl font-medium text-ink sm:text-3xl">{step.title}</h3>
-        <p className="mt-2 text-[17px] leading-[1.6] text-muted">{step.body}</p>
+        <h3 className="font-display text-h3 font-medium text-ink">{step.title}</h3>
+        <p className="mt-2 text-body text-ink-soft">{step.body}</p>
       </div>
     ),
   }))
@@ -126,7 +126,7 @@ export default function Session() {
     <section id="session" className="overflow-hidden py-20 md:py-36">
       <div>
         <ScrollReveal>
-          <h2 className="mx-auto w-full max-w-7xl px-4 text-start font-display text-3xl font-medium leading-[1.12] tracking-[-0.01em] text-ink sm:px-8 sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mx-auto w-full max-w-voice px-4 text-start font-display text-h2 font-medium text-ink md:px-8">
             בלי הפתעות: ככה נראית שעה אצלי
           </h2>
         </ScrollReveal>
@@ -140,8 +140,8 @@ export default function Session() {
           className="mt-12"
         />
 
-        <ScrollReveal className="mx-auto mt-10 w-full max-w-7xl md:mt-16">
-          <p className="max-w-[46ch] px-4 text-[17px] leading-[1.6] text-ink sm:px-8">
+        <ScrollReveal className="mx-auto mt-10 w-full max-w-voice md:mt-16">
+          <p className="max-w-measure px-4 text-body text-ink md:px-8">
             רוב הנשים שמגיעות אליי לא חוששות מהטיפול. הן חוששות ממה שקורה להן בגוף. התפקיד שלי
             הוא קודם כל לייצר מקום בטוח. בלי זה אין טיפול.
           </p>

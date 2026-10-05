@@ -58,28 +58,28 @@ const faqs: QA[] = [
 
 export default function Faq() {
   return (
-    <section id="faq" className="px-4 py-24 sm:px-8 md:py-32">
-      <div className="mx-auto w-full max-w-2xl">
+    <section id="faq" className="px-4 py-24 md:px-8 md:py-32">
+      <div className="mx-auto w-full max-w-measure-wide">
         <ScrollReveal>
-          <h2 className="text-start font-display text-3xl font-medium leading-[1.12] tracking-[-0.01em] text-ink sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="text-start font-display text-h2 font-medium text-ink">
             שאלות שחוזרות
           </h2>
         </ScrollReveal>
 
-        <StaggerReveal stagger={0.1} columns={1} className="mt-12 flex flex-col border-t border-primary-200/60">
+        <StaggerReveal stagger={0.1} columns={1} className="mt-12 flex flex-col border-t border-ink/15">
           {faqs.map((item) => {
             const isPainQuestion = item.q === 'זה כואב?'
             return (
               <div key={item.q}>
-                <details className="group border-b border-primary-200/60 py-5">
+                <details className="group border-b border-ink/15 py-5">
                   <summary
-                    className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-medium text-ink [&::-webkit-details-marker]:hidden [&::marker]:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 rounded-sm"
+                    className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 font-display text-h3 font-medium text-ink [&::-webkit-details-marker]:hidden [&::marker]:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2"
                   >
                     <span>{item.q}</span>
                     <svg
                       aria-hidden="true"
                       viewBox="0 0 24 24"
-                      className="h-5 w-5 flex-shrink-0 text-primary transition-transform duration-200 group-open:rotate-180"
+                      className="h-5 w-5 flex-shrink-0 text-lavender transition-transform duration-200 group-open:rotate-180"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
@@ -88,7 +88,7 @@ export default function Faq() {
                     </svg>
                   </summary>
 
-                  <p className="mt-3 max-w-[46ch] text-[17px] leading-[1.6] text-muted">{item.a}</p>
+                  <p className="mt-3 max-w-measure text-body text-ink-soft">{item.a}</p>
 
                   {isPainQuestion && (
                     <>
@@ -96,9 +96,9 @@ export default function Faq() {
                           Do NOT substitute another image. Remove this block when the real photo arrives. */}
                       <div
                         role="note"
-                        className="mt-5 flex min-h-[200px] items-center justify-center border-2 border-dashed border-primary-300/70 p-6 text-center"
+                        className="mt-5 flex min-h-[200px] items-center justify-center border-2 border-dashed border-ink/20 p-6 text-center"
                       >
-                        <span className="text-sm text-muted">
+                        <span className="text-label text-ink-soft">
                           מקום שמור לתמונת דיקור
                           <br />
                           טרם צולמה
