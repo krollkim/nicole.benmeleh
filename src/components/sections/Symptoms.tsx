@@ -97,9 +97,15 @@ export default function Symptoms() {
                     aria-pressed={i === active}
                     className={
                       'rounded-pill border px-5 py-2.5 text-start transition-colors ' +
+                      // bg-primary/8 ו-hover:bg-primary/15 היו כאן ולא ייצרו CSS
+                      // כלל — הטוקן primary נמחק, וסיומת השקיפות הסתירה אותם
+                      // מההמרה. התוצאה: הצ'יפים הלא-פעילים היו טקסט מרחף בלי
+                      // גלולה, ולכן שורות הצ'יפים נקראו מפוזרות ושבורות.
+                      // דיו ולא לבנדר: לבנדר שמור לכפתורים ולמצב פעיל אחד,
+                      // וצ'יפ במנוחה הוא לא מצב פעיל.
                       (i === active
                         ? 'border-transparent bg-ink font-semibold text-ground'
-                        : 'border-transparent bg-primary/8 text-ink hover:bg-primary/15')
+                        : 'border-transparent bg-ink/8 text-ink hover:bg-ink/15')
                     }
                   >
                     {c.title}
@@ -122,7 +128,11 @@ export default function Symptoms() {
                 לקרוא לו.
               </p>
 
-              <div className="mt-8">
+              {/* המרכוז יושב על ההורה ולא על הקומפוננטה: העטיפה שלה היא
+                  inline-flex עם items-start, ו-className חיצוני היה מתנגש
+                  בה בסגירות שווה — ה-JSDoc שלה מזהיר על זה. הורה עם
+                  justify-center ממרכז את כל הבלוק בלי להילחם בפנים. */}
+              <div className="mt-8 flex justify-center md:justify-start">
                 <WhatsAppLeadButton
                   align="start"
                   funnel="symptoms"
@@ -174,9 +184,14 @@ export default function Symptoms() {
                     <span
                       className={
                         'block rounded-pill transition-all duration-300 ' +
+                        // bg-primary/60 היה כאן ולא ייצר CSS — חמש מתוך שש
+                        // הנקודות היו בלתי נראות לגמרי, ורק הפעילה נראתה.
+                        // shadow-sm מת גם הוא: המערכת מגדירה arch ו-float בלבד.
+                        // ההילה עברה מ-rgba(251,247,241) לטוקן הקרקע; הראשון
+                        // היה #FBF7F1, צבע שביעי שלא קיים בפלטה.
                         (on
-                          ? 'h-5 w-5 bg-lavender shadow-[0_0_0_7px_rgba(251,247,241,.55)]'
-                          : 'h-3 w-3 bg-primary/60 shadow-sm')
+                          ? 'h-5 w-5 bg-lavender shadow-[0_0_0_7px_rgb(245_239_228_/_0.55)]'
+                          : 'h-3 w-3 bg-ground ring-1 ring-ink/25')
                       }
                     />
                   </button>

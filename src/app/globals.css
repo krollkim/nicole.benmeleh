@@ -133,6 +133,14 @@
   grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
 }
 
+/* אותו יחס, צדדים הפוכים: ויזואל מימין, טקסט משמאל.
+   קיים בשביל סקשן 3. סקשן 2 שמעליו מחזיק ויזואל תחום של 470px משמאל,
+   ושדה שנוגע בקצה מתחתיו באותו צד מייצר שני גבולות שמאליים שונים
+   לחלוטין זה מעל זה. הטקסט נשאר הרחב — 55 — בלי קשר לצד. */
+@utility grid-split-reverse {
+  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+}
+
 @utility px-shell {
   padding-inline: var(--spacing-gutter-sm);
   @media (width >= 64rem) {
