@@ -21,23 +21,23 @@ export default function About() {
               keeping it FIRST on mobile, where a face before the bio reads
               better in a single column. */}
           <div className="grid grid-cols-1 items-stretch md:grid-cols-2">
-            {/* הקאדר הזה היה ההירו עד 05/10/2026, והוא עובר לכאן כי החדר
-                הריק לקח את ההירו. מה שהוא מחליף הוא portrait-1200-g, שהוא
-                סלפי: היד מושטת ונראית בפינה הימנית התחתונה, וברקע משמאל
-                פח עם שקית שחורה וסולם-שרפרף. סקשן שתפקידו אמינות לא
-                יכול להיפתח בזה.
+            {/* קאדר שקים העלה 07/10/2026. ניקול גדולה בפריים, מחייכת אל
+                המצלמה, העץ בחלון מאחוריה — החזק מבין שלושת הקאדרים שלה.
 
-                כאן ניקול עומדת ליד הווילון, גוף מלא, אור טבעי, מסתכלת
-                למצלמה, בחלל שלה. זה לא מבטל את הצורך בצילום מקצועי —
-                זה מוריד אותו מחסימה להעדפה. */}
+                גורד לסט: המקור נמדד L=0.430 מול ממוצע 0.378 של שש האחרות,
+                כלומר 14% בהיר מהן, והיה JPEG. brightness 0.94 הוריד אותו
+                ל-0.370 והומר ל-webp. המקור נשאר כ-about.jpeg.
+
+                זה משחרר את hero-window-1200-g, שישבה כאן זמנית מאז שהחדר
+                הריק לקח את ההירו, ולכן מבטל אחת משתי הכפילויות בסקשן 4. */}
             <DriftReveal
               side="end"
               className="w-full md:order-2 md:h-full"
             >
               <ClipReveal className="relative h-[82svh] w-full overflow-hidden md:h-[88vh]">
                 <Image
-                  src="/images/hero-window-1200-g.webp"
-                  alt="ניקול בן מלך פותחת את הווילון בחדר הטיפולים שלה, עץ גדול מעבר לחלון"
+                  src="/images/about-1200-g.webp"
+                  alt="ניקול בן מלך בחדר הטיפולים שלה, מחייכת אל המצלמה, עץ גדול מעבר לחלון"
                   fill
                   sizes="(max-width: 767px) 100vw, 50vw"
                   className="object-cover object-[center_50%]"
@@ -45,12 +45,18 @@ export default function About() {
               </ClipReveal>
             </DriftReveal>
 
-            <div className="flex flex-col justify-center px-4 py-16 md:px-8 md:py-24 md:pe-16">
+            {/* התיחום יושב כאן, על הטור כולו, ולא על הפסקאות בלבד — כך
+                הכותרת, הגוף ושורת האמון חולקים קצה אחד ולא שלושה. */}
+            <div className="flex flex-col justify-center px-4 py-16 md:max-w-measure-wide md:px-8 md:py-24 md:pe-16">
               <h2 className="text-start font-display text-h2 font-medium text-ink">
                 נעים להכיר, אני ניקול בן מלך
               </h2>
 
-              <div className="mt-6 flex flex-col gap-4 text-body text-ink max-w-measure">
+              {/* בלי תיחום משלו. היה כאן max-w-measure, ומדדנו שלושה
+                  רוחבים שונים באותו טור — כותרת 480, פסקאות 387, שורת
+                  אמון 480 — כך שהפסקאות נתקעו פנימה ב-93px עם קצה שמאלי
+                  מרופט שצף בתוך עמודה רחבה יותר. התיחום עבר לטור. */}
+              <div className="mt-6 flex flex-col gap-4 text-body text-ink">
                 <p>אני מטפלת ברפואה סינית: דיקור, שיאצו, כוסות רוח ופורמולות צמחים.</p>
                 <p>
                   למדתי ארבע שנים במכללת תמורות, התמחיתי בבית החולים בני ציון בחיפה, והיום אני
@@ -64,12 +70,17 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 pt-6">
-                <div className="flex items-baseline gap-1">
+              {/* טור ולא שורה. היה כאן flex-wrap, ובטור של 391px שלושה
+                  פריטים לא נכנסים — השלישי נפל לשורה משלו ונקרא כיתום,
+                  בדסקטופ ובמובייל גם יחד. שורה של שלושה לא תעבוד בשום
+                  רוחב כאן: ~130px לפריט, ו"מרצה במכללת תמורות" לבדו
+                  צריך כ-150. קו דק מפריד, כדי שהשלושה ייקראו כיחידה. */}
+              <div className="mt-8 flex flex-col divide-y divide-ink/15 border-t border-ink/15">
+                <div className="flex items-baseline gap-2 py-4">
                   <AnimatedCounter to={4} className="font-display text-h3 font-medium text-lavender" />
                   <span className="text-label text-ink-soft">שנות לימוד</span>
                 </div>
-                <div className="flex items-baseline gap-1">
+                <div className="flex items-baseline gap-2 py-4">
                   <AnimatedCounter
                     to={200}
                     suffix="+"
@@ -77,7 +88,7 @@ export default function About() {
                   />
                   <span className="text-label text-ink-soft">מטופלים</span>
                 </div>
-                <div className="flex items-baseline gap-1">
+                <div className="flex items-baseline gap-2 py-4">
                   <span className="font-display text-h3 font-medium text-lavender">
                     מרצה במכללת תמורות
                   </span>

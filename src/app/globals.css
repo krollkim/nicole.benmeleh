@@ -85,12 +85,19 @@
      הבובה בסקשן 2, שאושרה במפורש. */
   --radius-pill: 999px;
   --radius-arch: 28px;
+  /* סקשן 6 · מסך הטלפון. חריגה שלישית מכלל "בלי רדיוס", והיא מודעת:
+     הטלפון הוא מכשיר ולא תמונה, והרדיוס הוא מה שהופך אותו לכזה. */
+  --radius-phone: 36px;
+  --radius-bubble: 18px;
 
   /* ── צל · שניים, ושניהם מנומקים ──
      arch — הקשת והכרטיס הצף בסקשן 2, חריגה שאושרה במפורש.
      float — הכפתור הצף. כפתור fixed בלי צל לא נקרא כמרחף אלא כמודבק. */
   --shadow-arch: 0 16px 40px #201B1B1F;
   --shadow-float: 0 6px 20px #201B1B33;
+  /* bubble — בועות ההודעה וצ'יפ התאריך בסקשן 6. צל זעיר שמרים אותן
+     מרקע הצ'אט בלי להיקרא ככרטיס. */
+  --shadow-bubble: 0 1px 2px #201B1B24;
 
   --breakpoint-md: 48rem;
   --breakpoint-lg: 64rem;
@@ -145,6 +152,24 @@
   padding-inline: var(--spacing-gutter-sm);
   @media (width >= 64rem) {
     padding-inline: var(--spacing-gutter);
+  }
+}
+
+/* סקשן 4 · מדרגות. כל עמודה יורדת שלב אחד מקודמתה, ו---i נקבע inline.
+   ה-handoff כתב את זה מול --spacing-sm ו---spacing-lg; הם לא קיימים אצלנו,
+   ולכן זה על הסקלה המספרית: 6 = 24, 16 = 64. */
+@utility step-drop {
+  padding-top: calc(var(--spacing) * 6 * var(--i, 0));
+  @media (width >= 64rem) {
+    padding-top: calc(var(--spacing) * 16 * var(--i, 0));
+  }
+}
+
+/* גלילה אופקית בלי פס גלילה גלוי. המובייל של סקשן 4 נשען על זה. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 

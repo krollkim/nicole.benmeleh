@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap">
+<style>
+body { margin: 0; background: #E4DCCD; }
+a { color: #6B5B95; }
+a:hover { color: #5B4C84; }
+button { font: inherit; }
+button:focus-visible { outline: 2px solid #6B5B95; outline-offset: 2px; }
+</style>
+</helmet>
+<div dir="rtl" style="font-family: 'Assistant', sans-serif; color: #201B1B; padding: 96px; display: flex; flex-direction: column; gap: 96px; min-width: max-content;">
+
+<div style="display: flex; flex-direction: column; gap: 8px; max-width: 1100px;">
+  <div style="font-size: 15px; font-weight: 600;">סבב 1 · סקשן 4</div>
+  <h1 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 44px; line-height: 1.15; letter-spacing: -0.01em; margin: 0;">בלי הפתעות · שלוש דרכים להראות את הרצף</h1>
+  <p style="font-size: 18px; line-height: 1.65; margin: 0; color: #6F5E52; text-wrap: pretty;">בצילום המסך הטקסט של שלבים 2 ו־3 חתוך, אז הגוף שלהם כאן הוא טיוטה שלי וצריך להחליף אותו בקופי המקורי. התמונות חתוכות מהצילום, באיכות נמוכה, רק לצורך הדגמה. <a href="#4a">4a</a> ו־<a href="#4b">4b</a> מתחלפות לבד כל כמה שניות כדי לדמות גלילה; לחיצה על שלב עוצרת.</p>
+</div>
+
+<section id="turn-1" style="display: flex; flex-direction: column; gap: 96px;">
+
+  <div id="4a" style="display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <span style="background: #201B1B; color: #F5EFE4; font-weight: 600; font-size: 15px; padding: 4px 12px;">4a</span>
+      <span style="font-size: 18px; font-weight: 600;">מסלול</span>
+      <span style="font-size: 15px; color: #6F5E52;">הגלילה מזיזה רצועת תמונות. השלב הבא תמיד מציץ משמאל, כך שאף פעם אין "מה עכשיו". עובד עם ה־pin הקיים</span>
+    </div>
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <div data-screen-label="4a · 1440" style="width: 1440px; height: 792px; background: #F5EFE4; display: grid; grid-template-columns: 560px minmax(0,1fr); overflow: hidden;">
+        <div style="padding: 0 80px 0 48px; display: flex; flex-direction: column; justify-content: center;">
+          <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 44px; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 40px; text-wrap: balance;">בלי הפתעות: ככה נראית שעה אצלי</h2>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <sc-for list="{{ stepsA }}" as="s" hint-placeholder-count="4">
+              <button onClick="{{ s.onClick }}" style="all: unset; cursor: pointer; display: grid; grid-template-columns: 40px minmax(0,1fr); column-gap: 16px; align-items: start;">
+                <span style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; background: {{ s.numBg }}; color: {{ s.numColor }}; transition: background .6s, color .6s;">{{ s.n }}</span>
+                <span style="display: flex; flex-direction: column; gap: 8px; padding-top: 2px;">
+                  <span style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 26px; line-height: 1.3; color: {{ s.titleColor }}; transition: color .6s;">{{ s.t }}</span>
+                  <span style="display: {{ s.bodyDisplay }}; font-size: 18px; line-height: 1.65; color: #6F5E52; text-wrap: pretty;">{{ s.b1 }}<strong style="font-weight: 600;">{{ s.strong }}</strong>{{ s.b2 }}</span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; bottom: 0; right: 0; display: flex; gap: 16px; transform: {{ aTrackD }}; transition: {{ moveT }};">
+            <sc-for list="{{ stepsA }}" as="s" hint-placeholder-count="4">
+              <img src="{{ s.img }}" alt="" style="width: 560px; height: 100%; object-fit: cover; display: block; flex: none;">
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div data-screen-label="4a · 390" style="width: 390px; background: #F5EFE4; display: flex; flex-direction: column;">
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 32px; line-height: 1.15; letter-spacing: -0.01em; margin: 0; padding: 96px 24px 40px; text-wrap: balance;">בלי הפתעות: ככה נראית שעה אצלי</h2>
+        <div style="position: relative; height: 440px; overflow: hidden;">
+          <div style="position: absolute; top: 0; bottom: 0; right: 0; display: flex; gap: 12px; transform: {{ aTrackM }}; transition: {{ moveT }};">
+            <sc-for list="{{ stepsA }}" as="s" hint-placeholder-count="4">
+              <img src="{{ s.img }}" alt="" style="width: 300px; height: 100%; object-fit: cover; display: block; flex: none;">
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding: 40px 24px 0; display: flex; flex-direction: column; gap: 16px; min-height: 230px;">
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; background: #6B5B95; color: #F5EFE4;">{{ curA.n }}</span>
+            <span style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 22px; line-height: 1.3;">{{ curA.t }}</span>
+          </div>
+          <p style="font-size: 17px; line-height: 1.65; margin: 0; color: #6F5E52; text-wrap: pretty;">{{ curA.b1 }}<strong style="font-weight: 600;">{{ curA.strong }}</strong>{{ curA.b2 }}</p>
+        </div>
+        <div style="padding: 24px 24px 0; display: flex; gap: 8px; flex-wrap: wrap;">
+          <sc-for list="{{ stepsA }}" as="s" hint-placeholder-count="4">
+            <button onClick="{{ s.onClick }}" style="all: unset; cursor: pointer; min-height: 44px; display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: {{ s.titleColor }};"><span>{{ s.short }}</span><span style="color: #6F5E52; font-weight: 400;">{{ s.arrow }}</span></button>
+          </sc-for>
+        </div>
+        <p style="font-size: 17px; line-height: 1.65; margin: 0; padding: 64px 24px 96px; text-wrap: pretty;">רוב הנשים שמגיעות אליי לא חוששות מהטיפול. הן חוששות ממה שקורה להן בגוף. התפקיד שלי הוא קודם כל לייצר מקום בטוח. בלי זה אין טיפול.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="4b" style="display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <span style="background: #201B1B; color: #F5EFE4; font-weight: 600; font-size: 15px; padding: 4px 12px;">4b</span>
+      <span style="font-size: 18px; font-weight: 600;">שעה אצלי</span>
+      <span style="font-size: 15px; color: #6F5E52;">הכותרת מבטיחה שעה, אז מראים שעה: סרגל של 60 דקות מחולק לשלבים, ו"אחרי" יושב מחוץ לו. היחסים בין הקטעים הם ניחוש שלי, צריך את המספרים של ניקול</span>
+    </div>
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <div data-screen-label="4b · 1440" style="width: 1440px; height: 792px; background: #F5EFE4; display: grid; grid-template-columns: minmax(0,55fr) minmax(0,45fr); overflow: hidden;">
+        <div style="padding: 0 80px 0 64px; display: flex; flex-direction: column; justify-content: center;">
+          <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 44px; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 40px;">בלי הפתעות:<br>ככה נראית שעה אצלי</h2>
+          <div style="display: flex; gap: 16px; align-items: flex-end;">
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; gap: 4px;">
+                <sc-for list="{{ hourB }}" as="s" hint-placeholder-count="3">
+                  <button onClick="{{ s.onClick }}" aria-label="{{ s.t }}" style="all: unset; cursor: pointer; flex-grow: {{ s.grow }}; flex-basis: 0; height: 44px; display: flex; align-items: center;"><span style="display: block; width: 100%; height: 16px; background: {{ s.segBg }}; transition: background .6s;"></span></button>
+                </sc-for>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 15px; line-height: 1.4; color: #6F5E52;"><span>דקה 0</span><span>דקה 60</span></div>
+            </div>
+            <div style="flex: 0 0 120px; display: flex; flex-direction: column; gap: 8px;">
+              <button onClick="{{ afterB.onClick }}" aria-label="אחרי" style="all: unset; cursor: pointer; height: 44px; display: flex; align-items: center;"><span style="display: block; width: 100%; height: 16px; background: {{ afterB.segBg }}; transition: background .6s;"></span></button>
+              <div style="font-size: 15px; line-height: 1.4; color: #6F5E52;">ולמחרת</div>
+            </div>
+          </div>
+          <div style="margin-top: 40px; min-height: 190px; display: flex; flex-direction: column; gap: 16px; max-width: 46ch;">
+            <div style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 26px; line-height: 1.3;">{{ curB.n }} · {{ curB.t }}</div>
+            <p style="font-size: 21px; line-height: 1.5; margin: 0; text-wrap: pretty;">{{ curB.b1 }}<strong style="font-weight: 600;">{{ curB.strong }}</strong>{{ curB.b2 }}</p>
+          </div>
+          <p style="font-size: 18px; line-height: 1.65; margin: 24px 0 0; max-width: 46ch; color: #6F5E52; text-wrap: pretty;">רוב הנשים שמגיעות אליי לא חוששות מהטיפול. הן חוששות ממה שקורה להן בגוף. התפקיד שלי הוא קודם כל לייצר מקום בטוח. בלי זה אין טיפול.</p>
+        </div>
+        <div style="position: relative; min-width: 0;">
+          <sc-for list="{{ stepsB }}" as="s" hint-placeholder-count="4">
+            <img src="{{ s.img }}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{ s.imgOpacity }}; transition: {{ fadeT }};">
+          </sc-for>
+        </div>
+      </div>
+
+      <div data-screen-label="4b · 390" style="width: 390px; background: #F5EFE4; display: flex; flex-direction: column;">
+        <div style="position: relative; height: 360px;">
+          <sc-for list="{{ stepsB }}" as="s" hint-placeholder-count="4">
+            <img src="{{ s.img }}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{ s.imgOpacity }}; transition: {{ fadeT }};">
+          </sc-for>
+        </div>
+        <div style="padding: 64px 24px 96px; display: flex; flex-direction: column;">
+          <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 32px; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 40px; text-wrap: balance;">בלי הפתעות: ככה נראית שעה אצלי</h2>
+          <div style="display: flex; gap: 12px; align-items: flex-end;">
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; gap: 4px;">
+                <sc-for list="{{ hourB }}" as="s" hint-placeholder-count="3">
+                  <button onClick="{{ s.onClick }}" aria-label="{{ s.t }}" style="all: unset; cursor: pointer; flex-grow: {{ s.grow }}; flex-basis: 0; height: 44px; display: flex; align-items: center;"><span style="display: block; width: 100%; height: 12px; background: {{ s.segBg }}; transition: background .6s;"></span></button>
+                </sc-for>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 15px; line-height: 1.4; color: #6F5E52;"><span>0</span><span>60 דק׳</span></div>
+            </div>
+            <div style="flex: 0 0 64px; display: flex; flex-direction: column; gap: 8px;">
+              <button onClick="{{ afterB.onClick }}" aria-label="אחרי" style="all: unset; cursor: pointer; height: 44px; display: flex; align-items: center;"><span style="display: block; width: 100%; height: 12px; background: {{ afterB.segBg }}; transition: background .6s;"></span></button>
+              <div style="font-size: 15px; line-height: 1.4; color: #6F5E52;">למחרת</div>
+            </div>
+          </div>
+          <div style="margin-top: 40px; min-height: 230px; display: flex; flex-direction: column; gap: 16px;">
+            <div style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 22px; line-height: 1.3;">{{ curB.n }} · {{ curB.t }}</div>
+            <p style="font-size: 19px; line-height: 1.5; margin: 0; text-wrap: pretty;">{{ curB.b1 }}<strong style="font-weight: 600;">{{ curB.strong }}</strong>{{ curB.b2 }}</p>
+          </div>
+          <p style="font-size: 17px; line-height: 1.65; margin: 24px 0 0; color: #6F5E52; text-wrap: pretty;">רוב הנשים שמגיעות אליי לא חוששות מהטיפול. הן חוששות ממה שקורה להן בגוף. התפקיד שלי הוא קודם כל לייצר מקום בטוח. בלי זה אין טיפול.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="4c" style="display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <span style="background: #201B1B; color: #F5EFE4; font-weight: 600; font-size: 15px; padding: 4px 12px;">4c</span>
+      <span style="font-size: 18px; font-weight: 600;">מדרגות</span>
+      <span style="font-size: 15px; color: #6F5E52;">ארבע תמונות בשורה, כל אחת נמוכה מקודמתה. הכול גלוי בבת אחת, בלי pin. הסקשן נשאר קל אחרי 3f</span>
+      <button onClick="{{ replay }}" style="all: unset; cursor: pointer; font-size: 15px; font-weight: 600; color: #6B5B95;">הפעלה חוזרת</button>
+    </div>
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <div data-screen-label="4c · 1440" style="width: 1440px; background: #F5EFE4; padding: 96px 0 160px; box-sizing: border-box;">
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 44px; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 64px; padding: 0 80px;">בלי הפתעות: ככה נראית שעה אצלי</h2>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; align-items: start;">
+          <sc-for list="{{ stepsC }}" as="s" hint-placeholder-count="4">
+            <div style="padding-top: {{ s.drop }}; display: flex; flex-direction: column;">
+              <img src="{{ s.img }}" alt="" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; clip-path: {{ s.clip }}; transition: {{ s.clipT }};">
+              <div style="padding: 24px 24px 0; display: flex; flex-direction: column; gap: 16px;">
+                <div style="display: flex; gap: 16px; align-items: center;">
+                  <span style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; background: #CDB18D; color: #201B1B; flex: none;">{{ s.n }}</span>
+                  <span style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 26px; line-height: 1.3;">{{ s.t }}</span>
+                </div>
+                <p style="font-size: 18px; line-height: 1.65; margin: 0; color: #6F5E52; text-wrap: pretty;">{{ s.b1 }}<strong style="font-weight: 600;">{{ s.strong }}</strong>{{ s.b2 }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size: 21px; line-height: 1.5; margin: 96px auto 0; max-width: 55ch; text-align: center; text-wrap: pretty;">רוב הנשים שמגיעות אליי לא חוששות מהטיפול. הן חוששות ממה שקורה להן בגוף. התפקיד שלי הוא קודם כל לייצר מקום בטוח. בלי זה אין טיפול.</p>
+      </div>
+
+      <div data-screen-label="4c · 390" style="width: 390px; background: #F5EFE4; padding: 96px 0; box-sizing: border-box;">
+        <h2 style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 32px; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 40px; padding: 0 24px; text-wrap: balance;">בלי הפתעות: ככה נראית שעה אצלי</h2>
+        <div style="display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 24px; scrollbar-width: none; align-items: start;">
+          <sc-for list="{{ stepsC }}" as="s" hint-placeholder-count="4">
+            <div style="flex: 0 0 290px; scroll-snap-align: start; padding-top: {{ s.dropM }}; display: flex; flex-direction: column;">
+              <img src="{{ s.img }}" alt="" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block;">
+              <div style="padding-top: 24px; display: flex; flex-direction: column; gap: 16px;">
+                <div style="display: flex; gap: 16px; align-items: center;">
+                  <span style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; background: #CDB18D; color: #201B1B; flex: none;">{{ s.n }}</span>
+                  <span style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 22px; line-height: 1.3;">{{ s.t }}</span>
+                </div>
+                <p style="font-size: 17px; line-height: 1.65; margin: 0; color: #6F5E52; text-wrap: pretty;">{{ s.b1 }}<strong style="font-weight: 600;">{{ s.strong }}</strong>{{ s.b2 }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size: 17px; line-height: 1.65; margin: 0; padding: 64px 24px 0; text-wrap: pretty;">רוב הנשים שמגיעות אליי לא חוששות מהטיפול. הן חוששות ממה שקורה להן בגוף. התפקיד שלי הוא קודם כל לייצר מקום בטוח. בלי זה אין טיפול.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const STEPS = [
+  { n: 1, t: 'מגיעה לקליניקה', short: 'מגיעה', b1: 'חדר מואר ונעים ברחוב אחד העם. שוכבות על מיטת טיפולים, ', strong: 'עם בגדים', b2: '. לא צריך להביא כלום.', img: 'assets/s4-room.jpg', grow: 2 },
+  { n: 2, t: 'מדברות', short: 'מדברות', b1: 'לפני שאני נוגעת, אני שומעת. מה כואב, מה ניסית, מה מדאיג אותך. ורק אחר כך בודקת.', strong: '', b2: '', img: 'assets/s4-window.jpg', grow: 3 },
+  { n: 3, t: 'הטיפול', short: 'הטיפול', b1: 'שיאצו, דיקור או שילוב, לפי מה שראינו. לפני כל מגע אני אומרת מה אני עומדת לעשות. הרבה מהנשים נרדמות.', strong: '', b2: '', img: 'assets/s4-talk.jpg', grow: 7 },
+  { n: 4, t: 'אחרי', short: 'אחרי', b1: 'יוצאות רגועות, לפעמים קצת מרחפות. למחרת בדרך כלל מרגישים הקלה. לפעמים דווקא עולה כאב ליום־יומיים, כי הגוף עבר שינוי, ואז הוא מתייצב.', strong: '', b2: '', img: 'assets/s4-hands.jpg', grow: 0 }
+];
+const EASE = 'cubic-bezier(.25,.46,.45,.94)';
+
+class Component extends DCLogic {
+  state = { a: 0, b: 0, autoA: true, autoB: true, rev: false };
+  componentDidMount() {
+    this.rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.rm) { this.setState({ rev: true }); return; }
+    this.t = setInterval(() => this.setState(s => ({
+      a: s.autoA ? (s.a + 1) % 4 : s.a,
+      b: s.autoB ? (s.b + 1) % 4 : s.b
+    })), 3800);
+    this.r = setTimeout(() => this.setState({ rev: true }), 500);
+  }
+  componentWillUnmount() { clearInterval(this.t); clearTimeout(this.r); }
+  renderVals() {
+    const { a, b, rev } = this.state;
+    const rm = this.rm;
+    const stepsA = STEPS.map((s, i) => ({
+      ...s,
+      numBg: i === a ? '#6B5B95' : 'transparent',
+      numColor: i === a ? '#F5EFE4' : '#6F5E52',
+      titleColor: i === a ? '#201B1B' : '#6F5E52',
+      bodyDisplay: i === a ? 'block' : 'none',
+      arrow: i < 3 ? '←' : '',
+      onClick: () => this.setState({ a: i, autoA: false })
+    }));
+    const stepsB = STEPS.map((s, i) => ({
+      ...s,
+      imgOpacity: i === b ? 1 : 0,
+      segBg: i === b ? '#201B1B' : '#CDB18D',
+      onClick: () => this.setState({ b: i, autoB: false })
+    }));
+    const stepsC = STEPS.map((s, i) => ({
+      ...s,
+      drop: i * 64 + 'px',
+      dropM: i * 24 + 'px',
+      clip: rev ? 'inset(0 0 0 0)' : 'inset(0 0 0 100%)',
+      clipT: rm || !rev ? 'none' : `clip-path 1s ${EASE} ${i * 0.2}s`
+    }));
+    return {
+      stepsA, stepsB, stepsC,
+      curA: stepsA[a], curB: stepsB[b],
+      hourB: stepsB.slice(0, 3), afterB: stepsB[3],
+      aTrackD: `translateX(${a * 576}px)`,
+      aTrackM: `translateX(${a * 312}px)`,
+      moveT: rm ? 'none' : `transform 1s ${EASE}`,
+      fadeT: rm ? 'none' : `opacity 0.8s ${EASE}`,
+      replay: () => { if (rm) return; this.setState({ rev: false }); clearTimeout(this.r); this.r = setTimeout(() => this.setState({ rev: true }), 60); }
+    };
+  }
+}
+</script>
+</body>
+</html>

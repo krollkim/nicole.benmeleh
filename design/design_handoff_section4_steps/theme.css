@@ -1,0 +1,120 @@
+/* ניקול בן מלך — Tailwind v4. מחליף את כל הערכים בסוגריים מרובעים. */
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* מוחק את כל ברירות המחדל של Tailwind. מה שלא מוגדר כאן — לא קיים. */
+  --*: initial;
+
+  /* צבע · 60/30/10 */
+  --color-ground: #F5EFE4;          /* 60 · קרקע. לא #E2E4E2 */
+  --color-ink: #201B1B;             /* 30 · טקסט ופסים */
+  --color-ink-soft: #6F5E52;        /* טקסט משני, על קרם בלבד */
+  --color-honey: #CDB18D;           /* 30 · פסים ברוחב מלא */
+  --color-lavender: #6B5B95;        /* 10 · כפתורים ומצב פעיל בלבד */
+  --color-lavender-press: #5B4C84;  /* hover/pressed של הכפתור בלבד */
+
+  /* משפחות · 3 משקלים */
+  --font-display: "Frank Ruhl Libre", serif;
+  --font-body: "Assistant", sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* טיפוגרפיה · נוזלית בין 390 ל-1440. ערך אחד לכל תפקיד */
+  --text-display: clamp(2.625rem, 1.836rem + 3.238vw, 4.75rem);   /* 42 → 76 */
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.02em;
+  --text-h2: clamp(2rem, 1.721rem + 1.143vw, 2.75rem);             /* 32 → 44 */
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h3: clamp(1.375rem, 1.282rem + 0.381vw, 1.625rem);        /* 22 → 26 */
+  --text-h3--line-height: 1.3;
+  --text-lead: clamp(1.1875rem, 1.141rem + 0.19vw, 1.3125rem);     /* 19 → 21 */
+  --text-lead--line-height: 1.5;
+  --text-body: clamp(1.0625rem, 1.039rem + 0.095vw, 1.125rem);     /* 17 → 18 */
+  --text-body--line-height: 1.65;
+  --text-label: clamp(0.8125rem, 0.766rem + 0.19vw, 0.9375rem);    /* 13 → 15 */
+  --text-label--line-height: 1.4;
+  --text-micro: 0.9375rem;                                         /* 15 קבוע, מתחת לכפתור */
+  --text-micro--line-height: 1.4;
+
+  /* מרווחים · הסקלה היחידה */
+  --spacing-2xs: 0.5rem;   /*   8 */
+  --spacing-xs: 1rem;      /*  16 */
+  --spacing-sm: 1.5rem;    /*  24 */
+  --spacing-md: 2.5rem;    /*  40 */
+  --spacing-lg: 4rem;      /*  64 */
+  --spacing-xl: 6rem;      /*  96 */
+  --spacing-2xl: 10rem;    /* 160 */
+  --spacing-gutter-sm: 1.5rem;  /* 24 · מרזב מובייל */
+  --spacing-gutter: 5rem;       /* 80 · מרזב דסקטופ — מחוץ לסקלה, ראה design-system.md */
+  --spacing-visual-sm: 20rem;   /* 320 · רצועת ויזואל במובייל (2×2xl) */
+
+  /* מכל ואורך שורה */
+  --container-voice: 80rem;         /* 1280 · קול */
+  --container-measure: 46ch;        /* טור מפוצל */
+  --container-measure-wide: 55ch;   /* בלוק מלא */
+
+  /* גובה סקשן */
+  --section-room: 88vh;
+  --section-room-sm: 82svh;
+
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+
+  /* תנועה · GSAP power2.out */
+  --ease-out: cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+/* חדר: סקשן עם תמונה. לא על סקשן 4 (pin) ולא על סקשן 9 (3:4) */
+@utility section-room {
+  height: var(--section-room-sm);
+  @media (width >= 64rem) { height: var(--section-room); }
+}
+/* קול: גובה מהתוכן */
+@utility section-voice {
+  padding-block: var(--spacing-xl);
+  @media (width >= 64rem) { padding-block: var(--spacing-2xl); }
+}
+/* פריסה מפוצלת 55/45. minmax(0) מונע מתוכן לפוצץ את הטור */
+@utility grid-split {
+  grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
+}
+/* סקשן 4 · מדרגות. כל עמודה יורדת שלב אחד מקודמתה. --i נקבע inline */
+@utility step-drop {
+  padding-top: calc(var(--spacing-sm) * var(--i, 0));
+  @media (width >= 64rem) { padding-top: calc(var(--spacing-lg) * var(--i, 0)); }
+}
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+@utility px-shell {
+  padding-inline: var(--spacing-gutter-sm);
+  @media (width >= 64rem) { padding-inline: var(--spacing-gutter); }
+}
+
+@layer base {
+  html { direction: rtl; }
+  body {
+    background: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: var(--font-weight-medium); text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a { color: var(--color-lavender); }
+  :focus-visible { outline: 2px solid var(--color-lavender); outline-offset: 3px; }
+  ::selection { background: var(--color-honey); color: var(--color-ink); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

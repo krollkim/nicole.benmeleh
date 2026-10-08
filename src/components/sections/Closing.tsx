@@ -37,7 +37,13 @@ export default function Closing() {
             אם משהו בגוף שלך מבקש תשומת לב, זה הזמן לדבר עליו
           </h2>
 
-          <WhatsAppLeadButton buttonClassName="text-body md:text-lead px-8 py-4" />
+          {/* המרכוז יושב על ההורה ולא על הקומפוננטה: העטיפה שלה היא
+              inline-flex, ו-items-start של ה-ScrollReveal דחף אותה לימין.
+              רק הכפתור ממורכז — items-center על כל הבלוק היה נותן כותרת
+              ממורכזת עם טקסט מיושר לימין בתוכה, וזה גרוע יותר. */}
+          <div className="flex w-full justify-center md:justify-start">
+            <WhatsAppLeadButton buttonClassName="text-body md:text-lead px-8 py-4" />
+          </div>
 
 
         </ScrollReveal>

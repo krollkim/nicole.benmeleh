@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-a22eb2bd-9421-4e38-b99c-42f643fa7883/styles.css">
+<script src="_ds/organic-a22eb2bd-9421-4e38-b99c-42f643fa7883/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Suez+One&display=swap" rel="stylesheet">
+<style>body{margin:0;background:var(--color-bg)}a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-800)}.feed::-webkit-scrollbar{display:none}</style>
+</helmet>
+<div dir="rtl" style="font-family:Heebo,var(--font-body);color:var(--color-text);padding:clamp(40px,6vw,80px) clamp(20px,5vw,64px);display:flex;flex-wrap:wrap;align-items:center;gap:clamp(32px,6vw,96px)">
+  <div style="flex:1 1 300px;max-width:440px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+    <span class="tag tag-accent-2">המלצות</span>
+    <h2 style="margin:0;font-family:'Suez One',var(--font-heading);font-weight:400;font-size:clamp(32px,4.4vw,52px);line-height:1.12;text-wrap:balance">מה מספרות המטופלות</h2>
+    <p style="margin:0;font-size:18px;line-height:1.6;color:var(--color-neutral-800);text-wrap:pretty">הודעות שקיבלה ניקול מהמטופלות שלה, כפי שנשלחו.</p>
+  </div>
+  <div style="flex:0 1 360px;width:100%;max-width:360px;display:flex;flex-direction:column;border-radius:36px;overflow:hidden;background:#FCF8F1;box-shadow:var(--shadow-lg);border:8px solid #201B1B">
+    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#CDB18D;color:#201B1B">
+      <div style="width:40px;height:40px;border-radius:50%;background:#201B1B;color:#F5EAD8;display:grid;place-items:center;font-weight:600;font-size:17px;flex:none">נ</div>
+      <div style="display:flex;flex-direction:column;flex:1;min-width:0">
+        <span style="font-weight:600;font-size:16px">המלצות על ניקול</span>
+        <span style="font-size:13px">{{ countLabel }}</span>
+      </div>
+    </div>
+    <div class="feed" ref="{{ feedRef }}" style="flex:none;max-height:560px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;background-image:radial-gradient(var(--color-neutral-300) 1.4px,transparent 1.6px);background-size:22px 22px;-webkit-mask-image:linear-gradient(#000 calc(100% - 56px),transparent);mask-image:linear-gradient(#000 calc(100% - 56px),transparent)">
+      <div style="display:flex;flex-direction:column;gap:18px;padding:24px 18px 24px 40px">
+        <sc-for list="{{ loop }}" as="r" hint-placeholder-count="3">
+          <div data-msg="1" style="display:flex;flex-direction:column;align-items:flex-start;gap:18px">
+            <sc-if value="{{ r.first }}" hint-placeholder-val="{{ false }}">
+              <span style="align-self:center;font-size:12px;font-weight:500;padding:5px 12px;border-radius:999px;background:var(--color-neutral-100);color:var(--color-neutral-700);box-shadow:var(--shadow-sm)">היום</span>
+            </sc-if>
+            <div style="position:relative;max-width:100%;background:#EDE0CA;border-radius:18px 0 18px 18px;padding:8px 12px 6px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:3px">
+              <svg width="12" height="16" viewBox="0 0 12 16" style="position:absolute;right:-11px;top:0;display:block"><path d="M0 0H12C8 3 4 9 0 16Z" fill="#EDE0CA"></path></svg>
+              <div style="font-size:14px;font-weight:600;color:var(--color-accent-700)">{{ r.name }}</div>
+              <div style="font-size:15.5px;line-height:1.5;white-space:pre-line;text-wrap:pretty">{{ r.text }}</div>
+              <span style="align-self:flex-end;font-size:11.5px;color:var(--color-neutral-600);font-variant-numeric:tabular-nums">{{ r.time }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <a href="{{ waHref }}" target="_blank" rel="noopener" aria-label="שליחת הודעת וואטסאפ לניקול" style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#FCF8F1;text-decoration:none;color:#201B1B;cursor:pointer;outline-offset:-4px" style-hover="background:#F5EAD8">
+      <span style="flex:1;min-height:44px;border-radius:999px;background:#fff;border:1.5px solid #CDB18D;display:flex;align-items:center;padding:0 16px;font-size:15px;color:#5B5150">כתבי לניקול…</span>
+      <span style="width:44px;height:44px;border-radius:50%;background:#6E5A9A;color:#FCF8F1;display:grid;place-items:center;flex:none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1)"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
+      </span>
+    </a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;phone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;972500000000&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;message&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;היי ניקול, קראתי את ההמלצות ורציתי לדבר&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  feedRef = React.createRef();
+  order = [3, 1, 2, 0];
+  componentDidMount() {
+    import('./reviews-data.js').then(m => { this.reviews = this.order.map(i => m.reviews[i]); this.forceUpdate(); });
+    this.ro = new ResizeObserver(() => this.fit());
+    if (this.feedRef.current) this.ro.observe(this.feedRef.current);
+    document.fonts?.ready.then(() => this.fit());
+  }
+  componentDidUpdate() { this.fit(); }
+  componentWillUnmount() { this.ro?.disconnect(); }
+  fit() {
+    const el = this.feedRef.current;
+    if (!el) return;
+    const msgs = el.querySelectorAll('[data-msg]');
+    if (msgs.length < 2) return;
+    const top = el.getBoundingClientRect().top - el.scrollTop;
+    const h = Math.ceil(msgs[1].getBoundingClientRect().top - top + 96);
+    const v = h + 'px';
+    if (el.style.maxHeight !== v) el.style.maxHeight = v;
+  }
+  renderVals() {
+    const list = this.reviews || [];
+    return {
+      waHref: `https://wa.me/${(this.props.phone ?? '972500000000').replace(/\D/g, '')}?text=${encodeURIComponent(this.props.message ?? 'היי ניקול, קראתי את ההמלצות ורציתי לדבר')}`,
+      loop: list.map((r, i) => ({ ...r, first: i === 0 })), feedRef: this.feedRef,
+      countLabel: list.length ? `${list.length} הודעות` : ''
+    };
+  }
+}
+</script>
+</body>
+</html>
