@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import WaveMark from '@/components/ui/WaveMark'
 import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 import { WHATSAPP_PHONE, buildWhatsAppUrl, buildWhatsAppMessage } from '@/lib/whatsapp'
 
@@ -35,10 +36,12 @@ export default function Navbar({ brand, links }: NavbarProps) {
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-ground">
       <div className="relative max-w-voice mx-auto h-16 px-4 md:px-8 flex items-center justify-between">
-        {/* Brand — sits at the start (right) in RTL */}
-        <span className="font-display font-semibold text-ink select-none">
-          {brand}
-        </span>
+        {/* Brand — sits at the start (right) in RTL.
+            הגל לפני השם, כלומר מימינו, כמו בלוגו המקורי. */}
+        <a href="#hero" className="flex select-none items-center gap-3" aria-label={brand}>
+          <WaveMark className="h-5 w-7 flex-none" />
+          <span className="font-display font-semibold text-ink">{brand}</span>
+        </a>
 
         {/* Desktop links (center) */}
         <nav className="hidden md:flex gap-8 flex-1 justify-center">

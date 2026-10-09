@@ -1,3 +1,4 @@
+import WaveMark from '@/components/ui/WaveMark'
 import { WHATSAPP_PHONE, buildWhatsAppUrl, buildWhatsAppMessage } from '@/lib/whatsapp'
 
 /**
@@ -34,7 +35,12 @@ export default function Footer({ brand, tagline, disclaimer }: FooterProps) {
         <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.2fr)] md:gap-16">
           {/* who */}
           <div>
-            <p className="font-display text-h3 font-medium text-ground">{brand}</p>
+            {/* הגל גדול יותר כאן מאשר בנאבבר — בפוטר יש לו מקום, ושם
+                הוא קורא כחתימה ולא כאייקון ניווט. */}
+            <div className="flex items-center gap-3">
+              <WaveMark className="h-7 w-10 flex-none" />
+              <p className="font-display text-h3 font-medium text-ground">{brand}</p>
+            </div>
             <p className="mt-3 text-micro text-ground/70">{tagline}</p>
           </div>
 
