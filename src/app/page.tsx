@@ -10,7 +10,6 @@ import About from '@/components/sections/About'
 import Reviews from '@/components/sections/Reviews'
 import HowItWorks from '@/components/sections/HowItWorks'
 import Faq from '@/components/sections/Faq'
-import Closing from '@/components/sections/Closing'
 
 /**
  * The nine sections follow docs/nicole-page-copy-v11.md in its own order.
@@ -33,10 +32,15 @@ export default function Home() {
         <Approach />    {/* 3 — לא כל אחת מקבלת את אותו טיפול */}
         <Session />     {/* 4 — בלי הפתעות: ככה נראית שעה אצלי */}
         <About />       {/* 5 — נעים להכיר, אני ניקול בן מלך */}
-        <Reviews />     {/* 6 — ביקורות (placeholder slot) */}
-        <HowItWorks />  {/* 7 — אין פה כפתור "קבעי תור" */}
-        <Faq />         {/* 8 — שאלות שחוזרות */}
-        <Closing />     {/* 9 — סגירה + פרטי הקליניקה */}
+        <Reviews />     {/* 6 — מה מספרות המטופלות */}
+        {/* ה-FAQ עלה לפני הבקשה (09/10/2026). קודם הוא ישב אחריה, כלומר
+            אחרי שהיא כבר החליטה הוגשו לה שבע שאלות כולל "כמה זה עולה?".
+            מסירים ספק לפני שמבקשים, לא אחרי.
+
+            הוא נשאר סקשן עצמאי ולא נבלע לתוך סקשן 4: הוא מזין
+            "@type":"FAQPage" ל-JSON-LD, וזה נכס SEO שאין לו תחליף. */}
+        <Faq />         {/* 7 — שאלות שחוזרות */}
+        <HowItWorks />  {/* 8 — אין פה כפתור "קבעי תור". הדף נגמר בבקשה */}
       </main>
       <Footer brand={brand.brand.name} tagline={brand.footer.tagline} disclaimer={brand.footer.disclaimer} />
     </>
