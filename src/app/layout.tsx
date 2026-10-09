@@ -47,9 +47,14 @@ export const metadata: Metadata = {
     siteName: 'ניקול בן מלך',
     title: 'ניקול בן מלך | רפואה סינית לנשים בתל אביב',
     description: 'רפואה סינית לנשים, בקליניקה בתל אביב. מתחילות באבחון, ומשם מטפלות בשורש.',
-    // images: [...] — TODO(seo): add once a final OG/portrait image exists.
-    // The copy doc's "מה חסר" list says no real portrait or clean acupuncture
-    // photo exists yet — don't fabricate one.
+    // images לא מוגדר כאן בכוונה. src/app/opengraph-image.png מספק אותו
+    // דרך קונבנציית הקבצים של Next, ואומת ב-HTML שנבנה: og:image,
+    // og:image:width/height ו-twitter:image נפלטים אוטומטית עם hash
+    // לשבירת קאש. הגדרה ידנית כאן היתה דורסת את זה ומאבדת את ה-hash.
+    //
+    // ⚠️ og:image:alt לא נפלט. src/app/opengraph-image.alt.txt קיים,
+    // אבל בלוק ה-openGraph הזה מצל עליו. לא קריטי — תגית נגישות
+    // לכרטיס השיתוף, לא לתצוגה עצמה.
   },
   twitter: {
     card: 'summary_large_image',
