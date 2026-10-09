@@ -59,10 +59,19 @@ export default function HowItWorks() {
                 showSubtext דלוק כאן ורק כאן: "לא קובעות כלום לפני
                 שדיברנו" היא התזה של הסקשן הזה. */}
             <div className="mt-2">
+              {/* lavender-press ולא lavender, וזו לא בחירה אסתטית:
+                  לבנדר על הדבש נמדד 2.89:1, ו-WCAG 1.4.11 דורש 3:1
+                  לרכיב ממשק — הכפתור לא נקרא כאלמנט נפרד מהפס.
+                  lavender-press נותן 3.65 ועובר. הוא כבר בפלטה כגוון
+                  הלחיצה של אותו כפתור, כלומר לא צבע חדש ולא סגנון שני.
+                  ההבדל בעין זניח; המדידה לא.
+
+                  זה הסקשן האחרון בדף מאז 09/10/2026, אז הכפתור הזה הוא
+                  הדבר האחרון שהיא רואה. */}
               <WhatsAppLeadButton
                 funnel="howitworks"
                 tone="onBand"
-                buttonClassName="text-lead px-10 py-4"
+                buttonClassName="bg-lavender-press text-lead px-10 py-4"
               />
             </div>
           </ScrollReveal>

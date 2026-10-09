@@ -200,7 +200,14 @@ export default function Reviews() {
             aria-label="שליחת הודעת וואטסאפ לניקול"
             className="flex items-center gap-2 bg-ground p-3 text-ink transition-colors hover:bg-honey/15"
           >
-            <span className="flex min-h-11 flex-1 items-center rounded-pill border border-honey px-4 text-body text-ink-soft">
+            {/* border-ink/60 ולא border-honey. ב-handoff השדה היה לבן על
+                #FCF8F1 והמסגרת רק קישטה; לנו קרקע אחת, אז המסגרת היא
+                הדבר היחיד שמגדיר את השדה — ודבש עליה נמדד 1.79:1, מתחת
+                ל-3:1 שדרוש לרכיב ממשק, כלומר השדה נבלע ברקע.
+                ה-alpha נבחר בחישוב ולא בעין: ink/20 נותן 1.50 (גרוע
+                מהדבש), ink/40 נותן 2.43, והסף נחצה רק ב-ink/50 עם 3.19.
+                ink/60 נותן 4.29 — מרווח בלי להיקרא ככבד על קרם. */}
+            <span className="flex min-h-11 flex-1 items-center rounded-pill border border-ink/60 px-4 text-body text-ink-soft">
               כתבי לניקול…
             </span>
             <span className="grid size-11 flex-none place-items-center rounded-full bg-lavender text-ground">
