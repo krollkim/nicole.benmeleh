@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" fill="none" stroke-linecap="round">
+  <!-- ניקול בן מלך. מקור: design/export-2b/nicole-wave-icon-circle.svg.
+       מטא-דאטת C2PA הוסרה: היא היתה כ-8KB מתוך 8.2KB, ופאביקון נטען בכל עמוד.
+       הצבעים קשיחים ולא טוקנים: פאביקון נטען מחוץ להקשר של הדף ואין לו גישה
+       למשתני ה-CSS. הערכים זהים לפלטה — lavender #6B5B95, ground #F5EFE4,
+       honey #CDB18D. -->
+  <circle cx="70" cy="70" r="70" fill="#6B5B95"/>
+  <g transform="translate(70 70) scale(0.64) translate(-72 -52)">
+    <path d="M14 62 C34 30 54 30 70 50 S106 70 126 38" stroke="#F5EFE4" stroke-width="6"/>
+    <path d="M26 76 C44 54 60 54 74 64 S102 78 116 62" stroke="#CDB18D" stroke-width="4.5"/>
+    <circle cx="134" cy="27" r="6" fill="#CDB18D"/>
+  </g>
+</svg>
