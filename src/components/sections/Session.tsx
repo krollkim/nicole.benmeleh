@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 
 /**
  * סקשן 4 · "בלי הפתעות: ככה נראית שעה אצלי" — אופציה 4c, מדרגות.
@@ -193,6 +194,15 @@ export default function Session() {
         רוב הנשים שמגיעות אליי לא חוששות מהטיפול. הן חוששות ממה שקורה להן בגוף. התפקיד שלי הוא קודם
         כל לייצר מקום בטוח. בלי זה אין טיפול.
       </p>
+
+      {/* CTA בכל סקשן (11/10/2026), והצף ירד. כאן זה הכי חשוב: זה
+          הסקשן שמסיר את הלא-נודע האחרון, כלומר הנקודה שבה היא הכי
+          קרובה להחליט. קודם היא הייתה צריכה לגלול דרך שלושה סקשנים.
+          המיקרו-קופי דלוק כאן כי "לא קובעות כלום לפני שדיברנו" הוא
+          בדיוק המענה לפחד שהסקשן הזה מטפל בו. */}
+      <div className="mt-10 flex justify-center px-shell lg:mt-12">
+        <WhatsAppLeadButton funnel="session" buttonClassName="text-lead px-10 py-4" />
+      </div>
     </section>
   )
 }

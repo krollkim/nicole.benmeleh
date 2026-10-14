@@ -1,0 +1,67 @@
+<!-- Footer 3b · ניקול בן מלך. Fonts: Frank Ruhl Libre 400, Assistant 400/500/600 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600&family=Frank+Ruhl+Libre:wght@400&display=swap">
+<style>
+  .nb-footer{--lav-deep:#3D3358;--cream:#F5EFE4;--honey:#CDB18D;--lav-mist:#D9D1E6;--lav-soft:#C9C0D8;
+    background:var(--lav-deep);color:var(--cream);font-family:'Assistant',system-ui,sans-serif;direction:rtl}
+  .nb-footer__cap{height:72px;background:var(--honey);border-radius:0 0 48px 48px}
+  .nb-footer__inner{max-width:1280px;margin:0 auto;padding:80px 112px 40px;box-sizing:border-box;display:flex;flex-direction:column;gap:64px}
+  .nb-footer__top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+  .nb-footer__brand{display:flex;flex-direction:column;gap:18px}
+  .nb-footer__logo{display:flex;align-items:center;gap:16px}
+  .nb-footer__name{font-family:'Frank Ruhl Libre',serif;font-weight:400;font-size:40px;line-height:1}
+  .nb-footer__tagline{margin:0;font-size:17px;line-height:1.6;color:var(--lav-mist);max-width:380px;text-wrap:pretty}
+  .nb-footer__contact{display:flex;flex-direction:column;gap:6px;font-size:17px;line-height:1.6}
+  .nb-footer__clinic{font-weight:600}
+  .nb-footer__address{color:var(--lav-mist)}
+  .nb-footer__ig{align-self:flex-start;margin-top:10px;color:var(--honey);text-decoration:none;font-weight:500}
+  .nb-footer__ig:hover{color:var(--cream)}
+  .nb-footer__cta-wrap{display:flex;justify-content:flex-end}
+  .nb-footer__cta{display:flex;align-items:center;gap:10px;background:var(--cream);color:var(--lav-deep);border-radius:999px;padding:14px 28px;font-size:17px;font-weight:600;text-decoration:none;transition:background .2s}
+  .nb-footer__cta:hover{background:var(--honey)}
+  .nb-footer a:focus-visible{outline:2px solid var(--honey);outline-offset:3px}
+  .nb-footer__bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:48px;font-size:14px;line-height:1.6;color:var(--lav-soft)}
+  .nb-footer__disclaimer{margin:0;max-width:560px;text-wrap:pretty}
+  .nb-footer__copy{white-space:nowrap}
+  @media (max-width:900px){
+    .nb-footer__inner{padding:56px 28px 32px;gap:44px}
+    .nb-footer__top{grid-template-columns:1fr;gap:32px}
+    .nb-footer__cta-wrap{justify-content:flex-start}
+    .nb-footer__bottom{flex-direction:column;align-items:flex-start;gap:16px}
+    .nb-footer__name{font-size:34px}
+    .nb-footer__cap{border-radius:0 0 32px 32px;height:48px}
+  }
+</style>
+
+<footer class="nb-footer">
+  <div class="nb-footer__cap"></div>
+  <div class="nb-footer__inner">
+    <div class="nb-footer__top">
+      <div class="nb-footer__brand">
+        <div class="nb-footer__logo">
+          <svg width="64" height="46" viewBox="0 0 140 100" fill="none" stroke-linecap="round" aria-hidden="true">
+            <path d="M14 62 C34 30 54 30 70 50 S106 70 126 38" stroke="#F5EFE4" stroke-width="5"/>
+            <path d="M26 76 C44 54 60 54 74 64 S102 78 116 62" stroke="#CDB18D" stroke-width="3.5"/>
+            <circle cx="134" cy="27" r="5" fill="#CDB18D"/>
+          </svg>
+          <span class="nb-footer__name">ניקול בן מלך</span>
+        </div>
+        <p class="nb-footer__tagline">ניקול בן מלך · מטפלת ברפואה סינית · מוסמכת מטעם האיגוד העולמי לרפואה סינית</p>
+      </div>
+      <div class="nb-footer__contact">
+        <span class="nb-footer__clinic">קליניקת "בית מרפה"</span>
+        <span class="nb-footer__address">אחד העם 89, תל אביב</span>
+        <a class="nb-footer__ig" dir="ltr" href="https://instagram.com/nicole.benmeleh" target="_blank" rel="noopener">@nicole.benmeleh</a>
+      </div>
+      <div class="nb-footer__cta-wrap">
+        <a class="nb-footer__cta" href="https://wa.me/" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+          <span>וואטסאפ</span>
+        </a>
+      </div>
+    </div>
+    <div class="nb-footer__bottom">
+      <p class="nb-footer__disclaimer">הטיפולים המוצעים באתר זה הם טיפולים משלימים ואינם מהווים תחליף לייעוץ, אבחון או טיפול רפואי. אין באמור באתר משום הבטחה לתוצאה כלשהי.</p>
+      <span class="nb-footer__copy">© 2026 ניקול בן מלך. כל הזכויות שמורות.</span>
+    </div>
+  </div>
+</footer>

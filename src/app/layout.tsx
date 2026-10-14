@@ -3,7 +3,6 @@ import { Frank_Ruhl_Libre, Assistant } from 'next/font/google'
 import './globals.css'
 
 import GSAPInit from '@/components/GSAPInit'
-import { WhatsAppFloat } from '@/components/WhatsAppFloat'
 import JsonLd from '@/components/seo/JsonLd'
 import { siteGraph, faqPageJsonLd } from '@/lib/schema'
 import { SITE_URL } from '@/lib/site'
@@ -88,9 +87,12 @@ export default function RootLayout({
         <JsonLd data={siteGraph} />
         <JsonLd data={faqPageJsonLd} />
         {children}
-        {/* Mounted once, globally — every section's inline CTA is a separate
-            <WhatsAppLeadButton />. */}
-        <WhatsAppFloat />
+        {/* הכפתור הצף הוסר 11/10/2026. הפינה הצפה היא משבצת אחת, ותוסף
+            הנגישות צריך אותה. במקומו יש CTA בכל סקשן — כל פריים עומד
+            בפני עצמו, ואין יותר כפילות בין הצף לכפתורים.
+
+            WhatsAppFloat.tsx נשאר בעץ: ההחלטה מותנית בתוסף שעוד לא
+            הותקן, ומחיקה תהיה מוקדמת. */}
       </body>
     </html>
   )

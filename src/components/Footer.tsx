@@ -1,86 +1,113 @@
 import WaveMark from '@/components/ui/WaveMark'
 import { WHATSAPP_PHONE, buildWhatsAppUrl, buildWhatsAppMessage } from '@/lib/whatsapp'
 
-/**
- * RTL footer. `tagline` and `disclaimer` are rendered verbatim from
- * brand.json (`footer.tagline` / `footer.disclaimer`) — the disclaimer is a
- * legally required line and must not be reworded. `legalLinks` is
- * intentionally omitted: brand.json's footer.legalLinks is [] by design.
- *
- * WHY THIS IS DARK, and why that is a layout decision rather than a colour one:
- * the whole page sits on one cream ground, which is what makes it read as calm
- * — and also why it has no strong moment anywhere. A page with a single value
- * from top to bottom has no floor. This band is the floor. It is the only dark
- * surface on the site, and it does two jobs at once: it ends the page, and it
- * gives the eye somewhere to land.
- *
- * It replaces a footer that was three grey lines leaking down the right-hand
- * side with no edge, no structure, and no separation from the section above.
- *
- * Contrast: cream on #201B1B is far past 4.5:1, so the disclaimer is finally
- * readable instead of being the faintest thing on the page.
- */
-interface FooterProps {
+export interface FooterProps {
   brand: string
   tagline: string
   disclaimer: string
 }
 
+/**
+ * הפוטר. מבוסס על export-footer-3b מקלוד דיזיין, בצבעים שלנו.
+ *
+ * ── ה-cap ──
+ * רצועת דבש בראש הפוטר עם פינות תחתונות מעוגלות. היא לא מחיצה — היא
+ * ההמשך של סקשן 8, שהוא פס דבש ברוחב מלא. הדבש זורם מהסקשן אל הפוטר
+ * ומתעגל פנימה, ואז מתגלה הדיו שמתחתיו.
+ *
+ * זה גם מה שפותר את הקפיצה: בלי ה-cap המעבר היה דבש→דיו בבת אחת,
+ * 8.32:1 בלי שום הכנה.
+ *
+ * ── הצבעים ──
+ * הפאנל הוא lavender-deep, הסגול-העמוק. הוא לא צבע מיובא: אותו גוון
+ * ואותה רוויה כמו הלבנדר שלנו (256° מול 257°, 26.6% מול 24.2%), מדרגה
+ * כהה מתחת ל-lavender-press. הוא נוסף כטוקן ב-globals.css.
+ *
+ * מיפיתי אותו קודם ל-ink וזו הייתה טעות: ink הוא גוון 0°, כלומר חום,
+ * והסגול הוא כל הסיבה שבחרנו ב-3B.
+ *
+ * ולא אפשר היה פשוט להשתמש בלבנדרים הקיימים — טקסט ground/70 נמדד
+ * 3.43 על lavender ו-4.13 על lavender-press, שניהם נופלים מ-4.5.
+ * על lavender-deep הוא 5.87.
+ *
+ * שני הצבעים המשניים של הייצוא הוחלפו: #D9D1E6 → ground/70 (5.87),
+ * #C9C0D8 → ground/60 (4.76). /55 נמדד 4.27 ונפל. הוא עבד על הדיו ולא
+ * על הסגול, וזה בדיוק מה שנשבר כשמחליפים רקע.
+ *
+ * ── הפוטר ברוחב מלא ──
+ * ה-cap מעוגל, הפוטר עצמו לא. זה שומר על הכלל "פס ברוחב מלא שמחלק
+ * את העמוד" — פאנל צף היה שובר אותו.
+ */
 export default function Footer({ brand, tagline, disclaimer }: FooterProps) {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="w-full bg-ink px-4 py-20 text-ground md:px-8 md:py-24">
-      <div className="mx-auto w-full max-w-voice">
-        <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.2fr)] md:gap-16">
-          {/* who */}
-          <div>
-            {/* הגל גדול יותר כאן מאשר בנאבבר — בפוטר יש לו מקום, ושם
-                הוא קורא כחתימה ולא כאייקון ניווט. */}
-            <div className="flex items-center gap-3">
-              <WaveMark className="h-7 w-10 flex-none" />
-              <p className="font-display text-h3 font-medium text-ground">{brand}</p>
+    <footer className="w-full bg-lavender-deep text-ground">
+      {/* ה-cap. rounded-b-[3rem] הוא ערך מפורש ולא טוקן: צורה חד-פעמית
+          אחת, כמו הקשת בסקשן 2. */}
+      <div className="h-16 rounded-b-[3rem] bg-honey" />
+
+      <div className="mx-auto flex w-full max-w-voice flex-col gap-16 px-shell pb-10 pt-20">
+        <div className="grid gap-10 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-start">
+          {/* מי */}
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-4">
+              <WaveMark onDark className="h-8 w-11 flex-none" />
+              <span className="font-display text-h2 text-ground">{brand}</span>
             </div>
-            <p className="mt-3 text-micro text-ground/70">{tagline}</p>
+            <p className="max-w-measure text-body text-ground/70">{tagline}</p>
           </div>
 
-          {/* where, and how to reach her */}
-          <div className="flex flex-col gap-3 text-micro">
-            <p className="text-ground/70">
-              קליניקת &quot;בית מרפה&quot;
-              <br />
-              אחד העם 89, תל אביב
-            </p>
+          {/* איפה, ואיך מגיעים אליה */}
+          <div className="flex flex-col gap-2 text-body">
+            <span className="font-semibold">קליניקת &quot;בית מרפה&quot;</span>
+            <span className="text-ground/70">אחד העם 89, תל אביב</span>
+            {/* dir=ltr: בלי זה ה-@ קופץ לצד הלא נכון בעברית */}
             <a
-              href={buildWhatsAppUrl(WHATSAPP_PHONE, buildWhatsAppMessage('footer'))}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-fit text-ground underline underline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ground/50"
-            >
-              וואטסאפ
-            </a>
-            {/* dir=ltr so the @ lands on the correct side of the handle */}
-            <a
+              dir="ltr"
               href="https://www.instagram.com/nicole.benmeleh/"
               target="_blank"
               rel="noopener noreferrer"
-              dir="ltr"
-              className="w-fit text-ground underline underline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ground/50"
+              className="mt-2 w-fit font-medium text-honey transition-colors hover:text-ground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-honey focus-visible:ring-offset-2"
             >
               @nicole.benmeleh
             </a>
           </div>
 
-          {/* the line the law requires, at a size a person can actually read */}
-          <div>
-            <p className="max-w-measure text-micro text-ground/70">{disclaimer}</p>
+          {/* הבקשה. הכפתור הוא קרם מלא על הסגול — 10.12:1 מול הפאנל,
+              כלומר הדבר הבהיר ביותר בפוטר. הכיתוב עליו הוא דיו: 14.87
+              על הקרם, ו-8.32 על הדבש ב-hover. שניהם לא תלויים בפאנל. */}
+          <div className="flex md:justify-end">
+            <a
+              href={buildWhatsAppUrl(WHATSAPP_PHONE, buildWhatsAppMessage('footer'))}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-fit w-fit items-center gap-2 rounded-pill bg-ground px-6 py-4 text-body font-semibold text-ink transition-colors hover:bg-honey focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-honey focus-visible:ring-offset-2"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+              </svg>
+              <span>וואטסאפ</span>
+            </a>
           </div>
         </div>
 
-        {/* /45 נמדד 4.02:1 על הדיו ונפל. /50 נותן 4.67 בקושי, /55 נותן 5.38. */}
-        <p className="mt-16 text-label text-ground/55">
-          © {year} {brand}. כל הזכויות שמורות.
-        </p>
+        <div className="flex flex-col gap-4 text-label text-ground/60 md:flex-row md:items-end md:justify-between md:gap-10">
+          <p className="max-w-measure-wide">{disclaimer}</p>
+          <span className="whitespace-nowrap">
+            © {year} {brand}. כל הזכויות שמורות.
+          </span>
+        </div>
       </div>
     </footer>
   )

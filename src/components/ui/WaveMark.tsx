@@ -12,8 +12,18 @@
  * קטנים. בייצוא יש גם גרסת mark דקה יותר (stroke 3.2 ו-2) לשימוש גדול.
  *
  * aria-hidden: הוא מופיע תמיד לצד השם הכתוב, ולכן דקורטיבי.
+ *
+ * onDark: על הפאנל הסגול-העמוק של הפוטר הקו הלבנדר נמדד 1.96:1 מול הרקע
+ * ונבלע בו. במצב הזה הוא עובר לקרם (10.12:1), בדיוק כפי שההאנדאוף עושה
+ * ב-export-footer-3b/footer.html שורה 42. הדבש נשאר דבש — 5.66:1 שם.
  */
-export default function WaveMark({ className = '' }: { className?: string }) {
+export default function WaveMark({
+  className = '',
+  onDark = false,
+}: {
+  className?: string
+  onDark?: boolean
+}) {
   return (
     <svg
       viewBox="0 0 140 100"
@@ -24,7 +34,7 @@ export default function WaveMark({ className = '' }: { className?: string }) {
     >
       <path
         d="M14 62 C34 30 54 30 70 50 S106 70 126 38"
-        stroke="var(--color-lavender)"
+        stroke={onDark ? 'var(--color-ground)' : 'var(--color-lavender)'}
         strokeWidth="5"
       />
       <path

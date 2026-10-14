@@ -2,6 +2,7 @@
 
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import TreeRings from '@/components/ui/TreeRings'
+import { WhatsAppLeadButton } from '@/components/WhatsAppLeadButton'
 
 /**
  * סקשן 3 — "לא כל אחת מקבלת את אותו טיפול". אופציה 3f מקלוד דיזיין.
@@ -52,6 +53,18 @@ export default function Approach() {
             מתוך זה אני בונה אסטרטגיית טיפול שמתאימה לך, ומחליטה אם נעבוד בשיאצו, בדיקור, או
             בשילוב.
           </p>
+
+          {/* CTA בכל סקשן (11/10/2026). הכפתור הצף ירד — הפינה שייכת
+              לתוסף הנגישות — ובמקומו כל פריים עומד בפני עצמו, כך שמי
+              שמחליטה כאן לא צריכה לגלול הלאה. */}
+          <div className="mt-10 flex justify-center md:justify-start">
+            <WhatsAppLeadButton
+              align="start"
+              funnel="approach"
+              showSubtext={false}
+              buttonClassName="text-lead px-10 py-4"
+            />
+          </div>
         </ScrollReveal>
       </div>
 
